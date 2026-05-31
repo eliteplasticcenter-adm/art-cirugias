@@ -197,6 +197,7 @@ tbody tr:hover td{background:var(--bg3);}
     <div class="col"><div class="lbl">Anestesiólogo</div>
       <select id="f-an" onchange="recalc()">
         <option value="">— Seleccionar —</option>
+        <option>Dr. Oswaldo Artieda</option>
         <option>Anestesiólogo externo</option>
       </select>
     </div>
@@ -316,7 +317,7 @@ const HONOR={
 const AN={1:450,2:585,3:700};
 const IN={1:250,2:325,3:400};
 const AP_CFG={
-  microaire:{nom:'Microaire',socios:['Dr. Deivys Higuerey','Dr. Juan Caicedo','Dr. Oswaldo Artieda','Eva Guerrero','ART ESTHETIC'],m:100},
+  microaire:{nom:'Microaire',socios:['Dr. Deivys Higuerey','Dr. Juan Caicedo','Dr. Oswaldo Artieda','Lic. Rosario Naranjo'],m:100},
   vaser:{nom:'VASER',socios:['Dr. Juan Caicedo','Dr. Oswaldo Artieda','Dr. Oscar Blanco'],m:250},
   renuvion:{nom:'Renuvion',socios:['Eva Guerrero','Dr. Eduardo Salas','Dr. Juan Caicedo','Dr. Oswaldo Artieda'],m:250,extra:{nom:'Corpor Clinic S.L.',m:927.83}},
 };
@@ -617,9 +618,11 @@ function rCirs(){
           <div class="cbox">
             <div><div class="cl">Hospital</div><div style="font-size:12px;font-weight:500;">${q.hosp||'—'}</div></div>
             <div><div class="cl">Anticipo</div><div class="cv" style="color:var(--amber);">${fmt(q.ant)}</div>
-              ${q.antPag?'<div style="font-size:10px;color:var(--green);">✓ Enviado</div>':`<button class="btn xs a" style="margin-top:3px;" onclick="sAP('${c.id}')">Marcar enviado</button>`}
+              ${q.antPag?`<div style="font-size:10px;color:var(--green);">✓ Enviado${q.fechaAnticipo?' · '+q.fechaAnticipo:''}${q.formaAnticipo?' · '+q.formaAnticipo:''}</div>`:`<button class="btn xs a" style="margin-top:3px;" onclick="sAP('${c.id}')">Marcar enviado</button>`}
             </div>
-            <div><div class="cl">Factura real</div><div class="cv" style="color:${q.fac?'var(--tx)':'var(--tx3)'};">${q.fac?fmt(q.fac):'Pendiente'}</div></div>
+            <div><div class="cl">Factura real</div><div class="cv" style="color:${q.fac?'var(--tx)':'var(--tx3)'};">${q.fac?fmt(q.fac):'Pendiente'}</div>
+              ${q.ffact?`<div style="font-size:10px;color:var(--tx3);">${q.ffact}</div>`:''}
+            </div>
           </div>
           ${q.fac?`<div class="alrt ${Math.abs(dif)<0.01?'aok':dif>0?'aok':'ard'}">${Math.abs(dif)<0.01?'✓ Conciliado':dif>0?`Saldo a favor de ART: ${fmt(dif)}`:`Pendiente a hospital: ${fmt(Math.abs(dif))}`}</div>`:''}
         </div>
@@ -643,7 +646,7 @@ function rAp(){
       pp[k].socios[s.nom].total+=s.m;
       if(!s.pag)pp[k].socios[s.nom].pend+=s.m;
       pp[k].total+=s.m;if(!s.pag)pp[k].pend+=s.m;
-      pp[k].socios[s.nom].rows.push({pac:c.pac?.nom,fecha:c.fecha,m:s.m,pag:s.pag,cid:c.id,k,si:a.socios.indexOf(s)});
+      pp[k].socios[s.nom].rows.push({pac:c.pac?.nom,fecha:c.fecha,m:s.m,pag:s.pag,fechaPago:s.fechaPago||'',formaPago:s.formaPago||'',cid:c.id,k,si:a.socios.indexOf(s)});
     });
   });});
   const tA=Object.values(pp).reduce((s,a)=>s+a.total,0);
@@ -668,7 +671,8 @@ function rAp(){
           <td style="font-weight:500;">${r.pac}</td>
           <td style="color:var(--tx3);">${fF(r.fecha)}</td>
           <td class="mono" style="color:var(--gold);">${fmt(r.m)}</td>
-          <td>${r.pag?`<span class="bx bok">Pagado</span>`:`<span class="bx bw">Pendiente</span><button class="btn xs g" style="margin-left:6px;" onclick="sApSoc('${r.cid}','${r.k}',${r.si},true)">✓ Pagado</button>`}</td>
+          <td>${r.pag?`<span class="bx bok">Pagado</span>${r.fechaPago?'<br><span style="font-size:10px;color:var(--tx3);">'+r.fechaPago+(r.formaPago?' · '+r.formaPago:'')+'</span>':''}`:
+            `<span class="bx bw">Pendiente</span><button class="btn xs g" style="margin-left:6px;" onclick="sApSoc('${r.cid}','${r.k}',${r.si},true)">✓ Pagado</button>`}</td>
         </tr>`).join('')}</tbody></table>
       </div>`).join('')}
     </div>`).join(''):`<div class="empty">Sin aparatología registrada en cirugías</div>`}`;
@@ -681,7 +685,7 @@ function rHon(){
     if(!pp[n])pp[n]={n,pend:0,cob:0,rows:[]};
     const pag=c.hp?.[r]?.pagado||false;
     if(pag)pp[n].cob+=m;else pp[n].pend+=m;
-    pp[n].rows.push({pac:c.pac?.nom,fecha:c.fecha,procs:c.procs,rol:rl[r],m,pag,cid:c.id,r});
+    pp[n].rows.push({pac:c.pac?.nom,fecha:c.fecha,procs:c.procs,rol:rl[r],m,pag,cid:c.id,r,fechaPago:c.hp?.[r]?.fecha||'',forma:c.hp?.[r]?.forma||''});
   });});
   const vals=Object.values(pp);
   const tP=vals.reduce((s,x)=>s+x.pend,0);
@@ -703,7 +707,8 @@ function rHon(){
         <td style="font-size:11px;color:var(--tx3);">${(x.procs||[]).join(' + ')}</td>
         <td style="font-size:11px;">${x.rol}</td>
         <td class="mono" style="color:var(--gold);">${fmt(x.m)}</td>
-        <td>${x.pag?`<span class="bx bok">Pagado</span>`:`<span class="bx bw">Pendiente</span><button class="btn xs g" style="margin-left:6px;" onclick="sPP('${x.cid}','${x.r}',true)">✓ Pagado</button>`}</td>
+        <td>${x.pag?`<span class="bx bok">Pagado</span>${x.fecha?'<br><span style="font-size:10px;color:var(--tx3);">'+x.fecha+(x.forma?' · '+x.forma:'')+'</span>':''}`:
+          `<span class="bx bw">Pendiente</span><button class="btn xs g" style="margin-left:6px;" onclick="sPP('${x.cid}','${x.r}',true)">✓ Pagado</button>`}</td>
       </tr>`).join('')}</tbody></table></div>`).join('')||'<div class="empty">Sin honorarios registrados</div>'}`;
 }
 
@@ -732,28 +737,48 @@ function rQuir(){
     </div>`;
 }
 
+function getMeses(){
+  return [...new Set(DATA.map(c=>c.fecha?.slice(0,7)).filter(Boolean))].sort().reverse();
+}
+function mesLabel(m){
+  if(!m)return'';
+  const[y,mo]=m.split('-');
+  const names=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  return names[parseInt(mo)-1]+' '+y;
+}
 function rCon(){
-  const tH=DATA.reduce((s,c)=>s+(c.h?.total||0),0);
-  const tPac=DATA.reduce((s,c)=>s+(c.pago?.precio||0),0);
-  const tPag=DATA.reduce((s,c)=>s+(c.pago?.pagado||0),0);
-  const tA=DATA.reduce((s,c)=>s+(c.q?.ant||0),0);
-  const tF=DATA.reduce((s,c)=>s+(c.q?.fac||0),0);
-  const tAp=DATA.reduce((s,c)=>s+Object.values(c.ap||{}).reduce((ss,a)=>ss+a.socios.reduce((sss,so)=>sss+so.m,0),0),0);
+  const meses=getMeses();
+  const selMes=($('con-mes-sel')?.value)||'';
+  const lista=selMes?DATA.filter(c=>c.fecha?.startsWith(selMes)):DATA;
+  const tH=lista.reduce((s,c)=>s+(c.h?.total||0),0);
+  const tPac=lista.reduce((s,c)=>s+(c.pago?.precio||0),0);
+  const tPag=lista.reduce((s,c)=>s+(c.pago?.pagado||0),0);
+  const tA=lista.reduce((s,c)=>s+(c.q?.ant||0),0);
+  const tF=lista.reduce((s,c)=>s+(c.q?.fac||0),0);
   $('pg-consolidado').innerHTML=`
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+      <div class="lbl" style="margin-bottom:0;">Período:</div>
+      <select id="con-mes-sel" onchange="rCon()" style="width:180px;padding:6px 10px;">
+        <option value="">Todos los meses</option>
+        ${meses.map(m=>`<option value="${m}" ${selMes===m?'selected':''}>${mesLabel(m)}</option>`).join('')}
+      </select>
+      <button class="btn sm" onclick="exportConsolidado()">↓ Excel</button>
+    </div>
     <div class="sg s4">
       <div class="st"><div class="sl">Facturado pacientes</div><div class="sv sv-g">${fmt(tPac)}</div></div>
       <div class="st"><div class="sl">Cobrado</div><div class="sv sv-ok">${fmt(tPag)}</div></div>
       <div class="st"><div class="sl">Pendiente pacientes</div><div class="sv ${tPac-tPag>0?'sv-r':''}">${fmt(tPac-tPag)}</div></div>
       <div class="st"><div class="sl">Total honorarios</div><div class="sv">${fmt(tH)}</div></div>
     </div>
-    <div class="lbl" style="margin-bottom:8px;">Por profesional</div>${buildConPP()}
-    <div class="lbl" style="margin:12px 0 8px;">Aparatología</div>${buildConAp()}
-    <div class="lbl" style="margin:12px 0 8px;">Quirófano</div>${buildConQ()}`;
+    <div class="lbl" style="margin-bottom:8px;">Por profesional</div>${buildConPP(lista)}
+    <div class="lbl" style="margin:12px 0 8px;">Aparatología</div>${buildConAp(lista)}
+    <div class="lbl" style="margin:12px 0 8px;">Quirófano</div>${buildConQ(lista)}`;
 }
 
-function buildConPP(){
+function buildConPP(lista){
+  lista=lista||DATA;
   const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesiólogo',ins:'Instrumentista'};
-  DATA.forEach(c=>{['cir','ay','an','ins'].forEach(r=>{
+  lista.forEach(c=>{['cir','ay','an','ins'].forEach(r=>{
     const n=c.eq?.[r];if(!n)return;const m=c.h?.[r]||0;if(!m)return;
     if(!pp[n])pp[n]={n,total:0,rows:[]};
     pp[n].total+=m;
@@ -773,9 +798,10 @@ function buildConPP(){
     </tr>`).join('')}</tbody></table></div>`).join('')||'<div class="empty">Sin datos</div>';
 }
 
-function buildConAp(){
+function buildConAp(lista){
+  lista=lista||DATA;
   const rows=[];
-  DATA.forEach(c=>Object.entries(c.ap||{}).forEach(([k,a])=>a.socios.forEach(s=>rows.push({pac:c.pac?.nom,fecha:c.fecha,tech:a.nom,nom:s.nom,m:s.m,pag:s.pag}))));
+  lista.forEach(c=>Object.entries(c.ap||{}).forEach(([k,a])=>a.socios.forEach(s=>rows.push({pac:c.pac?.nom,fecha:c.fecha,tech:a.nom,nom:s.nom,m:s.m,pag:s.pag}))));
   if(!rows.length)return'<div class="empty">Sin aparatología</div>';
   return`<div class="card"><table>
     <thead><tr><th>Paciente</th><th>Fecha</th><th>Tecnología</th><th>Profesional</th><th>Monto</th><th>Estado</th></tr></thead>
@@ -787,8 +813,8 @@ function buildConAp(){
     </tr>`).join('')}</tbody></table></div>`;
 }
 
-function buildConQ(){
-  const lista=DATA.filter(c=>c.q?.ant||c.q?.hosp);
+function buildConQ(lista){
+  lista=(lista||DATA).filter(c=>c.q?.ant||c.q?.hosp);
   if(!lista.length)return'<div class="empty">Sin datos de quirófano</div>';
   return`<div class="card"><table>
     <thead><tr><th>Paciente</th><th>Fecha</th><th>Hospital</th><th>Anticipo</th><th>Factura</th><th>Diferencia</th></tr></thead>
@@ -856,14 +882,85 @@ function rCalSem(){
 }
 
 function sEst(id,e){const c=DATA.find(x=>x.id===id);if(!c)return;c.estado=e;sal();apiS('save',c);rCirs();}
-function sPP(id,r,pag){const c=DATA.find(x=>x.id===id);if(!c)return;if(!c.hp)c.hp={};c.hp[r]={pagado:pag};sal();apiS('save',c);rCirs();if($('pg-honorarios').classList.contains('on'))rHon();}
-function sAP(id){const c=DATA.find(x=>x.id===id);if(!c)return;c.q.antPag=true;sal();apiS('save',c);rCirs();}
-function sAp(id,k,si,pag){const c=DATA.find(x=>x.id===id);if(!c)return;c.ap[k].socios[si].pag=pag;sal();apiS('save',c);rCirs();}
-function sApSoc(id,k,si,pag){const c=DATA.find(x=>x.id===id);if(!c)return;c.ap[k].socios[si].pag=pag;sal();apiS('save',c);rAp();}
+function sPP(id,r,pag){
+  const c=DATA.find(x=>x.id===id);if(!c)return;
+  if(!c.hp)c.hp={};
+  if(pag){
+    const fecha=prompt('Fecha de pago (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
+    const forma=prompt('Forma de pago:','Transferencia');
+    if(fecha===null)return;
+    c.hp[r]={pagado:true,fecha:fecha||'',forma:forma||''};
+  }else{
+    c.hp[r]={pagado:false,fecha:'',forma:''};
+  }
+  sal();apiS('save',c);rCirs();if($('pg-honorarios').classList.contains('on'))rHon();
+}
+function sAP(id){
+  const c=DATA.find(x=>x.id===id);if(!c)return;
+  const fecha=prompt('Fecha del anticipo (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
+  const forma=prompt('Forma de pago:','Transferencia');
+  if(fecha===null)return;
+  c.q.antPag=true;c.q.fechaAnticipo=fecha||'';c.q.formaAnticipo=forma||'';
+  sal();apiS('save',c);rCirs();
+}
+function sAp(id,k,si,pag){
+  const c=DATA.find(x=>x.id===id);if(!c)return;
+  if(pag){
+    const fecha=prompt('Fecha de pago (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
+    const forma=prompt('Forma de pago:','Transferencia');
+    if(fecha===null)return;
+    c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=fecha||'';c.ap[k].socios[si].formaPago=forma||'';
+  }else{
+    c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';
+  }
+  sal();apiS('save',c);rCirs();
+}
+function sApSoc(id,k,si,pag){
+  const c=DATA.find(x=>x.id===id);if(!c)return;
+  if(pag){
+    const fecha=prompt('Fecha de pago (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
+    const forma=prompt('Forma de pago:','Transferencia');
+    if(fecha===null)return;
+    c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=fecha||'';c.ap[k].socios[si].formaPago=forma||'';
+  }else{
+    c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';
+  }
+  sal();apiS('save',c);rAp();
+}
+function exportConsolidado(){
+  const selMes=($('con-mes-sel')?.value)||'';
+  const lista=selMes?DATA.filter(c=>c.fecha?.startsWith(selMes)):DATA;
+  const rows=[];
+  lista.forEach(c=>{
+    const h=c.h||{};const q=c.q||{};
+    rows.push({
+      'Paciente':c.pac?.nom,'Fecha':c.fecha,'Procedimientos':(c.procs||[]).join(' + '),
+      'Estado':EL[c.estado]||c.estado,'Cirujano':c.eq?.cir,
+      'Honor.Cirujano':h.cir||0,'Pagado Cir':c.hp?.cir?.pagado?'Sí':'No',
+      'Fecha Pago Cir':c.hp?.cir?.fecha||'','Forma Pago Cir':c.hp?.cir?.forma||'',
+      'Ayudante':c.eq?.ay,'Honor.Ayudante':h.ay||0,
+      'Anestesiólogo':c.eq?.an,'Honor.Anestesia':h.an||0,
+      'Instrumentista':c.eq?.ins,'Honor.Instrumentista':h.ins||0,
+      'Total Honorarios':h.total||0,
+      'Hospital':q.hosp,'Anticipo Quirófano':q.ant||0,
+      'Fecha Anticipo':q.fechaAnticipo||'','Forma Anticipo':q.formaAnticipo||'',
+      'Factura Quirófano':q.fac||0,'Fecha Factura':q.ffact||'',
+      'Dif.Quirófano':(q.ant||0)-(q.fac||0),
+      'Precio Paciente':c.pago?.precio||0,'Pagado Paciente':c.pago?.pagado||0,
+      'Saldo Paciente':Math.max((c.pago?.precio||0)-(c.pago?.pagado||0),0),
+    });
+  });
+  if(!rows.length){alert('Sin datos para exportar.');return;}
+  const ws=XLSX.utils.json_to_sheet(rows);
+  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Consolidado');
+  XLSX.writeFile(wb,'ART_Consolidado_'+(selMes||'total')+'.xlsx');
+}
+
 function elimC(id){if(!confirm('¿Eliminar esta cirugía?'))return;DATA=DATA.filter(x=>x.id!==id);sal();apiS('delete',{id});rCirs();rPanel();}
 
 rPanel();
-if(API_URL!=='https://script.google.com/macros/s/AKfycbzxu-8Wt5HZg2ozzKEMnnQod-P9_DnUTzCKSa1LjpOmOWkDfne7n-klO48k-8hlOB_5/exec')apiCall('init').then(()=>syncNow());
+// Siempre sincronizar desde Sheets al abrir
+apiCall('init').then(()=>syncNow());
 </script>
 </body>
 </html>
