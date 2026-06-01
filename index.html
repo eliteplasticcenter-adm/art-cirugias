@@ -539,6 +539,7 @@ function guardar(){
     if(cfg.extra)socios.push({nom:cfg.extra.nom,m:cfg.extra.m,pag:false});
     apObj[k]={nom:cfg.nom,socios};
   });
+    const esRetoque=$('f-tipo').value==='retoque';
   if(esRetoque) Object.keys(apObj).forEach(k=>{ apObj[k].socios=apObj[k].socios.map(s=>({...s,m:0})); });
   const ex=EID?DATA.find(x=>x.id===EID):null;
   const c={
