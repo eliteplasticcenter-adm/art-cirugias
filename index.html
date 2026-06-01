@@ -254,6 +254,12 @@ tbody tr:hover td{background:var(--bg3);}
   <div id="saldo-preview"></div>
   <div class="div"></div>
   <div class="row">
+    <div class="col"><div class="lbl">Tipo de intervención</div>
+      <select id="f-tipo" onchange="onTipoChange()">
+        <option value="cirugia">Cirugía</option>
+        <option value="retoque">Retoque (honorarios y aparatología a €0)</option>
+      </select>
+    </div>
     <div class="col"><div class="lbl">Estado</div>
       <select id="f-est">
         <option value="creada">Creada</option>
@@ -266,8 +272,9 @@ tbody tr:hover td{background:var(--bg3);}
         <option value="cerrada">Cerrada</option>
       </select>
     </div>
-    <div class="col" style="flex:2;"><div class="lbl">Notas</div><input type="text" id="f-notas" placeholder="Observaciones internas..."></div>
+    <div class="col"><div class="lbl">Notas</div><input type="text" id="f-notas" placeholder="Observaciones internas..."></div>
   </div>
+  <div id="retoque-alert" style="display:none;" class="alrt awk">⚠ Retoque: honorarios profesionales y aparatología a €0. Solo se paga quirófano si aplica.</div>
   <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px;">
     <button class="btn" onclick="cerrarForm()">Cancelar</button>
     <button class="btn p" onclick="guardar()">💾 Guardar cirugía</button>
@@ -296,7 +303,7 @@ tbody tr:hover td{background:var(--bg3);}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-const API_URL='https://script.google.com/macros/s/AKfycbzxu-8Wt5HZg2ozzKEMnnQod-P9_DnUTzCKSa1LjpOmOWkDfne7n-klO48k-8hlOB_5/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbzBMUjQLniOFNd-5kKr3daCVRFLwA2gCFrvWtTDBZJgnFlZkyPQ8y6i0iI_kW5IwKtU/exec';
 const HONOR={
   'Aumento de Pecho':[1000,700,600,420],
   'Mastopexia':[1500,1050,800,560],
@@ -433,6 +440,8 @@ function toggleForm(id){
     $('f-ins').value=c.eq?.ins||'';$('f-hosp').value=c.q?.hosp||'';
     $('f-ant').value=c.q?.ant||'';$('f-fac').value=c.q?.fac||'';
     $('f-est').value=c.estado||'creada';$('f-notas').value=c.notas||'';
+    document.getElementById('f-tipo').value=c.tipo||'cirugia';
+    onTipoChange();
     $('f-micro').checked=!!c.ap?.microaire;$('f-vaser').checked=!!c.ap?.vaser;$('f-renuvion').checked=!!c.ap?.renuvion;
     $('f-imp-marca').value=c.implante?.marca||'';$('f-imp-talla').value=c.implante?.talla||'';$('f-imp-costo').value=c.implante?.costo||'';
     $('f-precio-pac').value=c.pago?.precio||'';$('f-pagado-pac').value=c.pago?.pagado||'';
@@ -468,12 +477,19 @@ function rChips(){
   el.innerHTML=PS.map((p,i)=>`<span class="chip ${i===0?'ch1':i===1?'ch2':'ch3'}">${i+1}ª ${p}<span class="x" onclick="remP(${i})">×</span></span>`).join('');
 }
 
+function onTipoChange(){
+  const es=document.getElementById('f-tipo')?.value==='retoque';
+  document.getElementById('retoque-alert').style.display=es?'block':'none';
+  recalc();
+}
+
 function recalc(){
   const prev=$('preview');
   const ay=$('f-ay').value,an=$('f-an').value,ins=$('f-ins').value;
   const imp=parseFloat($('f-imp-costo').value)||0;
   if(!PS.length){prev.style.display='none';}else{
-    const h=calcH(PS,ay,an,ins);
+    const esRetoque=document.getElementById('f-tipo')?.value==='retoque';
+  const h=esRetoque?{cir:0,ay:0,an:0,ins:0,total:0,det:[]}:calcH(PS,ay,an,ins);
     prev.style.display='block';
     prev.innerHTML=`<div class="lbl" style="margin-bottom:6px;">Honorarios calculados automáticamente</div>
       ${h.det.map(d=>`<div class="hr"><span style="color:var(--tx2);">${d.p} <span style="opacity:.5;">(${d.pct})</span></span><span>Cirujano: <b class="hm">${fmt(d.c)}</b> · Ayudante: ${fmt(d.a)}</span></div>`).join('')}
@@ -523,9 +539,11 @@ function guardar(){
     if(cfg.extra)socios.push({nom:cfg.extra.nom,m:cfg.extra.m,pag:false});
     apObj[k]={nom:cfg.nom,socios};
   });
+  if(esRetoque) Object.keys(apObj).forEach(k=>{ apObj[k].socios=apObj[k].socios.map(s=>({...s,m:0})); });
   const ex=EID?DATA.find(x=>x.id===EID):null;
   const c={
     id:EID||uid(),
+    tipo:document.getElementById('f-tipo')?.value||'cirugia',
     pac:{nom,dni:$('f-dni').value.trim()},
     fecha:$('f-fecha').value,procs:[...PS],eq:{cir,ay,an,ins},h,
     hp:ex?.hp||{cir:{pagado:false},ay:{pagado:false},an:{pagado:false},ins:{pagado:false}},
@@ -581,7 +599,7 @@ function rCirs(){
         <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} · ${(c.procs||[]).join(' + ')} · ${c.eq?.cir||'—'}</div></div>
         <div style="display:flex;align-items:center;gap:8px;">
           <span class="mono" style="font-weight:600;color:var(--gold);">${fmt(pago.precio)}</span>
-          <span class="bx ${bC(c.estado)}">${EL[c.estado]||c.estado}</span>
+          ${c.tipo==='retoque'?'<span class="bx" style="background:rgba(91,138,240,.15);color:var(--blue);">Retoque</span>':''}  <span class="bx ${bC(c.estado)}">${EL[c.estado]||c.estado}</span>
           <span style="color:var(--tx3);font-size:11px;">▶</span>
         </div>
       </div>
