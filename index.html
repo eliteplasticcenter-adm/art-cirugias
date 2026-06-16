@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART ESTHETIC ‚Äî Control Quir√∫rgico</title>
+<title>ART ESTHETIC — Control Quirúrgico</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -182,10 +182,10 @@ tbody tr:hover td{background:var(--s2);}
 <header>
   <div class="brand">
     <div class="bmark">AE</div>
-    <div><div class="bname">ART ESTHETIC CLINIC</div><div class="bsub">Control Quir√∫rgico</div></div>
+    <div><div class="bname">ART ESTHETIC CLINIC</div><div class="bsub">Control Quirúrgico</div></div>
   </div>
   <div style="display:flex;align-items:center;gap:8px;">
-    <button class="btn btnsm btnp" onclick="abrirForm(null)">+ Nueva intervenci√≥n</button>
+    <button class="btn btnsm btnp" onclick="abrirForm(null)">+ Nueva intervención</button>
   </div>
 </header>
 
@@ -196,152 +196,152 @@ tbody tr:hover td{background:var(--s2);}
   <button class="nb" onclick="showPg('intervenciones',this)">Intervenciones</button>
   <button class="nb" onclick="showPg('pacientes',this)">Pacientes</button>
   <button class="nb" onclick="showPg('honorarios',this)">Honorarios</button>
-  <button class="nb" onclick="showPg('aparatologia',this)">Aparatolog√≠a</button>
-  <button class="nb" onclick="showPg('quirofano',this)">Quir√≥fano</button>
+  <button class="nb" onclick="showPg('aparatologia',this)">Aparatología</button>
+  <button class="nb" onclick="showPg('quirofano',this)">Quirófano</button>
   <button class="nb" onclick="showPg('consolidado',this)">Consolidado</button>
 </nav>
 
-<!-- ‚ïê‚ïê‚ïê FORMULARIO NUEVA/EDITAR INTERVENCI√ìN ‚ïê‚ïê‚ïê -->
+<!-- ═══ FORMULARIO NUEVA/EDITAR INTERVENCIÓN ═══ -->
 <div class="fwrap" id="fwrap" style="margin:10px 1.25rem 0;">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-    <div style="font-size:14px;font-weight:600;" id="ftit">Nueva intervenci√≥n</div>
-    <button class="btn btnsm" onclick="cerrarForm()">‚úï Cerrar</button>
+    <div style="font-size:14px;font-weight:600;" id="ftit">Nueva intervención</div>
+    <button class="btn btnsm" onclick="cerrarForm()">✕ Cerrar</button>
   </div>
 
   <div class="row" style="margin-bottom:6px;">
     <div class="col" style="max-width:260px;">
       <div class="lbl">Tipo</div>
       <select id="f-tipo" onchange="onTipo()">
-        <option value="cirugia">Cirug√≠a</option>
-        <option value="retoque">Retoque quir√∫rgico</option>
+        <option value="cirugia">Cirugía</option>
+        <option value="retoque">Retoque quirúrgico</option>
       </select>
     </div>
     <div class="col" id="col-retipo" style="display:none;max-width:260px;">
       <div class="lbl">Tipo de retoque</div>
       <select id="f-retipo">
-        <option value="r1h">Retoque cicatriz &lt;1h ‚Äî ‚Ç¨441.00</option>
-        <option value="r2h">Retoque 1-2h ambulante ‚Äî ‚Ç¨551.25</option>
-        <option value="rmas2h">Retoque +2h ‚Äî ‚Ç¨937.12</option>
+        <option value="r1h">Retoque cicatriz &lt;1h — €441.00</option>
+        <option value="r2h">Retoque 1-2h ambulante — €551.25</option>
+        <option value="rmas2h">Retoque +2h — €937.12</option>
       </select>
     </div>
   </div>
-  <div id="ret-alert" class="alert ablue" style="display:none;">Retoque: profesionales y aparatolog√≠a a ‚Ç¨0. Solo cobra quir√≥fano.</div>
+  <div id="ret-alert" class="alert ablue" style="display:none;">Retoque: profesionales y aparatología a €0. Solo cobra quirófano.</div>
 
   <div class="div"></div>
   <div class="ctit">Paciente</div>
   <div class="row">
     <div class="col"><div class="lbl">Nombre completo *</div><input type="text" id="f-nom" placeholder="Nombre y apellidos"></div>
     <div class="col"><div class="lbl">DNI / Pasaporte</div><input type="text" id="f-dni" placeholder="12345678A"></div>
-    <div class="col"><div class="lbl">Fecha intervenci√≥n *</div><input type="date" id="f-fecha"></div>
+    <div class="col"><div class="lbl">Fecha intervención *</div><input type="date" id="f-fecha"></div>
   </div>
   <div class="row">
-    <div class="col"><div class="lbl">Tel√©fono</div><input type="tel" id="f-tel" placeholder="+34 600 000 000"></div>
+    <div class="col"><div class="lbl">Teléfono</div><input type="tel" id="f-tel" placeholder="+34 600 000 000"></div>
     <div class="col"><div class="lbl">Email</div><input type="email" id="f-email"></div>
   </div>
 
   <div class="div"></div>
-  <div class="ctit">Procedimientos ‚Äî 1¬™ al 100%, 2¬™ al 50% (VITHAS)</div>
+  <div class="ctit">Procedimientos — 1ª al 100%, 2ª al 50% (VITHAS)</div>
   <div id="chips-area" style="min-height:28px;margin-bottom:8px;"></div>
   <div id="proc-btns" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;"></div>
   <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
     <div style="flex:1;min-width:160px;"><div class="lbl">Otro procedimiento</div><input type="text" id="f-potro" placeholder="Nombre del procedimiento"></div>
-    <div style="width:130px;"><div class="lbl">Costo VITHAS (‚Ç¨)</div><input type="number" id="f-potro-p" placeholder="0.00" step="0.01" min="0"></div>
-    <button class="btn btnsm btnb" onclick="addProcOtro()">+ A√±adir</button>
+    <div style="width:130px;"><div class="lbl">Costo VITHAS (€)</div><input type="number" id="f-potro-p" placeholder="0.00" step="0.01" min="0"></div>
+    <button class="btn btnsm btnb" onclick="addProcOtro()">+ Añadir</button>
   </div>
   <div id="quir-est-prev" class="alert awk" style="display:none;margin-top:8px;"></div>
 
   <div class="div"></div>
-  <div class="ctit">Equipo m√©dico ‚Äî honorarios a tu criterio</div>
+  <div class="ctit">Equipo médico — honorarios a tu criterio</div>
   <div class="row">
     <div class="col">
       <div class="lbl">Cirujano principal *</div>
       <select id="f-cir" onchange="onCirSel()">
-        <option value="">‚Äî Seleccionar ‚Äî</option>
+        <option value="">— Seleccionar —</option>
         <option value="Dr. Deivys Higuerey">Dr. Deivys Higuerey</option>
         <option value="Dr. Oscar Blanco">Dr. Oscar Blanco</option>
         <option value="__otro">Otro...</option>
       </select>
     </div>
     <div class="col" id="cir-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-cir-n" placeholder="Nombre completo"></div>
-    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-hcir" placeholder="0.00" step="0.01" min="0"></div>
+    <div class="col"><div class="lbl">Honorario (€)</div><input type="number" id="f-hcir" placeholder="0.00" step="0.01" min="0"></div>
   </div>
   <div class="row">
     <div class="col">
-      <div class="lbl">Ayudante quir√∫rgico</div>
+      <div class="lbl">Ayudante quirúrgico</div>
       <select id="f-ay" onchange="onAySel()">
-        <option value="">‚Äî Sin ayudante ‚Äî</option>
+        <option value="">— Sin ayudante —</option>
         <option value="Dr. Deivys Higuerey">Dr. Deivys Higuerey</option>
         <option value="Dr. Oscar Blanco">Dr. Oscar Blanco</option>
         <option value="__otro">Otro...</option>
       </select>
     </div>
     <div class="col" id="ay-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-ay-n" placeholder="Nombre completo"></div>
-    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-hay" placeholder="0.00" step="0.01" min="0"></div>
+    <div class="col"><div class="lbl">Honorario (€)</div><input type="number" id="f-hay" placeholder="0.00" step="0.01" min="0"></div>
   </div>
   <div class="row">
     <div class="col">
-      <div class="lbl">Anestesi√≥logo</div>
+      <div class="lbl">Anestesiólogo</div>
       <select id="f-an" onchange="onAnSel()">
-        <option value="">‚Äî Seleccionar ‚Äî</option>
+        <option value="">— Seleccionar —</option>
         <option value="Dr. Oswaldo Artieda">Dr. Oswaldo Artieda</option>
         <option value="__otro">Otro...</option>
       </select>
     </div>
     <div class="col" id="an-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-an-n" placeholder="Nombre completo"></div>
-    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-han" placeholder="0.00" step="0.01" min="0"></div>
+    <div class="col"><div class="lbl">Honorario (€)</div><input type="number" id="f-han" placeholder="0.00" step="0.01" min="0"></div>
   </div>
   <div class="row">
     <div class="col">
       <div class="lbl">Enfermera instrumentista</div>
       <select id="f-ins" onchange="onInsSel()">
-        <option value="">‚Äî Seleccionar ‚Äî</option>
+        <option value="">— Seleccionar —</option>
         <option value="Eva Guerrero">Eva Guerrero</option>
         <option value="__otro">Otro...</option>
       </select>
     </div>
     <div class="col" id="ins-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-ins-n" placeholder="Nombre completo"></div>
-    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-hins" placeholder="0.00" step="0.01" min="0"></div>
+    <div class="col"><div class="lbl">Honorario (€)</div><input type="number" id="f-hins" placeholder="0.00" step="0.01" min="0"></div>
   </div>
 
   <div class="div"></div>
   <div class="ctit">Implantes mamarios (si aplica)</div>
   <div class="row">
     <div class="col"><div class="lbl">Marca</div>
-      <select id="f-impm"><option value="">‚Äî No aplica ‚Äî</option><option value="Polytech">Polytech</option><option value="Motiva">Motiva</option></select>
+      <select id="f-impm"><option value="">— No aplica —</option><option value="Polytech">Polytech</option><option value="Motiva">Motiva</option></select>
     </div>
     <div class="col"><div class="lbl">Talla / modelo</div><input type="text" id="f-impt" placeholder="Ej: 300cc Round"></div>
-    <div class="col"><div class="lbl">Costo (‚Ç¨)</div><input type="number" id="f-impc" placeholder="0.00" step="0.01" min="0"></div>
+    <div class="col"><div class="lbl">Costo (€)</div><input type="number" id="f-impc" placeholder="0.00" step="0.01" min="0"></div>
   </div>
 
   <div class="div"></div>
-  <div class="ctit">Aparatolog√≠a</div>
+  <div class="ctit">Aparatología</div>
   <div class="row" style="flex-wrap:wrap;">
-    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:200px;"><input type="checkbox" id="f-micro" style="width:14px;height:14px;accent-color:var(--gold);"> Microaire (3√ó‚Ç¨100)</label>
-    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:200px;"><input type="checkbox" id="f-vaser" style="width:14px;height:14px;accent-color:var(--gold);"> VASER (3√ó‚Ç¨250)</label>
-    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:260px;"><input type="checkbox" id="f-renuvion" style="width:14px;height:14px;accent-color:var(--gold);"> Renuvion (4√ó‚Ç¨250 + Corpor Clinic ‚Ç¨927.83)</label>
+    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:200px;"><input type="checkbox" id="f-micro" style="width:14px;height:14px;accent-color:var(--gold);"> Microaire (3×€100)</label>
+    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:200px;"><input type="checkbox" id="f-vaser" style="width:14px;height:14px;accent-color:var(--gold);"> VASER (3×€250)</label>
+    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:260px;"><input type="checkbox" id="f-renuvion" style="width:14px;height:14px;accent-color:var(--gold);"> Renuvion (4×€250 + Corpor Clinic €927.83)</label>
   </div>
 
   <div class="div"></div>
-  <div class="ctit">Quir√≥fano</div>
+  <div class="ctit">Quirófano</div>
   <div class="row">
     <div class="col">
       <div class="lbl">Hospital</div>
       <select id="f-hosp" onchange="onHospSel()">
-        <option value="VITHAS ‚Äì Virgen del Consuelo">VITHAS ‚Äì Virgen del Consuelo</option>
+        <option value="VITHAS – Virgen del Consuelo">VITHAS – Virgen del Consuelo</option>
         <option value="__otro">Otro hospital...</option>
       </select>
     </div>
     <div class="col" id="hosp-otro-c" style="display:none;"><div class="lbl">Nombre del hospital</div><input type="text" id="f-hosp-n" placeholder="Nombre"></div>
-    <div class="col"><div class="lbl">Anticipo pagado (‚Ç¨)</div><input type="number" id="f-ant" placeholder="0.00" step="0.01" min="0" oninput="calcDif()"></div>
-    <div class="col"><div class="lbl">Factura real (‚Ç¨)</div><input type="number" id="f-fac" placeholder="Cuando llegue" step="0.01" min="0" oninput="calcDif()"></div>
+    <div class="col"><div class="lbl">Anticipo pagado (€)</div><input type="number" id="f-ant" placeholder="0.00" step="0.01" min="0" oninput="calcDif()"></div>
+    <div class="col"><div class="lbl">Factura real (€)</div><input type="number" id="f-fac" placeholder="Cuando llegue" step="0.01" min="0" oninput="calcDif()"></div>
   </div>
   <div id="dif-prev"></div>
 
   <div class="div"></div>
   <div class="ctit">Cobro al paciente</div>
   <div class="row">
-    <div class="col" style="flex:2;"><div class="lbl">Precio total cobrado al paciente (‚Ç¨)</div><input type="number" id="f-precio" placeholder="Total acordado con el paciente" step="0.01" min="0" oninput="calcResumen()"></div>
-    <div class="col"><div class="lbl">Pagado hasta ahora (‚Ç¨)</div><input type="number" id="f-pagado" placeholder="0.00" step="0.01" min="0" oninput="calcResumen()"></div>
+    <div class="col" style="flex:2;"><div class="lbl">Precio total cobrado al paciente (€)</div><input type="number" id="f-precio" placeholder="Total acordado con el paciente" step="0.01" min="0" oninput="calcResumen()"></div>
+    <div class="col"><div class="lbl">Pagado hasta ahora (€)</div><input type="number" id="f-pagado" placeholder="0.00" step="0.01" min="0" oninput="calcResumen()"></div>
   </div>
   <div id="resumen-prev"></div>
 
@@ -350,7 +350,7 @@ tbody tr:hover td{background:var(--s2);}
     <div class="col"><div class="lbl">Estado</div>
       <select id="f-estado">
         <option value="creada">Creada</option><option value="reservada">Reservada</option>
-        <option value="anticipo_pagado">Anticipo pagado</option><option value="quirofano_confirmado">Quir√≥fano confirmado</option>
+        <option value="anticipo_pagado">Anticipo pagado</option><option value="quirofano_confirmado">Quirófano confirmado</option>
         <option value="realizada">Realizada</option><option value="factura_recibida">Factura recibida</option>
         <option value="conciliada">Conciliada</option><option value="cerrada">Cerrada</option>
       </select>
@@ -359,18 +359,18 @@ tbody tr:hover td{background:var(--s2);}
   </div>
   <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
     <button class="btn btnsm" onclick="cerrarForm()">Cancelar</button>
-    <button class="btn btnp" onclick="guardar()">üíæ Guardar intervenci√≥n</button>
+    <button class="btn btnp" onclick="guardar()">💾 Guardar intervención</button>
   </div>
 </div>
 
-<!-- P√ÅGINAS -->
+<!-- PÁGINAS -->
 <div class="pg on" id="pg-panel"></div>
 <div class="pg" id="pg-alertas"></div>
 <div class="pg" id="pg-calendario">
   <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center;flex-wrap:wrap;">
-    <button class="btn btnsm" onclick="calNav(-1)">‚Üê</button>
+    <button class="btn btnsm" onclick="calNav(-1)">←</button>
     <div id="cal-lbl" style="font-size:14px;font-weight:600;flex:1;text-align:center;min-width:160px;"></div>
-    <button class="btn btnsm" onclick="calNav(1)">‚Üí</button>
+    <button class="btn btnsm" onclick="calNav(1)">→</button>
     <button class="btn btnsm" onclick="calHoy()">Hoy</button>
     <div style="display:flex;gap:2px;background:var(--s3);border-radius:var(--r);padding:3px;">
       <button class="nb on" id="cv-mes" onclick="setCV('mes',this)" style="padding:4px 10px;border-bottom:none;font-size:11px;">Mes</button>
@@ -381,17 +381,17 @@ tbody tr:hover td{background:var(--s2);}
 </div>
 <div class="pg" id="pg-intervenciones">
   <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;">
-    <input type="text" id="cq" placeholder="üîç Buscar paciente..." oninput="rCirs()" style="max-width:220px;">
+    <input type="text" id="cq" placeholder="🔍 Buscar paciente..." oninput="rCirs()" style="max-width:220px;">
     <select id="cfest" onchange="rCirs()" style="width:150px;">
       <option value="">Todos los estados</option>
       <option value="creada">Creada</option><option value="reservada">Reservada</option>
-      <option value="anticipo_pagado">Anticipo pagado</option><option value="quirofano_confirmado">Quir√≥fano conf.</option>
+      <option value="anticipo_pagado">Anticipo pagado</option><option value="quirofano_confirmado">Quirófano conf.</option>
       <option value="realizada">Realizada</option><option value="factura_recibida">Factura recibida</option>
       <option value="conciliada">Conciliada</option><option value="cerrada">Cerrada</option>
     </select>
     <select id="cftipo" onchange="rCirs()" style="width:130px;">
       <option value="">Todos los tipos</option>
-      <option value="cirugia">Cirug√≠as</option>
+      <option value="cirugia">Cirugías</option>
       <option value="retoque">Retoques</option>
     </select>
   </div>
@@ -399,7 +399,7 @@ tbody tr:hover td{background:var(--s2);}
 </div>
 <div class="pg" id="pg-pacientes">
   <div style="display:flex;gap:8px;margin-bottom:12px;">
-    <input type="text" id="pq" placeholder="üîç Buscar paciente..." oninput="rPacs()" style="max-width:280px;">
+    <input type="text" id="pq" placeholder="🔍 Buscar paciente..." oninput="rPacs()" style="max-width:280px;">
   </div>
   <div id="pac-lista"></div>
 </div>
@@ -429,7 +429,7 @@ tbody tr:hover td{background:var(--s2);}
     </div>
     <div style="display:flex;gap:8px;justify-content:flex-end;">
       <button class="btn btnsm" onclick="mpCancelar()">Cancelar</button>
-      <button class="btn btnp btnsm" onclick="mpConfirmar()">‚úì Confirmar pago</button>
+      <button class="btn btnp btnsm" onclick="mpConfirmar()">✓ Confirmar pago</button>
     </div>
   </div>
 </div>
@@ -440,8 +440,8 @@ tbody tr:hover td{background:var(--s2);}
     <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid var(--bd);">
       <div style="font-size:14px;font-weight:600;">Presupuesto para paciente</div>
       <div style="display:flex;gap:8px;">
-        <button class="btn btnsm btng" onclick="window.print()">üñ® Imprimir</button>
-        <button class="btn btnsm" onclick="cerrarPresup()">‚úï</button>
+        <button class="btn btnsm btng" onclick="window.print()">🖨 Imprimir</button>
+        <button class="btn btnsm" onclick="cerrarPresup()">✕</button>
       </div>
     </div>
     <div id="presup-content" style="padding:1.25rem;"></div>
@@ -453,7 +453,7 @@ tbody tr:hover td{background:var(--s2);}
   <div class="mbox">
     <div class="mtit">Registrar pago del paciente</div>
     <input type="hidden" id="pp-cid">
-    <div style="margin-bottom:12px;"><div class="lbl">Importe (‚Ç¨)</div><input type="number" id="pp-monto" placeholder="0.00" step="0.01" min="0"></div>
+    <div style="margin-bottom:12px;"><div class="lbl">Importe (€)</div><input type="number" id="pp-monto" placeholder="0.00" step="0.01" min="0"></div>
     <div style="margin-bottom:12px;"><div class="lbl">Fecha</div><input type="date" id="pp-fecha"></div>
     <div style="margin-bottom:12px;"><div class="lbl">Concepto</div><input type="text" id="pp-concepto" placeholder="Reserva, anticipo, pago final..."></div>
     <div style="margin-bottom:16px;"><div class="lbl">Forma de pago</div>
@@ -467,7 +467,7 @@ tbody tr:hover td{background:var(--s2);}
     </div>
     <div style="display:flex;gap:8px;justify-content:flex-end;">
       <button class="btn btnsm" onclick="$('mo-pagopac').classList.remove('on')">Cancelar</button>
-      <button class="btn btnp btnsm" onclick="confirmarPagoPac()">‚úì Registrar</button>
+      <button class="btn btnp btnsm" onclick="confirmarPagoPac()">✓ Registrar</button>
     </div>
   </div>
 </div>
@@ -492,9 +492,9 @@ window._fbDel = (id) => deleteDoc(doc(_db,'cirugias',String(id)));
 window._fbGet = () => getDocs(collection(_db,'cirugias'));
 </script>
 <script>
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // DATOS VITHAS (+10.25% sobre tarifas 2024)
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 const VITHAS={
   'Abdominoplastia':             {p:1212.75},
   'Blefaroplastia completa':     {p:937.12},
@@ -502,20 +502,20 @@ const VITHAS={
   'Lifting facial':              {p:1323.00},
   'Lifting cervical':            {p:1323.00},
   'Lifting cervicofacial':       {p:1764.00},
-  'Liposucci√≥n 1 zona':          {p:606.38},
-  'Liposucci√≥n 2 zonas':         {p:799.31},
-  'Liposucci√≥n 3 zonas':         {p:937.12},
-  'Liposucci√≥n papada':          {p:606.38},
-  'Liposucci√≥n VASER (2-5h)':    {p:1378.12},
-  'Liposucci√≥n VASER (+5h)':     {p:1543.50},
+  'Liposucción 1 zona':          {p:606.38},
+  'Liposucción 2 zonas':         {p:799.31},
+  'Liposucción 3 zonas':         {p:937.12},
+  'Liposucción papada':          {p:606.38},
+  'Liposucción VASER (2-5h)':    {p:1378.12},
+  'Liposucción VASER (+5h)':     {p:1543.50},
   'Aumento mamario':             {p:882.00},
   'Mastopexia':                  {p:1378.12},
-  'Mastectom√≠a':                 {p:1047.38},
-  'Reducci√≥n de pecho':          {p:1267.88},
+  'Mastectomía':                 {p:1047.38},
+  'Reducción de pecho':          {p:1267.88},
   'Rinoplastia':                 {p:1102.50},
   'Braquioplastia + lipo brazos':{p:1367.10},
   'Cruroplastia':                {p:1367.10},
-  'Bichectom√≠a':                 {p:551.25},
+  'Bichectomía':                 {p:551.25},
   'Otoplastia':                  {p:496.12},
 };
 const RETOQUES={r1h:{lbl:'Retoque cicatriz <1h',p:441.00},r2h:{lbl:'Retoque 1-2h ambulante',p:551.25},rmas2h:{lbl:'Retoque +2h',p:937.12}};
@@ -525,9 +525,9 @@ const AP_CFG={
   renuvion: {nom:'Renuvion',socios:[{nom:'Dr. Juan Caicedo',m:250},{nom:'Dr. Oswaldo Artieda',m:250},{nom:'Lic. Rosario Naranjo',m:250},{nom:'Dr. Eduardo Salas',m:250},{nom:'Corpor Clinic S.L.',m:927.83}]},
 };
 const ESTADOS=['creada','reservada','anticipo_pagado','quirofano_confirmado','realizada','factura_recibida','conciliada','cerrada'];
-const ELBL={creada:'Creada',reservada:'Reservada',anticipo_pagado:'Anticipo pagado',quirofano_confirmado:'Quir√≥fano conf.',realizada:'Realizada',factura_recibida:'Factura recibida',conciliada:'Conciliada',cerrada:'Cerrada'};
+const ELBL={creada:'Creada',reservada:'Reservada',anticipo_pagado:'Anticipo pagado',quirofano_confirmado:'Quirófano conf.',realizada:'Realizada',factura_recibida:'Factura recibida',conciliada:'Conciliada',cerrada:'Cerrada'};
 const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-const DS=['Lun','Mar','Mi√©','Jue','Vie','S√°b','Dom'];
+const DS=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
 
 let DATA=[];let EID=null;let PS=[];
 let calF=new Date();let calV='mes';
@@ -536,7 +536,7 @@ let mpCB=null;
 try{DATA=JSON.parse(localStorage.getItem('ae_v7')||'[]');}catch(e){}
 
 const $=id=>document.getElementById(id);
-const fmt=n=>n!=null&&n!==''?'‚Ç¨'+parseFloat(n).toFixed(2):'‚Äî';
+const fmt=n=>n!=null&&n!==''?'€'+parseFloat(n).toFixed(2):'—';
 const fF=s=>{if(!s)return'';const p=String(s).split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:s;};
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
 const sal=()=>localStorage.setItem('ae_v7',JSON.stringify(DATA));
@@ -552,18 +552,18 @@ async function fbDelete(id){
 }
 async function syncNow(){
   const lbl=document.getElementById('sync-lbl');
-  if(!window._fbGet){if(lbl){lbl.textContent='‚óè sin Firebase';lbl.style.color='var(--red)';}return;}
-  if(lbl){lbl.textContent='‚óã sincronizando...';lbl.style.color='var(--amber)';}
+  if(!window._fbGet){if(lbl){lbl.textContent='● sin Firebase';lbl.style.color='var(--red)';}return;}
+  if(lbl){lbl.textContent='○ sincronizando...';lbl.style.color='var(--amber)';}
   try{
     const snap=await window._fbGet();
     if(!snap.empty){
       DATA=snap.docs.map(d=>d.data());
       localStorage.setItem('ae_v7',JSON.stringify(DATA));
     }
-    if(lbl){lbl.textContent='‚óè sincronizado';lbl.style.color='var(--green)';}
+    if(lbl){lbl.textContent='● sincronizado';lbl.style.color='var(--green)';}
     rAll();
   }catch(e){
-    if(lbl){lbl.textContent='‚óè error';lbl.style.color='var(--red)';}
+    if(lbl){lbl.textContent='● error';lbl.style.color='var(--red)';}
     console.error('sync:',e);
   }
 }
@@ -576,7 +576,7 @@ function getCirNom(){const v=$('f-cir').value;return v==='__otro'?$('f-cir-n').v
 function getAyNom(){const v=$('f-ay').value;return v==='__otro'?$('f-ay-n').value.trim():v;}
 function getAnNom(){const v=$('f-an').value;return v==='__otro'?$('f-an-n').value.trim():v;}
 function getInsNom(){const v=$('f-ins').value;return v==='__otro'?$('f-ins-n').value.trim():v;}
-function getHosp(){const v=$('f-hosp').value;return v==='__otro'?$('f-hosp-n').value.trim():'VITHAS ‚Äì Virgen del Consuelo';}
+function getHosp(){const v=$('f-hosp').value;return v==='__otro'?$('f-hosp-n').value.trim():'VITHAS – Virgen del Consuelo';}
 
 function calcCostoTotal(c){
   const h=c.h||{};const q=c.q||{};
@@ -588,9 +588,9 @@ function totalPagadoPac(c){
   return(c.pagos||[]).reduce((s,p)=>s+p.monto,0);
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // MODAL PAGO
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function abrirMP(titulo,cb){
   mpCB=cb;
   $('mo-pago-tit').textContent=titulo||'Registrar pago';
@@ -607,9 +607,9 @@ function mpConfirmar(){
   mpCB=null;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // NAV
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function showPg(pg,btn){
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
@@ -634,20 +634,20 @@ function rAll(){
   else if(t==='Intervenciones')rCirs();
   else if(t==='Pacientes')rPacs();
   else if(t==='Honorarios')rHon();
-  else if(t==='Aparatolog√≠a')rAp();
-  else if(t==='Quir√≥fano')rQuir();
+  else if(t==='Aparatología')rAp();
+  else if(t==='Quirófano')rQuir();
   else if(t==='Consolidado')rCon();
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // FORMULARIO
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function abrirForm(id){
   EID=id;PS=[];
   limpF();buildProcBtns();
   if(id){
     const c=DATA.find(x=>x.id===id);if(!c)return;
-    $('ftit').textContent='Editar intervenci√≥n';
+    $('ftit').textContent='Editar intervención';
     $('f-tipo').value=c.tipo||'cirugia';onTipo();
     if(c.tipo==='retoque'&&c.retipo)$('f-retipo').value=c.retipo;
     $('f-nom').value=c.pac?.nom||'';$('f-dni').value=c.pac?.dni||'';
@@ -660,15 +660,15 @@ function abrirForm(id){
     $('f-han').value=c.h?.an||'';$('f-hins').value=c.h?.ins||'';
     $('f-impm').value=c.implante?.marca||'';$('f-impt').value=c.implante?.talla||'';$('f-impc').value=c.implante?.costo||'';
     $('f-micro').checked=!!c.ap?.microaire;$('f-vaser').checked=!!c.ap?.vaser;$('f-renuvion').checked=!!c.ap?.renuvion;
-    const hospV=c.q?.hosp||'VITHAS ‚Äì Virgen del Consuelo';
-    if(hospV!=='VITHAS ‚Äì Virgen del Consuelo'){$('f-hosp').value='__otro';$('hosp-otro-c').style.display='';$('f-hosp-n').value=hospV;}
+    const hospV=c.q?.hosp||'VITHAS – Virgen del Consuelo';
+    if(hospV!=='VITHAS – Virgen del Consuelo'){$('f-hosp').value='__otro';$('hosp-otro-c').style.display='';$('f-hosp-n').value=hospV;}
     $('f-ant').value=c.q?.ant||'';$('f-fac').value=c.q?.fac||'';
     $('f-precio').value=c.pago?.precio||'';
     $('f-pagado').value=totalPagadoPac(c)||'';
     $('f-estado').value=c.estado||'creada';$('f-notas').value=c.notas||'';
     PS=[...(c.procs||[])];rChips();calcResumen();calcDif();actualizarQuirEst();
   }else{
-    $('ftit').textContent='Nueva intervenci√≥n';$('f-fecha').value=hoy();
+    $('ftit').textContent='Nueva intervención';$('f-fecha').value=hoy();
   }
   $('fwrap').classList.add('on');
   $('fwrap').scrollIntoView({behavior:'smooth',block:'start'});
@@ -702,14 +702,14 @@ function buildProcBtns(){
 
 function addP(nom,precio){
   if(PS.find(p=>p.nom===nom))return;
-  if(PS.length>=3){alert('M√°ximo 3 procedimientos.');return;}
+  if(PS.length>=3){alert('Máximo 3 procedimientos.');return;}
   PS.push({nom,precio});rChips();actualizarQuirEst();calcResumen();
 }
 function addProcOtro(){
   const nom=$('f-potro').value.trim();const precio=parseFloat($('f-potro-p').value)||0;
   if(!nom){alert('Escribe el nombre del procedimiento.');return;}
   if(PS.find(p=>p.nom===nom))return;
-  if(PS.length>=3){alert('M√°ximo 3 procedimientos.');return;}
+  if(PS.length>=3){alert('Máximo 3 procedimientos.');return;}
   PS.push({nom,precio,custom:true});rChips();actualizarQuirEst();calcResumen();
   $('f-potro').value='';$('f-potro-p').value='';
 }
@@ -718,7 +718,7 @@ function remP(i){PS.splice(i,1);rChips();actualizarQuirEst();calcResumen();}
 function rChips(){
   const el=$('chips-area');
   if(!PS.length){el.innerHTML='<span style="font-size:11px;color:var(--tx3);">Sin procedimientos</span>';return;}
-  el.innerHTML=PS.map((p,i)=>`<span class="chip ${i===0?'ch1':i===1?'ch2':'ch3'}">${i+1}¬™ ${p.nom}<span style="opacity:.5;margin-left:4px;">${fmt(p.precio)}</span><span class="rm" onclick="remP(${i})">√ó</span></span>`).join('');
+  el.innerHTML=PS.map((p,i)=>`<span class="chip ${i===0?'ch1':i===1?'ch2':'ch3'}">${i+1}ª ${p.nom}<span style="opacity:.5;margin-left:4px;">${fmt(p.precio)}</span><span class="rm" onclick="remP(${i})">×</span></span>`).join('');
 }
 
 function actualizarQuirEst(){
@@ -726,13 +726,13 @@ function actualizarQuirEst(){
   const esR=$('f-tipo').value==='retoque';
   if(esR){
     const rt=RETOQUES[$('f-retipo').value||'r2h'];
-    el.style.display='block';el.innerHTML=`üí° ${rt.lbl} ‚Äî estimado VITHAS: <b>${fmt(rt.p)}</b>`;
+    el.style.display='block';el.innerHTML=`💡 ${rt.lbl} — estimado VITHAS: <b>${fmt(rt.p)}</b>`;
     return;
   }
   if(!PS.length){el.style.display='none';return;}
   const tot=PS.reduce((s,p,i)=>s+(i===0?p.precio:p.precio*0.5),0);
   el.style.display='block';
-  el.innerHTML='üí° Estimado VITHAS: '+PS.map((p,i)=>`${p.nom} ${i===0?'(100%)':'(50%)'} = ${fmt(i===0?p.precio:p.precio*0.5)}`).join(' + ')+` = <b>${fmt(tot)}</b>`;
+  el.innerHTML='💡 Estimado VITHAS: '+PS.map((p,i)=>`${p.nom} ${i===0?'(100%)':'(50%)'} = ${fmt(i===0?p.precio:p.precio*0.5)}`).join(' + ')+` = <b>${fmt(tot)}</b>`;
 }
 
 function onTipo(){
@@ -751,7 +751,7 @@ function calcDif(){
   const a=parseFloat($('f-ant').value)||0,f=parseFloat($('f-fac').value)||0;
   const el=$('dif-prev');if(!f){el.innerHTML='';return;}
   const d=a-f;
-  el.innerHTML=`<div class="alert ${Math.abs(d)<0.01?'aok':d>0?'aok':'ard'}">${Math.abs(d)<0.01?'‚úì Cuadrado':d>0?`Saldo a favor de ART: ${fmt(d)}`:`Pendiente a hospital: ${fmt(Math.abs(d))}`}</div>`;
+  el.innerHTML=`<div class="alert ${Math.abs(d)<0.01?'aok':d>0?'aok':'ard'}">${Math.abs(d)<0.01?'✓ Cuadrado':d>0?`Saldo a favor de ART: ${fmt(d)}`:`Pendiente a hospital: ${fmt(Math.abs(d))}`}</div>`;
 }
 
 function calcResumen(){
@@ -772,7 +772,7 @@ function guardar(){
   const cirNom=getCirNom();
   if(!cirNom){alert('Selecciona o escribe el cirujano principal.');return;}
   const esR=$('f-tipo').value==='retoque';
-  if(!esR&&!PS.length){alert('A√±ade al menos un procedimiento.');return;}
+  if(!esR&&!PS.length){alert('Añade al menos un procedimiento.');return;}
 
   const ayN=getAyNom();const anN=getAnNom();const insN=getInsNom();
   const hCir=esR?0:parseFloat($('f-hcir').value)||0;
@@ -822,9 +822,9 @@ function guardar(){
   sal();fbSave(c);cerrarForm();rAll();
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // PANEL
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function rPanel(){
   const mesActual=hoy().slice(0,7);
   const delMes=DATA.filter(c=>c.fecha?.startsWith(mesActual));
@@ -848,60 +848,60 @@ function rPanel(){
       <div class="st stb"><div class="sl">Alertas activas</div><div class="sv ${alertas.length>0?'amber':''}">${alertas.length}</div></div>
     </div>
     <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rl);padding:1rem;margin-bottom:14px;">
-      <div class="ctit" style="margin-bottom:12px;">Dashboard mes en curso ‚Äî ${MESES[new Date().getMonth()]}</div>
+      <div class="ctit" style="margin-bottom:12px;">Dashboard mes en curso — ${MESES[new Date().getMonth()]}</div>
       <div class="sg s4" style="margin-bottom:0;">
-        <div class="st stg"><div class="sl">Ingresos</div><div class="sv gold">${fmt(ingresosMes)}</div><div class="ssb">${delMes.length} cirug√≠as</div></div>
+        <div class="st stg"><div class="sl">Ingresos</div><div class="sv gold">${fmt(ingresosMes)}</div><div class="ssb">${delMes.length} cirugías</div></div>
         <div class="st ster"><div class="sl">Honorarios</div><div class="sv red">${fmt(tHMes)}</div></div>
-        <div class="st sta"><div class="sl">Quir√≥fano</div><div class="sv amber">${fmt(tQuirMes)}</div></div>
+        <div class="st sta"><div class="sl">Quirófano</div><div class="sv amber">${fmt(tQuirMes)}</div></div>
         <div class="st ${margenMes>=0?'stok':'ster'}"><div class="sl">Margen neto</div><div class="sv ${margenMes>=0?'green':'red'}">${fmt(margenMes)}</div></div>
       </div>
     </div>
-    ${alertas.length?`<div class="ctit">‚ö† Alertas</div>${alertas.slice(0,3).map(a=>`<div class="alert-item ai-${a.tipo}"><div class="ai-icon">${a.icon}</div><div class="ai-text">${a.msg}</div></div>`).join('')}<br>`:''}
-    <div class="ctit">Pr√≥ximas intervenciones</div>
+    ${alertas.length?`<div class="ctit">⚠ Alertas</div>${alertas.slice(0,3).map(a=>`<div class="alert-item ai-${a.tipo}"><div class="ai-icon">${a.icon}</div><div class="ai-text">${a.msg}</div></div>`).join('')}<br>`:''}
+    <div class="ctit">Próximas intervenciones</div>
     ${prox.length?prox.map(c=>`<div class="cc">
       <div class="cch" onclick="document.querySelectorAll('.nb')[3].click();setTimeout(()=>togC('${c.id}'),60)">
         <div class="cav">${(c.pac?.nom||'?').split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase()}</div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:600;">${c.pac?.nom}</div>
-          <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} ¬∑ ${c.procs?.map(p=>p.nom).join(' + ')||'‚Äî'} ¬∑ ${c.eq?.cir||'‚Äî'}</div>
+          <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} · ${c.procs?.map(p=>p.nom).join(' + ')||'—'} · ${c.eq?.cir||'—'}</div>
         </div>
         <div style="display:flex;gap:6px;align-items:center;">
           ${c.tipo==='retoque'?'<span class="bx bblue">Retoque</span>':''}
           <span class="bx ${bEst(c.estado)}">${ELBL[c.estado]}</span>
         </div>
-      </div></div>`).join(''):`<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üìÖ</div><div>Sin intervenciones pr√≥ximas</div><br><button class="btn btnp btnsm" onclick="abrirForm(null)">+ Registrar primera intervenci√≥n</button></div>`}`;
+      </div></div>`).join(''):`<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">📅</div><div>Sin intervenciones próximas</div><br><button class="btn btnp btnsm" onclick="abrirForm(null)">+ Registrar primera intervención</button></div>`}`;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // ALERTAS
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function getAlertas(){
   const alertas=[];
   const h=hoy();
   DATA.forEach(c=>{
     if(c.estado==='cerrada'||c.estado==='conciliada')return;
     const diasFecha=c.fecha?diffDias(c.fecha,h):null;
-    // Quir√≥fano sin confirmar con cirug√≠a pr√≥xima
+    // Quirófano sin confirmar con cirugía próxima
     if(diasFecha!==null&&diasFecha<=7&&diasFecha>=0&&c.estado!=='quirofano_confirmado'&&c.estado!=='realizada'&&c.estado!=='factura_recibida'){
-      alertas.push({tipo:'red',icon:'üî¥',msg:`<b>${c.pac?.nom}</b> ‚Äî Cirug√≠a en ${diasFecha===0?'hoy':diasFecha+' d√≠as'} sin quir√≥fano confirmado`});
+      alertas.push({tipo:'red',icon:'🔴',msg:`<b>${c.pac?.nom}</b> — Cirugía en ${diasFecha===0?'hoy':diasFecha+' días'} sin quirófano confirmado`});
     }
-    // Honorarios pendientes >30 d√≠as post-cirug√≠a
+    // Honorarios pendientes >30 días post-cirugía
     if(c.fecha&&c.estado==='realizada'||c.estado==='factura_recibida'){
       const d=diffDias(h,c.fecha);
       if(d>30){
         const honPend=['cir','ay','an','ins'].filter(r=>c.h?.[r]>0&&!c.hp?.[r]?.pagado);
-        if(honPend.length>0)alertas.push({tipo:'warn',icon:'‚ö†Ô∏è',msg:`<b>${c.pac?.nom}</b> ‚Äî Honorarios pendientes hace ${d} d√≠as (${honPend.map(r=>({cir:'Cirujano',ay:'Ayudante',an:'Anestesia',ins:'Instrumentista'}[r])).join(', ')})`});
+        if(honPend.length>0)alertas.push({tipo:'warn',icon:'⚠️',msg:`<b>${c.pac?.nom}</b> — Honorarios pendientes hace ${d} días (${honPend.map(r=>({cir:'Cirujano',ay:'Ayudante',an:'Anestesia',ins:'Instrumentista'}[r])).join(', ')})`});
       }
     }
-    // Factura quir√≥fano sin recibir post-cirug√≠a
+    // Factura quirófano sin recibir post-cirugía
     if((c.estado==='realizada'||c.estado==='factura_recibida')&&c.q?.ant>0&&!c.q?.fac){
       const d=c.fecha?diffDias(h,c.fecha):0;
-      if(d>14)alertas.push({tipo:'warn',icon:'üè•',msg:`<b>${c.pac?.nom}</b> ‚Äî Factura de ${c.q?.hosp||'quir√≥fano'} pendiente de recibir (${d} d√≠as post-cirug√≠a)`});
+      if(d>14)alertas.push({tipo:'warn',icon:'🏥',msg:`<b>${c.pac?.nom}</b> — Factura de ${c.q?.hosp||'quirófano'} pendiente de recibir (${d} días post-cirugía)`});
     }
     // Saldo pendiente de paciente >0
     const sp=Math.max((c.pago?.precio||0)-totalPagadoPac(c),0);
     if(sp>0&&(c.estado==='realizada'||c.estado==='cerrada')){
-      alertas.push({tipo:'warn',icon:'üí∂',msg:`<b>${c.pac?.nom}</b> ‚Äî Saldo pendiente del paciente: ${fmt(sp)}`});
+      alertas.push({tipo:'warn',icon:'💶',msg:`<b>${c.pac?.nom}</b> — Saldo pendiente del paciente: ${fmt(sp)}`});
     }
   });
   return alertas;
@@ -912,12 +912,12 @@ function rAlertas(){
   $('pg-alertas').innerHTML=alertas.length?`
     <div style="margin-bottom:1rem;font-size:13px;color:var(--tx3);">${alertas.length} alerta${alertas.length!==1?'s':''} activa${alertas.length!==1?'s':''}</div>
     ${alertas.map(a=>`<div class="alert-item ai-${a.tipo}"><div class="ai-icon">${a.icon}</div><div class="ai-text">${a.msg}</div></div>`).join('')}`
-  :`<div class="empty"><div style="font-size:36px;opacity:.4;margin-bottom:8px;">‚úÖ</div><div>Sin alertas activas</div></div>`;
+  :`<div class="empty"><div style="font-size:36px;opacity:.4;margin-bottom:8px;">✅</div><div>Sin alertas activas</div></div>`;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // INTERVENCIONES
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function rCirs(){
   const q=(($('cq')?.value)||'').toLowerCase();
   const fe=$('cfest')?.value||'';
@@ -927,7 +927,7 @@ function rCirs(){
   if(fe)lista=lista.filter(c=>c.estado===fe);
   if(ft)lista=lista.filter(c=>(c.tipo||'cirugia')===ft);
   const el=$('cir-lista');
-  if(!lista.length){el.innerHTML='<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üè•</div><div>Sin intervenciones</div></div>';return;}
+  if(!lista.length){el.innerHTML='<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">🏥</div><div>Sin intervenciones</div></div>';return;}
   el.innerHTML=lista.map(c=>buildCirCard(c)).join('');
 }
 
@@ -939,19 +939,19 @@ function buildCirCard(c){
   const dif=(q2.ant||0)-(q2.fac||0);
   const ini=(c.pac?.nom||'?').split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase();
   const esR=c.tipo==='retoque';
-  const procNoms=c.procs?.map(p=>p.nom).join(' + ')||'‚Äî';
+  const procNoms=c.procs?.map(p=>p.nom).join(' + ')||'—';
   return`<div class="cc" id="ci-${c.id}">
     <div class="cch" onclick="togC('${c.id}')">
       <div class="cav">${ini}</div>
       <div style="flex:1;min-width:0;">
         <div style="font-size:13px;font-weight:600;">${c.pac?.nom}</div>
-        <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} ¬∑ ${procNoms} ¬∑ ${c.eq?.cir||'‚Äî'}</div>
+        <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} · ${procNoms} · ${c.eq?.cir||'—'}</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
         <span class="mono" style="font-weight:600;color:var(--gold);">${fmt(pago.precio)}</span>
         ${esR?'<span class="bx bblue">Retoque</span>':''}
         <span class="bx ${bEst(c.estado)}">${ELBL[c.estado]}</span>
-        <span style="color:var(--tx3);font-size:11px;">‚ñ∂</span>
+        <span style="color:var(--tx3);font-size:11px;">▶</span>
       </div>
     </div>
     <div class="ccb">
@@ -969,28 +969,28 @@ function buildCirCard(c){
         <!-- HISTORIAL PAGOS -->
         ${(c.pagos||[]).length?`<div style="margin-bottom:8px;">${c.pagos.map((p,pi)=>`
           <div class="pago-item">
-            <div><span class="green" style="font-weight:600;">${fmt(p.monto)}</span> <span style="color:var(--tx3);font-size:11px;">${fF(p.fecha)} ¬∑ ${p.concepto||''} ¬∑ ${p.forma||''}</span></div>
-            <button class="btn btnxs btnr" onclick="elimPagoPac('${c.id}',${pi})">‚úï</button>
+            <div><span class="green" style="font-weight:600;">${fmt(p.monto)}</span> <span style="color:var(--tx3);font-size:11px;">${fF(p.fecha)} · ${p.concepto||''} · ${p.forma||''}</span></div>
+            <button class="btn btnxs btnr" onclick="elimPagoPac('${c.id}',${pi})">✕</button>
           </div>`).join('')}</div>`:''}
         <button class="btn btnsm btng" onclick="abrirPagoPac('${c.id}')">+ Registrar pago del paciente</button>
         <div class="sbox" style="margin-top:8px;font-size:12px;">
-          <div class="srow"><span style="color:var(--tx2);">Costo total cl√≠nica</span><span class="hm">${fmt(calcCostoTotal(c))}</span></div>
+          <div class="srow"><span style="color:var(--tx2);">Costo total clínica</span><span class="hm">${fmt(calcCostoTotal(c))}</span></div>
           <div class="srow"><span style="color:var(--tx2);">Precio cobrado</span><span>${fmt(pago.precio)}</span></div>
-          <div class="srow"><span>Margen cl√≠nica</span><span class="${margen>=0?'green':'red'}">${fmt(margen)}</span></div>
+          <div class="srow"><span>Margen clínica</span><span class="${margen>=0?'green':'red'}">${fmt(margen)}</span></div>
         </div>
-        <button class="btn btnsm btnb" onclick="abrirPresupuesto('${c.id}')">üñ® Presupuesto imprimible</button>
+        <button class="btn btnsm btnb" onclick="abrirPresupuesto('${c.id}')">🖨 Presupuesto imprimible</button>
       </div>
       <div class="sec">
-        <div class="sect">Honorarios${esR?' ‚Äî Retoque (‚Ç¨0)':''}</div>
-        ${[['cir','Cirujano principal',c.eq?.cir,h.cir],['ay','Ayudante',c.eq?.ay,h.ay],['an','Anestesi√≥logo',c.eq?.an,h.an],['ins','Instrumentista',c.eq?.ins,h.ins]].filter(r=>r[2]).map(([k,rol,nom,m])=>{
+        <div class="sect">Honorarios${esR?' — Retoque (€0)':''}</div>
+        ${[['cir','Cirujano principal',c.eq?.cir,h.cir],['ay','Ayudante',c.eq?.ay,h.ay],['an','Anestesiólogo',c.eq?.an,h.an],['ins','Instrumentista',c.eq?.ins,h.ins]].filter(r=>r[2]).map(([k,rol,nom,m])=>{
           const p=hp[k]||{};
           return`<div class="hrow">
             <div><span style="font-weight:500;">${nom}</span> <span style="font-size:10px;color:var(--tx3);">${rol}</span></div>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
               <span class="hm">${fmt(m||0)}</span>
               ${(m||0)>0?(p.pagado
-                ?`<span class="bx bok">‚úì ${fF(p.fecha)}${p.forma?' ¬∑ '+p.forma:''}</span><button class="btn btnxs" onclick="sPP('${c.id}','${k}',false)">Revertir</button>`
-                :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" onclick="sPP('${c.id}','${k}',true)">‚úì Pagado</button>`)
+                ?`<span class="bx bok">✓ ${fF(p.fecha)}${p.forma?' · '+p.forma:''}</span><button class="btn btnxs" onclick="sPP('${c.id}','${k}',false)">Revertir</button>`
+                :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" onclick="sPP('${c.id}','${k}',true)">✓ Pagado</button>`)
               :'<span class="bx bgray">N/A</span>'}
             </div>
           </div>`;}).join('')}
@@ -998,13 +998,13 @@ function buildCirCard(c){
         <div style="text-align:right;padding-top:6px;border-top:1px solid var(--bd2);margin-top:4px;font-weight:600;color:var(--gold);font-family:'DM Mono',monospace;">Total honorarios: ${fmt(h.total||0)}</div>
       </div>
       <div class="sec">
-        <div class="sect">Quir√≥fano ‚Äî Conciliaci√≥n</div>
-        ${c.precioQuirSug?`<div class="alert awk" style="margin-bottom:8px;">üí° Estimado VITHAS: ${fmt(c.precioQuirSug)}</div>`:''}
+        <div class="sect">Quirófano — Conciliación</div>
+        ${c.precioQuirSug?`<div class="alert awk" style="margin-bottom:8px;">💡 Estimado VITHAS: ${fmt(c.precioQuirSug)}</div>`:''}
         <div class="cgrid">
-          <div><div class="clbl">Hospital</div><div style="font-size:12px;font-weight:500;">${q2.hosp||'‚Äî'}</div></div>
+          <div><div class="clbl">Hospital</div><div style="font-size:12px;font-weight:500;">${q2.hosp||'—'}</div></div>
           <div><div class="clbl">Anticipo</div><div class="cval amber">${fmt(q2.ant)}</div>
             ${q2.antPag
-              ?`<div style="font-size:10px;color:var(--green);">‚úì ${fF(q2.fechaAnticipo)||'Enviado'}${q2.formaAnticipo?' ¬∑ '+q2.formaAnticipo:''}</div>`
+              ?`<div style="font-size:10px;color:var(--green);">✓ ${fF(q2.fechaAnticipo)||'Enviado'}${q2.formaAnticipo?' · '+q2.formaAnticipo:''}</div>`
               :`<button class="btn btnxs btna" style="margin-top:3px;" onclick="sAntPag('${c.id}')">Marcar enviado</button>`}
           </div>
           <div><div class="clbl">Factura real</div>
@@ -1012,27 +1012,27 @@ function buildCirCard(c){
             ${q2.fechaFact?`<div style="font-size:10px;color:var(--tx3);">${fF(q2.fechaFact)}</div>`:''}
           </div>
         </div>
-        ${q2.fac?`<div class="alert ${Math.abs(dif)<0.01?'aok':dif>0?'aok':'ard'}">${Math.abs(dif)<0.01?'‚úì Conciliado':dif>0?`Saldo a favor de ART: ${fmt(dif)}`:`Pendiente a hospital: ${fmt(Math.abs(dif))}`}</div>`:''}
+        ${q2.fac?`<div class="alert ${Math.abs(dif)<0.01?'aok':dif>0?'aok':'ard'}">${Math.abs(dif)<0.01?'✓ Conciliado':dif>0?`Saldo a favor de ART: ${fmt(dif)}`:`Pendiente a hospital: ${fmt(Math.abs(dif))}`}</div>`:''}
       </div>
       ${c.ap&&Object.keys(c.ap).length?`<div class="sec">
-        <div class="sect">Aparatolog√≠a${esR?' ‚Äî Retoque (‚Ç¨0)':''}</div>
+        <div class="sect">Aparatología${esR?' — Retoque (€0)':''}</div>
         ${Object.entries(c.ap).map(([k,a])=>`<div style="margin-bottom:8px;">
           <div style="font-size:11px;font-weight:600;color:var(--tx2);margin-bottom:5px;">${a.nom}</div>
           ${a.socios.map((s,si)=>`<div class="hrow">
             <span>${s.nom}</span>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-              <span class="hm">‚Ç¨${s.m.toFixed(2)}</span>
+              <span class="hm">€${s.m.toFixed(2)}</span>
               ${s.m>0?(s.pag
-                ?`<span class="bx bok">‚úì ${fF(s.fechaPago)||''}${s.formaPago?' ¬∑ '+s.formaPago:''}</span><button class="btn btnxs" onclick="sAp('${c.id}','${k}',${si},false)">Revertir</button>`
-                :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" onclick="sAp('${c.id}','${k}',${si},true)">‚úì Pagado</button>`)
+                ?`<span class="bx bok">✓ ${fF(s.fechaPago)||''}${s.formaPago?' · '+s.formaPago:''}</span><button class="btn btnxs" onclick="sAp('${c.id}','${k}',${si},false)">Revertir</button>`
+                :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" onclick="sAp('${c.id}','${k}',${si},true)">✓ Pagado</button>`)
               :'<span class="bx bgray">N/A</span>'}
             </div>
           </div>`).join('')}
         </div>`).join('')}
       </div>`:''}
       <div class="sec" style="display:flex;gap:6px;flex-wrap:wrap;">
-        <button class="btn btnsm btnb" onclick="abrirForm('${c.id}')">‚úèÔ∏è Editar</button>
-        <button class="btn btnsm btnr" onclick="elimC('${c.id}')">üóë Eliminar</button>
+        <button class="btn btnsm btnb" onclick="abrirForm('${c.id}')">✏️ Editar</button>
+        <button class="btn btnsm btnr" onclick="elimC('${c.id}')">🗑 Eliminar</button>
       </div>
     </div>
   </div>`;
@@ -1040,9 +1040,9 @@ function buildCirCard(c){
 
 function togC(id){document.getElementById('ci-'+id)?.classList.toggle('op');}
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // PACIENTES (ficha con historial)
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function rPacs(){
   const q=(($('pq')?.value)||'').toLowerCase();
   // Agrupar por nombre del paciente
@@ -1057,7 +1057,7 @@ function rPacs(){
   });
   const lista=Object.values(pacs).sort((a,b)=>a.nom.localeCompare(b.nom));
   const el=$('pac-lista');
-  if(!lista.length){el.innerHTML='<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üë§</div><div>Sin pacientes registrados</div></div>';return;}
+  if(!lista.length){el.innerHTML='<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">👤</div><div>Sin pacientes registrados</div></div>';return;}
   el.innerHTML=lista.map(p=>{
     const ini=p.nom.split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase();
     const totalCobrado=p.cirugias.reduce((s,c)=>s+(c.pago?.precio||0),0);
@@ -1068,7 +1068,7 @@ function rPacs(){
         <div class="cav">${ini}</div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:600;">${p.nom}</div>
-          <div style="font-size:11px;color:var(--tx3);">${p.tel||''}${p.dni?' ¬∑ '+p.dni:''} ¬∑ ${p.cirugias.length} intervenci√≥n${p.cirugias.length!==1?'es':''}</div>
+          <div style="font-size:11px;color:var(--tx3);">${p.tel||''}${p.dni?' · '+p.dni:''} · ${p.cirugias.length} intervención${p.cirugias.length!==1?'es':''}</div>
         </div>
         <div style="text-align:right;">
           <div class="mono gold" style="font-weight:600;">${fmt(totalCobrado)}</div>
@@ -1078,7 +1078,7 @@ function rPacs(){
       <div class="ccb">
         <div class="sec">
           <div style="display:flex;gap:8px;margin-bottom:10px;font-size:12px;flex-wrap:wrap;">
-            ${p.tel?`<span>üì± ${p.tel}</span>`:''}${p.email?`<span>‚úâ ${p.email}</span>`:''}${p.dni?`<span>ü™™ ${p.dni}</span>`:''}
+            ${p.tel?`<span>📱 ${p.tel}</span>`:''}${p.email?`<span>✉ ${p.email}</span>`:''}${p.dni?`<span>🪪 ${p.dni}</span>`:''}
           </div>
           <div class="ctit" style="margin-bottom:8px;">Historial de intervenciones</div>
           ${p.cirugias.sort((a,b)=>b.fecha?.localeCompare(a.fecha||'')).map(c=>`
@@ -1091,8 +1091,8 @@ function rPacs(){
                 </div>
                 <span class="mono gold" style="font-weight:600;">${fmt(c.pago?.precio)}</span>
               </div>
-              <div style="font-size:12px;color:var(--tx3);">${c.procs?.map(p=>p.nom).join(' + ')||'‚Äî'} ¬∑ ${c.eq?.cir||'‚Äî'}</div>
-              ${c.h?.total?`<div style="font-size:11px;color:var(--tx2);margin-top:3px;">Honorarios: ${fmt(c.h.total)} ¬∑ Cobrado paciente: ${fmt(totalPagadoPac(c))}</div>`:''}
+              <div style="font-size:12px;color:var(--tx3);">${c.procs?.map(p=>p.nom).join(' + ')||'—'} · ${c.eq?.cir||'—'}</div>
+              ${c.h?.total?`<div style="font-size:11px;color:var(--tx2);margin-top:3px;">Honorarios: ${fmt(c.h.total)} · Cobrado paciente: ${fmt(totalPagadoPac(c))}</div>`:''}
             </div>`).join('')}
           <div class="sbox" style="margin-top:8px;">
             <div class="srow"><span style="color:var(--tx2);">Total facturado</span><span class="hm">${fmt(totalCobrado)}</span></div>
@@ -1105,11 +1105,11 @@ function rPacs(){
   }).join('');
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // HONORARIOS
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function rHon(){
-  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesi√≥logo',ins:'Instrumentista'};
+  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesiólogo',ins:'Instrumentista'};
   DATA.forEach(c=>{['cir','ay','an','ins'].forEach(r=>{
     const n=c.eq?.[r];if(!n)return;const m=c.h?.[r]||0;if(!m)return;
     if(!pp[n])pp[n]={n,pend:0,cob:0,rows:[]};
@@ -1134,19 +1134,19 @@ function rHon(){
       <tbody>${pr.rows.map(x=>`<tr>
         <td style="font-weight:500;">${x.pac}</td>
         <td style="color:var(--tx3);">${fF(x.fecha)}</td>
-        <td style="font-size:11px;color:var(--tx3);">${x.procs?.map(p=>p.nom).join(' + ')||'‚Äî'}</td>
+        <td style="font-size:11px;color:var(--tx3);">${x.procs?.map(p=>p.nom).join(' + ')||'—'}</td>
         <td style="font-size:11px;">${x.rol}</td>
         <td class="mono gold">${fmt(x.m)}</td>
         <td>${x.pag
-          ?`<span class="bx bok">‚úì ${fF(x.fp)}${x.forma?' ¬∑ '+x.forma:''}</span><button class="btn btnxs" style="margin-left:4px;" onclick="sPP('${x.cid}','${x.r}',false)">Revertir</button>`
-          :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" style="margin-left:6px;" onclick="sPP('${x.cid}','${x.r}',true)">‚úì Pagado</button>`}
+          ?`<span class="bx bok">✓ ${fF(x.fp)}${x.forma?' · '+x.forma:''}</span><button class="btn btnxs" style="margin-left:4px;" onclick="sPP('${x.cid}','${x.r}',false)">Revertir</button>`
+          :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" style="margin-left:6px;" onclick="sPP('${x.cid}','${x.r}',true)">✓ Pagado</button>`}
         </td>
-      </tr>`).join('')}</tbody></table></div>`).join('')||'<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üí∂</div><div>Sin honorarios registrados</div></div>'}`;
+      </tr>`).join('')}</tbody></table></div>`).join('')||'<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">💶</div><div>Sin honorarios registrados</div></div>'}`;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
-// APARATOLOG√çA
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
+// APARATOLOGÍA
+// ═══════════════════════════════════════
 function rAp(){
   const pp={};
   DATA.forEach(c=>{Object.entries(c.ap||{}).forEach(([k,a])=>{
@@ -1162,7 +1162,7 @@ function rAp(){
   const pA=Object.values(pp).reduce((s,a)=>s+a.pend,0);
   $('pg-aparatologia').innerHTML=`
     <div class="sg s2">
-      <div class="st stg"><div class="sl">Total aparatolog√≠a</div><div class="sv gold">${fmt(tA)}</div></div>
+      <div class="st stg"><div class="sl">Total aparatología</div><div class="sv gold">${fmt(tA)}</div></div>
       <div class="st ster"><div class="sl">Pendiente de pago</div><div class="sv ${pA>0?'red':''}">${fmt(pA)}</div></div>
     </div>
     ${Object.values(pp).map(ap=>`<div class="card">
@@ -1181,17 +1181,17 @@ function rAp(){
           <td style="color:var(--tx3);">${fF(r.fecha)}</td>
           <td class="mono gold">${fmt(r.m)}</td>
           <td>${r.m>0?(r.pag
-            ?`<span class="bx bok">‚úì ${fF(r.fp)}${r.forma?' ¬∑ '+r.forma:''}</span><button class="btn btnxs" onclick="sApSoc('${r.cid}','${r.k}',${r.si},false)">Revertir</button>`
-            :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" style="margin-left:6px;" onclick="sApSoc('${r.cid}','${r.k}',${r.si},true)">‚úì Pagado</button>`)
+            ?`<span class="bx bok">✓ ${fF(r.fp)}${r.forma?' · '+r.forma:''}</span><button class="btn btnxs" onclick="sApSoc('${r.cid}','${r.k}',${r.si},false)">Revertir</button>`
+            :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" style="margin-left:6px;" onclick="sApSoc('${r.cid}','${r.k}',${r.si},true)">✓ Pagado</button>`)
           :'<span class="bx bgray">N/A</span>'}</td>
         </tr>`).join('')}</tbody></table>
       </div>`).join('')}
-    </div>`).join('')||'<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">‚öôÔ∏è</div><div>Sin aparatolog√≠a registrada</div></div>'}`;
+    </div>`).join('')||'<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">⚙️</div><div>Sin aparatología registrada</div></div>'}`;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
-// QUIR√ìFANO
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
+// QUIRÓFANO
+// ═══════════════════════════════════════
 function rQuir(){
   const tA=DATA.reduce((s,c)=>s+(c.q?.ant||0),0);
   const tF=DATA.reduce((s,c)=>s+(c.q?.fac||0),0);
@@ -1210,22 +1210,22 @@ function rQuir(){
           return`<tr>
             <td style="font-weight:500;">${c.pac?.nom}</td>
             <td style="color:var(--tx3);white-space:nowrap;">${fF(c.fecha)}</td>
-            <td style="font-size:11px;">${q.hosp||'‚Äî'}</td>
-            <td class="mono" style="color:var(--tx3);">${c.precioQuirSug?fmt(c.precioQuirSug):'‚Äî'}</td>
+            <td style="font-size:11px;">${q.hosp||'—'}</td>
+            <td class="mono" style="color:var(--tx3);">${c.precioQuirSug?fmt(c.precioQuirSug):'—'}</td>
             <td class="mono amber">${fmt(q.ant)}</td>
-            <td style="font-size:11px;color:var(--tx3);">${fF(q.fechaAnticipo)||'‚Äî'}</td>
+            <td style="font-size:11px;color:var(--tx3);">${fF(q.fechaAnticipo)||'—'}</td>
             <td class="mono">${q.fac?fmt(q.fac):'<span style="color:var(--tx3)">Pendiente</span>'}</td>
-            <td style="font-size:11px;color:var(--tx3);">${q.fechaFact?fF(q.fechaFact):'‚Äî'}</td>
-            <td class="mono" style="color:${!q.fac?'var(--tx3)':df>=0?'var(--green)':'var(--red)'};">${!q.fac?'‚Äî':df>=0?'+'+fmt(df):'-'+fmt(Math.abs(df))}</td>
+            <td style="font-size:11px;color:var(--tx3);">${q.fechaFact?fF(q.fechaFact):'—'}</td>
+            <td class="mono" style="color:${!q.fac?'var(--tx3)':df>=0?'var(--green)':'var(--red)'};">${!q.fac?'—':df>=0?'+'+fmt(df):'-'+fmt(Math.abs(df))}</td>
           </tr>`;}).join('')}
         </tbody></table>`
-      :'<div class="empty">Sin datos de quir√≥fano</div>'}
+      :'<div class="empty">Sin datos de quirófano</div>'}
     </div>`;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // CONSOLIDADO
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function getMeses(){return[...new Set(DATA.map(c=>c.fecha?.slice(0,7)).filter(Boolean))].sort().reverse();}
 function mesLbl(m){if(!m)return'';const[y,mo]=m.split('-');return MESES[parseInt(mo)-1]+' '+y;}
 
@@ -1246,24 +1246,24 @@ function rCon(){
         <option value="">Todos los meses</option>
         ${meses.map(m=>`<option value="${m}" ${sel===m?'selected':''}>${mesLbl(m)}</option>`).join('')}
       </select>
-      <button class="btn btnsm" onclick="exportCon()">‚Üì Excel</button>
+      <button class="btn btnsm" onclick="exportCon()">↓ Excel</button>
     </div>
     <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rl);padding:1rem;margin-bottom:14px;">
-      <div class="ctit" style="margin-bottom:12px;">Resumen financiero${sel?' ‚Äî '+mesLbl(sel):''}</div>
+      <div class="ctit" style="margin-bottom:12px;">Resumen financiero${sel?' — '+mesLbl(sel):''}</div>
       <div class="sg s4" style="margin-bottom:0;">
-        <div class="st stg"><div class="sl">Ingresos totales</div><div class="sv gold">${fmt(tPac)}</div><div class="ssb">${lista.length} cirug√≠as</div></div>
+        <div class="st stg"><div class="sl">Ingresos totales</div><div class="sv gold">${fmt(tPac)}</div><div class="ssb">${lista.length} cirugías</div></div>
         <div class="st ster"><div class="sl">Honorarios</div><div class="sv red">${fmt(tH)}</div></div>
-        <div class="st sta"><div class="sl">Quir√≥fano</div><div class="sv amber">${fmt(tA)}</div></div>
+        <div class="st sta"><div class="sl">Quirófano</div><div class="sv amber">${fmt(tA)}</div></div>
         <div class="st ${margenNet>=0?'stok':'ster'}"><div class="sl">Margen neto</div><div class="sv ${margenNet>=0?'green':'red'}">${fmt(margenNet)}</div></div>
       </div>
     </div>
     <div class="ctit">Por profesional</div>${buildConPP(lista)}
-    <div class="ctit" style="margin-top:14px;">Aparatolog√≠a</div>${buildConAp(lista)}
-    <div class="ctit" style="margin-top:14px;">Quir√≥fano</div>${buildConQ(lista)}`;
+    <div class="ctit" style="margin-top:14px;">Aparatología</div>${buildConAp(lista)}
+    <div class="ctit" style="margin-top:14px;">Quirófano</div>${buildConQ(lista)}`;
 }
 
 function buildConPP(lista){
-  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesi√≥logo',ins:'Instrumentista'};
+  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesiólogo',ins:'Instrumentista'};
   lista.forEach(c=>{['cir','ay','an','ins'].forEach(r=>{
     const n=c.eq?.[r];if(!n)return;const m=c.h?.[r]||0;if(!m)return;
     if(!pp[n])pp[n]={n,total:0,pend:0,rows:[]};
@@ -1281,7 +1281,7 @@ function buildConPP(lista){
     <tbody>${pr.rows.map(x=>`<tr>
       <td style="font-weight:500;">${x.pac}</td>
       <td style="color:var(--tx3);">${fF(x.fecha)}</td>
-      <td style="font-size:11px;color:var(--tx3);">${x.procs?.map(p=>p.nom).join(' + ')||'‚Äî'}</td>
+      <td style="font-size:11px;color:var(--tx3);">${x.procs?.map(p=>p.nom).join(' + ')||'—'}</td>
       <td style="font-size:11px;">${x.rol}</td>
       <td class="mono gold">${fmt(x.m)}</td>
       <td>${x.pag?'<span class="bx bok">Pagado</span>':'<span class="bx bpend">Pendiente</span>'}</td>
@@ -1291,9 +1291,9 @@ function buildConPP(lista){
 function buildConAp(lista){
   const rows=[];
   lista.forEach(c=>Object.entries(c.ap||{}).forEach(([k,a])=>a.socios.forEach(s=>rows.push({pac:c.pac?.nom,fecha:c.fecha,tech:a.nom,nom:s.nom,m:s.m,pag:s.pag}))));
-  if(!rows.length)return'<div class="empty">Sin aparatolog√≠a</div>';
+  if(!rows.length)return'<div class="empty">Sin aparatología</div>';
   return`<div class="card"><table>
-    <thead><tr><th>Paciente</th><th>Fecha</th><th>Tecnolog√≠a</th><th>Profesional</th><th>Monto</th><th>Estado</th></tr></thead>
+    <thead><tr><th>Paciente</th><th>Fecha</th><th>Tecnología</th><th>Profesional</th><th>Monto</th><th>Estado</th></tr></thead>
     <tbody>${rows.map(r=>`<tr>
       <td style="font-weight:500;">${r.pac}</td><td style="color:var(--tx3);">${fF(r.fecha)}</td>
       <td>${r.tech}</td><td>${r.nom}</td>
@@ -1304,21 +1304,21 @@ function buildConAp(lista){
 
 function buildConQ(lista){
   const l=lista.filter(c=>c.q?.ant||c.q?.hosp);
-  if(!l.length)return'<div class="empty">Sin datos de quir√≥fano</div>';
+  if(!l.length)return'<div class="empty">Sin datos de quirófano</div>';
   return`<div class="card"><table>
     <thead><tr><th>Paciente</th><th>Fecha</th><th>Hospital</th><th>Anticipo</th><th>Factura</th><th>Diferencia</th></tr></thead>
     <tbody>${l.map(c=>{const q=c.q||{};const d=(q.ant||0)-(q.fac||0);return`<tr>
       <td style="font-weight:500;">${c.pac?.nom}</td><td style="color:var(--tx3);">${fF(c.fecha)}</td>
-      <td style="font-size:11px;">${q.hosp||'‚Äî'}</td>
+      <td style="font-size:11px;">${q.hosp||'—'}</td>
       <td class="mono amber">${fmt(q.ant)}</td>
       <td class="mono">${q.fac?fmt(q.fac):'Pendiente'}</td>
-      <td class="mono" style="color:${!q.fac?'var(--tx3)':d>=0?'var(--green)':'var(--red)'};">${!q.fac?'‚Äî':d>=0?'+'+fmt(d):'-'+fmt(Math.abs(d))}</td>
+      <td class="mono" style="color:${!q.fac?'var(--tx3)':d>=0?'var(--green)':'var(--red)'};">${!q.fac?'—':d>=0?'+'+fmt(d):'-'+fmt(Math.abs(d))}</td>
     </tr>`;}).join('')}</tbody></table></div>`;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // CALENDARIO
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function rCal(){if(calV==='mes')rCalMes();else rCalSem();}
 function setCV(v,btn){calV=v;['cv-mes','cv-sem'].forEach(id=>$(id)?.classList.remove('on'));btn.classList.add('on');rCal();}
 function calNav(d){if(calV==='mes')calF=new Date(calF.getFullYear(),calF.getMonth()+d,1);else calF=new Date(calF.getTime()+d*7*86400000);rCal();}
@@ -1344,7 +1344,7 @@ function rCalSem(){
   const d=new Date(calF);const dow=(d.getDay()+6)%7;d.setDate(d.getDate()-dow);
   const lun=new Date(d);const h=hoy();
   const dias=Array.from({length:7},(_,i)=>{const dd=new Date(lun);dd.setDate(lun.getDate()+i);return dd;});
-  $('cal-lbl').textContent=`${dias[0].getDate()} ‚Äî ${dias[6].getDate()} ${MESES[dias[0].getMonth()]}`;
+  $('cal-lbl').textContent=`${dias[0].getDate()} — ${dias[6].getDate()} ${MESES[dias[0].getMonth()]}`;
   const horas=['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'];
   let html=`<div class="cal" style="overflow-x:auto;"><div style="display:grid;grid-template-columns:46px repeat(7,1fr);">
     <div class="caldh" style="background:var(--s3);border-right:1px solid var(--bd);"></div>
@@ -1352,16 +1352,16 @@ function rCalSem(){
   horas.forEach(hr=>{
     html+=`<div style="font-size:10px;color:var(--tx3);padding:4px;text-align:right;border-bottom:1px solid var(--bd);border-right:1px solid var(--bd);">${hr}</div>`;
     dias.forEach(d=>{const iso=d.toISOString().slice(0,10);const evs=DATA.filter(c=>c.fecha===iso);
-      html+=`<div style="min-height:40px;border-left:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:2px 3px;">${evs.map(c=>`<div class="calev${c.tipo==='retoque'?' ret':''}">${(c.pac?.nom||'').split(' ')[0]}: ${c.procs?.map(p=>p.nom).join('+')||'‚Äî'}</div>`).join('')}</div>`;
+      html+=`<div style="min-height:40px;border-left:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:2px 3px;">${evs.map(c=>`<div class="calev${c.tipo==='retoque'?' ret':''}">${(c.pac?.nom||'').split(' ')[0]}: ${c.procs?.map(p=>p.nom).join('+')||'—'}</div>`).join('')}</div>`;
     });
   });
   html+='</div></div>';
   $('cal-content').innerHTML=html;
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // PRESUPUESTO IMPRIMIBLE
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function abrirPresupuesto(id){
   const c=DATA.find(x=>x.id===id);if(!c)return;
   const costoQuir=c.precioQuirSug||0;
@@ -1370,7 +1370,7 @@ function abrirPresupuesto(id){
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #c9a86c;">
         <div>
           <div style="font-size:20px;font-weight:700;color:#8a6e3e;letter-spacing:.04em;">ART ESTHETIC CLINIC</div>
-          <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;">Valencia, Espa√±a</div>
+          <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;">Valencia, España</div>
         </div>
         <div style="text-align:right;">
           <div style="font-size:18px;font-weight:700;">PRESUPUESTO</div>
@@ -1379,30 +1379,30 @@ function abrirPresupuesto(id){
       </div>
       <div style="margin-bottom:20px;">
         <div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Paciente</div>
-        <div style="font-size:16px;font-weight:600;">${c.pac?.nom||'‚Äî'}</div>
+        <div style="font-size:16px;font-weight:600;">${c.pac?.nom||'—'}</div>
         ${c.pac?.dni?`<div style="font-size:12px;color:#666;">DNI/Pasaporte: ${c.pac.dni}</div>`:''}
         ${c.pac?.tel?`<div style="font-size:12px;color:#666;">Tel: ${c.pac.tel}</div>`:''}
       </div>
       <div style="margin-bottom:20px;padding:14px;background:#f9f7f4;border-radius:8px;border-left:3px solid #c9a86c;">
         <div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Procedimientos</div>
         ${(c.procs||[]).map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #e8e2d9;font-size:13px;">
-          <span>${i+1}¬™ ${p.nom}</span>
+          <span>${i+1}ª ${p.nom}</span>
           <span style="font-weight:600;color:#8a6e3e;">${fmt(i===0?p.precio:p.precio*0.5)}</span>
         </div>`).join('')}
         <div style="display:flex;justify-content:space-between;padding-top:8px;font-size:13px;">
-          <span>Honorarios m√©dicos</span>
+          <span>Honorarios médicos</span>
           <span style="font-weight:600;color:#8a6e3e;">${fmt(c.h?.total||0)}</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:5px 0;font-size:13px;">
-          <span>Gastos de quir√≥fano ‚Äî base sin IVA (est.)</span>
+          <span>Gastos de quirófano — base sin IVA (est.)</span>
           <span style="font-weight:600;">${fmt(costoQuir)}</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px;color:#999;">
-          <span>IVA 21% quir√≥fano (factura directa VITHAS)</span>
+          <span>IVA 21% quirófano (factura directa VITHAS)</span>
           <span>${fmt(costoQuir*0.21)}</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:12px;color:#666;border-bottom:1px solid #e8e2d9;">
-          <span>Total quir√≥fano con IVA</span>
+          <span>Total quirófano con IVA</span>
           <span style="font-weight:600;">${fmt(costoQuir*1.21)}</span>
         </div>
         ${c.implante?.costo?`<div style="display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px solid #e8e2d9;">
@@ -1412,27 +1412,27 @@ function abrirPresupuesto(id){
       </div>
       <div style="background:#2d2a25;color:#fff;border-radius:8px;padding:16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;">
         <div><div style="font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Total presupuesto</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.4);">Precios sin IVA ¬∑ Quir√≥fano estimado</div></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);">Precios sin IVA · Quirófano estimado</div></div>
         <div style="font-size:24px;font-weight:700;color:#c9a86c;">${fmt(c.pago?.precio||0)}</div>
       </div>
       <div style="font-size:11px;color:#999;line-height:1.6;padding:12px;background:#f5f5f5;border-radius:6px;">
-        <b>Condiciones:</b> Este presupuesto tiene una validez de 3 meses desde la fecha de emisi√≥n.<br>
-        <b>Honorarios m√©dicos:</b> Exentos de IVA seg√∫n Art. 20.Uno.3¬∫ LIVA (prestaci√≥n de servicios m√©dicos).<br>
-        <b>Gastos de quir√≥fano:</b> Estimativo seg√∫n tarifas VITHAS vigentes. La factura del hospital se emite directamente por VITHAS Virgen del Consuelo e incluye IVA al 21% sobre el importe base indicado.<br>
-        Pr√≥tesis, implantes, sangre y hemoderivados, estancias UCI y urgencias quedan excluidos de este presupuesto y se facturan aparte por el hospital.<br>
-        Los precios pueden variar en funci√≥n del procedimiento definitivo realizado en quir√≥fano.
+        <b>Condiciones:</b> Este presupuesto tiene una validez de 3 meses desde la fecha de emisión.<br>
+        <b>Honorarios médicos:</b> Exentos de IVA según Art. 20.Uno.3º LIVA (prestación de servicios médicos).<br>
+        <b>Gastos de quirófano:</b> Estimativo según tarifas VITHAS vigentes. La factura del hospital se emite directamente por VITHAS Virgen del Consuelo e incluye IVA al 21% sobre el importe base indicado.<br>
+        Prótesis, implantes, sangre y hemoderivados, estancias UCI y urgencias quedan excluidos de este presupuesto y se facturan aparte por el hospital.<br>
+        Los precios pueden variar en función del procedimiento definitivo realizado en quirófano.
       </div>
       <div style="margin-top:20px;font-size:11px;color:#999;text-align:center;">
-        ART ESTHETIC CLINIC S.L. ¬∑ Calle Salamanca 35, Bajo Derecha ¬∑ 46005 Valencia
+        ART ESTHETIC CLINIC S.L. · Calle Salamanca 35, Bajo Derecha · 46005 Valencia
       </div>
     </div>`;
   $('mo-presup').classList.add('on');
 }
 function cerrarPresup(){$('mo-presup').classList.remove('on');}
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // PAGOS DEL PACIENTE
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function abrirPagoPac(id){
   $('pp-cid').value=id;
   $('pp-monto').value='';$('pp-fecha').value=hoy();
@@ -1450,20 +1450,20 @@ function confirmarPagoPac(){
 }
 function elimPagoPac(id,idx){
   const c=DATA.find(x=>x.id===id);if(!c||!c.pagos)return;
-  if(!confirm('¬øEliminar este pago?'))return;
+  if(!confirm('¿Eliminar este pago?'))return;
   c.pagos.splice(idx,1);sal();rCirs();
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // ACCIONES
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 function setEst(id,e){const c=DATA.find(x=>x.id===id);if(!c)return;c.estado=e;sal();rCirs();}
 
 function sPP(id,r,pag){
   const c=DATA.find(x=>x.id===id);if(!c)return;
   if(!c.hp)c.hp={};
   if(pag){
-    abrirMP('Pago ‚Äî '+({cir:'Cirujano',ay:'Ayudante',an:'Anestesi√≥logo',ins:'Instrumentista'}[r]||r),(f,forma)=>{
+    abrirMP('Pago — '+({cir:'Cirujano',ay:'Ayudante',an:'Anestesiólogo',ins:'Instrumentista'}[r]||r),(f,forma)=>{
       c.hp[r]={pagado:true,fecha:f,forma};sal();rCirs();if($('pg-honorarios').classList.contains('on'))rHon();
     });
   }else{c.hp[r]={pagado:false,fecha:'',forma:''};sal();rCirs();if($('pg-honorarios').classList.contains('on'))rHon();}
@@ -1471,7 +1471,7 @@ function sPP(id,r,pag){
 
 function sAntPag(id){
   const c=DATA.find(x=>x.id===id);if(!c)return;
-  abrirMP('Anticipo quir√≥fano ‚Äî '+(c.q?.hosp||'VITHAS'),(f,forma)=>{
+  abrirMP('Anticipo quirófano — '+(c.q?.hosp||'VITHAS'),(f,forma)=>{
     c.q.antPag=true;c.q.fechaAnticipo=f;c.q.formaAnticipo=forma;sal();rCirs();
   });
 }
@@ -1479,7 +1479,7 @@ function sAntPag(id){
 function sAp(id,k,si,pag){
   const c=DATA.find(x=>x.id===id);if(!c)return;
   if(pag){
-    abrirMP('Pago aparatolog√≠a ‚Äî '+(c.ap[k]?.socios[si]?.nom||''),(f,forma)=>{
+    abrirMP('Pago aparatología — '+(c.ap[k]?.socios[si]?.nom||''),(f,forma)=>{
       c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=f;c.ap[k].socios[si].formaPago=forma;sal();rCirs();
     });
   }else{c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';sal();rCirs();}
@@ -1488,7 +1488,7 @@ function sAp(id,k,si,pag){
 function sApSoc(id,k,si,pag){
   const c=DATA.find(x=>x.id===id);if(!c)return;
   if(pag){
-    abrirMP('Pago aparatolog√≠a ‚Äî '+(c.ap[k]?.socios[si]?.nom||''),(f,forma)=>{
+    abrirMP('Pago aparatología — '+(c.ap[k]?.socios[si]?.nom||''),(f,forma)=>{
       c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=f;c.ap[k].socios[si].formaPago=forma;sal();rAp();
     });
   }else{c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';sal();rAp();}
@@ -1496,7 +1496,7 @@ function sApSoc(id,k,si,pag){
 
 function elimC(id){
   const c=DATA.find(x=>x.id===id);
-  if(!c||!confirm('¬øEliminar la intervenci√≥n de '+c.pac?.nom+'?'))return;
+  if(!c||!confirm('¿Eliminar la intervención de '+c.pac?.nom+'?'))return;
   DATA=DATA.filter(x=>x.id!==id);sal();fbDelete(id);rCirs();rPanel();rAlertas();
 }
 
@@ -1506,16 +1506,16 @@ function exportCon(){
   if(!lista.length){alert('Sin datos para exportar.');return;}
   const rows=lista.map(c=>{const h=c.h||{};const q=c.q||{};return{
     'Paciente':c.pac?.nom,'Fecha':fF(c.fecha),'Tipo':c.tipo||'cirugia',
-    'Procedimientos':c.procs?.map(p=>p.nom).join(' + ')||'‚Äî',
+    'Procedimientos':c.procs?.map(p=>p.nom).join(' + ')||'—',
     'Estado':ELBL[c.estado]||c.estado,
-    'Cirujano':c.eq?.cir,'Honor.Cir':h.cir||0,'Pagado Cir':c.hp?.cir?.pagado?'S√≠':'No','Fecha Pago Cir':c.hp?.cir?.fecha||'',
-    'Ayudante':c.eq?.ay,'Honor.Ay':h.ay||0,'Pagado Ay':c.hp?.ay?.pagado?'S√≠':'No',
-    'Anestesi√≥logo':c.eq?.an,'Honor.An':h.an||0,'Pagado An':c.hp?.an?.pagado?'S√≠':'No',
-    'Instrumentista':c.eq?.ins,'Honor.Ins':h.ins||0,'Pagado Ins':c.hp?.ins?.pagado?'S√≠':'No',
+    'Cirujano':c.eq?.cir,'Honor.Cir':h.cir||0,'Pagado Cir':c.hp?.cir?.pagado?'Sí':'No','Fecha Pago Cir':c.hp?.cir?.fecha||'',
+    'Ayudante':c.eq?.ay,'Honor.Ay':h.ay||0,'Pagado Ay':c.hp?.ay?.pagado?'Sí':'No',
+    'Anestesiólogo':c.eq?.an,'Honor.An':h.an||0,'Pagado An':c.hp?.an?.pagado?'Sí':'No',
+    'Instrumentista':c.eq?.ins,'Honor.Ins':h.ins||0,'Pagado Ins':c.hp?.ins?.pagado?'Sí':'No',
     'Total Honorarios':h.total||0,
     'Hospital':q.hosp,'Estimado VITHAS':c.precioQuirSug||0,
     'Anticipo':q.ant||0,'Fecha Anticipo':fF(q.fechaAnticipo),'Forma Anticipo':q.formaAnticipo||'',
-    'Factura':q.fac||0,'Fecha Factura':fF(q.fechaFact),'Diferencia Quir√≥fano':(q.ant||0)-(q.fac||0),
+    'Factura':q.fac||0,'Fecha Factura':fF(q.fechaFact),'Diferencia Quirófano':(q.ant||0)-(q.fac||0),
     'Precio Paciente':c.pago?.precio||0,'Cobrado Paciente':totalPagadoPac(c),
     'Saldo Paciente':Math.max((c.pago?.precio||0)-totalPagadoPac(c),0),
   };});
@@ -1524,9 +1524,9 @@ function exportCon(){
   XLSX.writeFile(wb,'ART_'+(sel||'total')+'.xlsx');
 }
 
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 // INIT
-// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ═══════════════════════════════════════
 rPanel();
 setTimeout(()=>{ if(window._fbGet) syncNow(); },2000);
 </script>
