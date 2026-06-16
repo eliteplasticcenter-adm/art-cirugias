@@ -3,983 +3,1532 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART ESTHETIC — Control Quirúrgico</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>ART ESTHETIC ‚Äî Control Quir√∫rgico</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#0e0f11;--bg2:#13151a;--bg3:#1a1d24;--bg4:#21252f;
-  --bd:#2a2f3a;--bd2:#343b4a;
-  --tx:#f0f2f5;--tx2:#8b95a5;--tx3:#4d5668;
-  --gold:#c9a96e;--gold2:#e8c98a;--gold3:#a07840;
-  --teal:#1abcb0;--r:6px;--rl:10px;--rx:16px;
-  --red:#e05252;--red-bg:rgba(224,82,82,.12);
-  --green:#3dd68c;--green-bg:rgba(61,214,140,.12);
-  --amber:#f0a429;--amber-bg:rgba(240,164,41,.12);
-  --blue:#5b8af0;--blue-bg:rgba(91,138,240,.12);
-  --s1:0 1px 3px rgba(0,0,0,.4);--s2:0 4px 20px rgba(0,0,0,.5);
+  --bg:#0b0d10;--s1:#111318;--s2:#181b22;--s3:#1e222b;
+  --bd:#2c3140;--bd2:#363d50;
+  --tx:#eef0f4;--tx2:#8892a4;--tx3:#525c70;
+  --gold:#c9a86c;--gold2:#e2c28a;--gold3:#8a6e3e;
+  --green:#34d17a;--gbg:rgba(52,209,122,.1);--gbd:rgba(52,209,122,.25);
+  --red:#e05555;--rbg:rgba(224,85,85,.1);--rbd:rgba(224,85,85,.25);
+  --amber:#f0a830;--abg:rgba(240,168,48,.1);--abd:rgba(240,168,48,.25);
+  --blue:#5b8cf0;--bbg:rgba(91,140,240,.1);--bbd:rgba(91,140,240,.25);
+  --r:6px;--rl:10px;--rx:14px;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.5;min-height:100vh;}
-header{background:var(--bg2);border-bottom:1px solid var(--bd);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:sticky;top:0;z-index:200;}
-.logo{display:flex;align-items:center;gap:12px;}
-.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#0e0f11;}
-.logo-name{font-size:13px;font-weight:600;color:var(--tx);letter-spacing:.04em;}
-.logo-sub{font-size:10px;color:var(--tx3);letter-spacing:.08em;text-transform:uppercase;}
-.hdr-r{display:flex;align-items:center;gap:8px;}
-#sync-st{font-size:11px;color:var(--tx3);font-family:'DM Mono',monospace;}
-.nav{background:var(--bg2);border-bottom:1px solid var(--bd);display:flex;padding:0 1.5rem;overflow-x:auto;gap:2px;}
-.nb{background:none;border:none;border-bottom:2px solid transparent;padding:11px 14px;font-size:12px;font-weight:500;color:var(--tx3);cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:all .15s;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.55;min-height:100vh;}
+/* HEADER */
+header{background:var(--s1);border-bottom:1px solid var(--bd);height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;position:sticky;top:0;z-index:100;}
+.brand{display:flex;align-items:center;gap:10px;}
+.bmark{width:30px;height:30px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0b0d10;}
+.bname{font-size:13px;font-weight:600;letter-spacing:.04em;}
+.bsub{font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;}
+/* NAV */
+nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;padding:0 1.25rem;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nb{background:none;border:none;border-bottom:2px solid transparent;padding:10px 13px;font-size:12px;font-weight:500;color:var(--tx3);cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:all .15s;}
 .nb:hover{color:var(--tx2);}
 .nb.on{color:var(--gold);border-bottom-color:var(--gold);}
-.pg{display:none;min-height:calc(100vh - 98px);padding:1.5rem;}
+/* PAGES */
+.pg{display:none;padding:1.25rem;min-height:calc(100vh - 96px);}
 .pg.on{display:block;}
-.card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rl);padding:12px;margin-bottom:8px;}
-.sg{display:grid;gap:8px;margin-bottom:12px;}
+/* FORM */
+.fwrap{background:var(--s1);border:1px solid var(--bd2);border-radius:var(--rx);padding:1.25rem;margin-bottom:14px;display:none;}
+.fwrap.on{display:block;}
+/* CARDS */
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);padding:1rem 1.125rem;margin-bottom:8px;}
+.ctit{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+/* STATS */
+.sg{display:grid;gap:8px;margin-bottom:14px;}
 .s4{grid-template-columns:repeat(4,1fr);}
 .s3{grid-template-columns:repeat(3,1fr);}
 .s2{grid-template-columns:1fr 1fr;}
-.st{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--rl);padding:10px 12px;}
-.sl{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;}
-.sv{font-size:20px;font-weight:500;}
-.sv-g{color:var(--gold);}.sv-ok{color:var(--green);}.sv-r{color:var(--red);}
-input,select,textarea{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r);padding:8px 10px;font-size:13px;color:var(--tx);font-family:'DM Sans',sans-serif;width:100%;}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,169,110,.15);}
-select option{background:var(--bg3);}
-.row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.st{background:var(--s2);border:1px solid var(--bd);border-radius:var(--rl);padding:.875rem 1rem;position:relative;overflow:hidden;}
+.st::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.stg::before{background:linear-gradient(90deg,var(--gold),var(--gold3));}
+.stok::before{background:var(--green);}
+.ster::before{background:var(--red);}
+.stb::before{background:var(--blue);}
+.sta::before{background:var(--amber);}
+.sl{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;}
+.sv{font-size:20px;font-weight:600;line-height:1;}
+.ssb{font-size:11px;color:var(--tx3);margin-top:3px;}
+/* FORM ELEMENTS */
+.row{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
 .col{flex:1;min-width:110px;}
 .lbl{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
-.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;font-size:13px;font-weight:500;border:1px solid var(--bd2);border-radius:var(--r);cursor:pointer;background:var(--bg3);color:var(--tx2);font-family:'DM Sans',sans-serif;}
+input,select,textarea{background:var(--s3);border:1px solid var(--bd);border-radius:var(--r);padding:8px 10px;font-size:13px;color:var(--tx);width:100%;font-family:'DM Sans',sans-serif;transition:border-color .15s;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,168,108,.12);}
+select option{background:var(--s2);}
+.div{height:1px;background:var(--bd);margin:12px 0;}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;font-size:13px;font-weight:500;border:1px solid var(--bd2);border-radius:var(--r);cursor:pointer;background:var(--s2);color:var(--tx2);font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap;}
 .btn:hover{border-color:var(--gold);color:var(--gold);}
-.btn.p{background:var(--gold);color:#0e0f11;border-color:var(--gold);font-weight:600;}
-.btn.p:hover{background:var(--gold2);}
-.btn.sm{padding:5px 10px;font-size:12px;}
-.btn.xs{padding:3px 8px;font-size:11px;border-radius:5px;}
-.btn.g{background:var(--green-bg);color:var(--green);border-color:rgba(61,214,140,.3);}
-.btn.r{background:var(--red-bg);color:var(--red);border-color:rgba(224,82,82,.3);}
-.btn.a{background:var(--amber-bg);color:var(--amber);border-color:rgba(240,164,41,.3);}
-.btn.b{background:var(--blue-bg);color:var(--blue);border-color:rgba(91,138,240,.3);}
-.bx{display:inline-flex;align-items:center;padding:2px 8px;font-size:10px;font-weight:600;border-radius:20px;}
-.bok{background:var(--green-bg);color:var(--green);}
-.bw{background:var(--amber-bg);color:var(--amber);}
-.bb{background:var(--blue-bg);color:var(--blue);}
-.bg2{background:var(--bg3);color:var(--tx2);}
-.brd{background:var(--red-bg);color:var(--red);}
-.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;margin:2px;}
-.ch1{background:var(--green-bg);color:var(--green);}
-.ch2{background:var(--amber-bg);color:var(--amber);}
-.ch3{background:var(--red-bg);color:var(--red);}
-.chip .x{cursor:pointer;opacity:.6;font-size:13px;line-height:1;}
-.chip .x:hover{opacity:1;}
-.div{height:1px;background:var(--bd);margin:10px 0;}
-.hbox{background:var(--bg3);border-radius:var(--r);padding:10px;margin:6px 0;}
-.hr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--bd);font-size:12px;}
-.hr:last-child{border-bottom:none;}
-.hm{font-weight:500;color:var(--gold);font-family:'DM Mono',monospace;}
-.alrt{padding:8px 10px;border-radius:var(--r);font-size:12px;margin:6px 0;}
-.aok{background:var(--green-bg);color:var(--green);}
-.awk{background:var(--amber-bg);color:var(--amber);}
-.ard{background:var(--red-bg);color:var(--red);}
-.ci{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rl);margin-bottom:8px;overflow:hidden;}
-.cih{display:flex;align-items:center;gap:10px;padding:11px 13px;cursor:pointer;}
-.cih:hover{background:var(--bg3);}
-.cib{display:none;border-top:1px solid var(--bd);}
-.ci.op .cib{display:block;}
+.btnp{background:var(--gold);color:#0b0d10;border-color:var(--gold);font-weight:600;}
+.btnp:hover{background:var(--gold2);color:#0b0d10;}
+.btng{background:var(--gbg);color:var(--green);border-color:var(--gbd);}
+.btnr{background:var(--rbg);color:var(--red);border-color:var(--rbd);}
+.btna{background:var(--abg);color:var(--amber);border-color:var(--abd);}
+.btnb{background:var(--bbg);color:var(--blue);border-color:var(--bbd);}
+.btnsm{padding:4px 10px;font-size:12px;}
+.btnxs{padding:2px 8px;font-size:11px;border-radius:5px;}
+/* BADGES */
+.bx{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;font-size:10px;font-weight:600;border-radius:20px;}
+.bx::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;}
+.bok{background:var(--gbg);color:var(--green);border:1px solid var(--gbd);}.bok::before{background:var(--green);}
+.bpend{background:var(--abg);color:var(--amber);border:1px solid var(--abd);}.bpend::before{background:var(--amber);}
+.bblue{background:var(--bbg);color:var(--blue);border:1px solid var(--bbd);}.bblue::before{background:var(--blue);}
+.bgray{background:var(--s3);color:var(--tx2);border:1px solid var(--bd);}.bgray::before{background:var(--tx3);}
+.bred{background:var(--rbg);color:var(--red);border:1px solid var(--rbd);}.bred::before{background:var(--red);}
+.bgold{background:rgba(201,168,108,.12);color:var(--gold);border:1px solid rgba(201,168,108,.25);}.bgold::before{background:var(--gold);}
+/* CHIPS */
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;margin:2px;}
+.ch1{background:var(--gbg);color:var(--green);border:1px solid var(--gbd);}
+.ch2{background:var(--abg);color:var(--amber);border:1px solid var(--abd);}
+.ch3{background:var(--rbg);color:var(--red);border:1px solid var(--rbd);}
+.chip .rm{cursor:pointer;opacity:.6;font-size:14px;line-height:1;}
+/* ALERTS */
+.alert{padding:9px 12px;border-radius:var(--r);font-size:12px;margin:8px 0;border:1px solid;}
+.aok{background:var(--gbg);color:var(--green);border-color:var(--gbd);}
+.awk{background:var(--abg);color:var(--amber);border-color:var(--abd);}
+.ard{background:var(--rbg);color:var(--red);border-color:var(--rbd);}
+.ablue{background:var(--bbg);color:var(--blue);border-color:var(--bbd);}
+/* INTERVENTION CARDS */
+.cc{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);margin-bottom:8px;overflow:hidden;transition:border-color .15s;}
+.cc:hover{border-color:var(--bd2);}
+.cch{display:flex;align-items:center;gap:10px;padding:11px 13px;cursor:pointer;}
+.cch:hover{background:var(--s2);}
+.cav{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--gold3),var(--gold));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0b0d10;flex-shrink:0;}
+.ccb{display:none;border-top:1px solid var(--bd);}
+.cc.op .ccb{display:block;}
 .sec{padding:11px 13px;}
 .sec+.sec{border-top:1px solid var(--bd);}
 .sect{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
-.av{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--gold3),var(--gold));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0e0f11;flex-shrink:0;}
-.flow{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:6px;}
-.fe{padding:2px 7px;border-radius:20px;font-size:10px;cursor:pointer;border:1px solid var(--bd);color:var(--tx3);background:var(--bg3);}
-.fe.done{color:var(--green);background:var(--green-bg);}
-.fe.cur{color:var(--gold);background:rgba(201,169,110,.12);}
-.cbox{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;background:var(--bg3);border-radius:var(--r);padding:10px;margin-bottom:6px;}
-.cl{font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
-.cv{font-size:14px;font-weight:500;font-family:'DM Mono',monospace;}
-.saldo-box{background:var(--bg3);border-radius:var(--r);padding:10px;margin-bottom:6px;}
-.saldo-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid var(--bd);}
-.saldo-row:last-child{border-bottom:none;font-weight:600;font-size:13px;}
+/* ESTADO FLOW */
+.flow{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:8px;}
+.fs{padding:3px 9px;border-radius:20px;font-size:10px;font-weight:500;cursor:pointer;border:1px solid var(--bd);color:var(--tx3);background:var(--s3);transition:all .15s;}
+.fs.done{color:var(--green);background:var(--gbg);border-color:var(--gbd);}
+.fs.cur{color:var(--gold);background:rgba(201,168,108,.1);border-color:rgba(201,168,108,.3);}
+/* GRIDS */
+.cgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;background:var(--s3);border-radius:var(--r);padding:10px;margin-bottom:6px;}
+.cgrid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--s3);border-radius:var(--r);padding:10px;margin-bottom:6px;}
+.clbl{font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.cval{font-size:14px;font-weight:600;font-family:'DM Mono',monospace;}
+/* SALDO BOX */
+.sbox{background:var(--s3);border-radius:var(--r);padding:10px;margin-bottom:6px;}
+.srow{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid var(--bd);}
+.srow:last-child{border-bottom:none;font-weight:600;font-size:13px;padding-top:6px;margin-top:2px;}
+/* HONOR ROW */
+.hrow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--bd);font-size:12px;}
+.hrow:last-child{border-bottom:none;}
+.hm{font-weight:600;color:var(--gold);font-family:'DM Mono',monospace;}
+/* PAGOS */
+.pago-item{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-radius:var(--r);background:var(--s3);margin-bottom:5px;font-size:12px;}
+/* TABLE */
 table{width:100%;border-collapse:collapse;font-size:12px;}
-th{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;padding:7px 10px;text-align:left;background:var(--bg3);border-bottom:1px solid var(--bd);}
+th{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;padding:7px 10px;text-align:left;background:var(--s3);border-bottom:1px solid var(--bd);}
 td{padding:8px 10px;border-bottom:1px solid var(--bd);vertical-align:middle;}
 tr:last-child td{border-bottom:none;}
-tbody tr:hover td{background:var(--bg3);}
-.empty{text-align:center;padding:2.5rem;color:var(--tx3);font-size:13px;}
-.form-panel{background:var(--bg2);border:1px solid var(--bd2);border-radius:var(--rx);padding:16px;margin-bottom:12px;display:none;}
-.form-panel.on{display:block;}
-.form-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
-.form-tit{font-size:15px;font-weight:600;}
-.cal{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);}
-.cal-day-hdr{text-align:center;font-size:10px;font-weight:600;color:var(--tx3);padding:7px 0;border-bottom:1px solid var(--bd);text-transform:uppercase;letter-spacing:.05em;}
-.cal-cell{min-height:64px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:4px;cursor:pointer;}
-.cal-cell:nth-child(7n){border-right:none;}
-.cal-cell:hover{background:var(--bg3);}
-.cal-cell.today{background:rgba(201,169,110,.06);}
-.cal-cell.other-month{opacity:.35;}
-.cal-num{font-size:11px;font-weight:600;margin-bottom:2px;color:var(--tx2);}
-.cal-cell.today .cal-num{color:var(--gold);}
-.cal-event{font-size:9px;background:var(--amber-bg);color:var(--amber);border-radius:3px;padding:1px 5px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.week-grid{display:grid;grid-template-columns:48px repeat(7,1fr);}
-.week-hdr{text-align:center;font-size:11px;font-weight:500;padding:7px 4px;border-bottom:1px solid var(--bd);border-left:1px solid var(--bd);color:var(--tx2);}
-.week-hdr:first-child{border-left:none;}
-.week-hdr.today{color:var(--gold);}
-.week-slot{min-height:42px;border-left:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:2px 3px;}
-.week-lbl{font-size:10px;color:var(--tx3);padding:4px 0;text-align:right;padding-right:6px;border-bottom:1px solid var(--bd);}
-.week-event{background:var(--amber-bg);color:var(--amber);border-radius:3px;padding:2px 4px;margin-bottom:1px;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+tbody tr:hover td{background:var(--s2);}
+/* CALENDAR */
+.cal{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;}
+.calg7{display:grid;grid-template-columns:repeat(7,1fr);}
+.caldh{text-align:center;font-size:10px;font-weight:600;color:var(--tx3);padding:7px 0;border-bottom:1px solid var(--bd);text-transform:uppercase;letter-spacing:.05em;}
+.calc{min-height:62px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:4px 5px;}
+.calc:nth-child(7n){border-right:none;}
+.calc:hover{background:var(--s2);}
+.calc.tod{background:rgba(201,168,108,.06);}
+.calc.oth{opacity:.3;}
+.caln{font-size:11px;font-weight:600;color:var(--tx2);margin-bottom:2px;}
+.calc.tod .caln{color:var(--gold);}
+.calev{font-size:9px;background:var(--abg);color:var(--amber);border-radius:3px;padding:1px 5px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.calev.ret{background:var(--bbg);color:var(--blue);}
+/* ALERT ITEM */
+.alert-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:var(--r);margin-bottom:6px;border:1px solid;}
+.ai-ok{background:var(--gbg);border-color:var(--gbd);}
+.ai-warn{background:var(--abg);border-color:var(--abd);}
+.ai-red{background:var(--rbg);border-color:var(--rbd);}
+.ai-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.ai-text{font-size:12px;color:var(--tx2);}
+.ai-text b{color:var(--tx);font-weight:600;}
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;align-items:center;justify-content:center;padding:1rem;}
+.mo.on{display:flex;}
+.mbox{background:var(--s1);border:1px solid var(--bd2);border-radius:var(--rx);width:100%;max-width:400px;padding:1.5rem;box-shadow:0 8px 40px rgba(0,0,0,.6);}
+.mtit{font-size:14px;font-weight:600;margin-bottom:16px;}
+/* PRESUPUESTO PRINT */
+@media print{
+  body{background:#fff;color:#000;}
+  header,nav,.nb,.btn,#no-print{display:none!important;}
+  .print-only{display:block!important;}
+  .pg{padding:0;}
+}
+.print-only{display:none;}
+/* MISC */
 .mono{font-family:'DM Mono',monospace;}
-@media(max-width:768px){.s4{grid-template-columns:1fr 1fr;}.s3{grid-template-columns:1fr 1fr;}.cbox{grid-template-columns:1fr 1fr;}.row{flex-direction:column;}}
+.gold{color:var(--gold);}
+.green{color:var(--green);}
+.red{color:var(--red);}
+.amber{color:var(--amber);}
+.empty{text-align:center;padding:3rem 1rem;color:var(--tx3);}
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+@media(max-width:680px){.s4{grid-template-columns:1fr 1fr;}.s3{grid-template-columns:1fr 1fr;}.cgrid{grid-template-columns:1fr 1fr;}.row{flex-direction:column;}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-mark">AE</div>
-    <div>
-      <div class="logo-name">ART ESTHETIC CLINIC</div>
-      <div class="logo-sub">Control Quirúrgico</div>
-    </div>
+  <div class="brand">
+    <div class="bmark">AE</div>
+    <div><div class="bname">ART ESTHETIC CLINIC</div><div class="bsub">Control Quir√∫rgico</div></div>
   </div>
-  <div class="hdr-r">
-    <span id="sync-st">○ local</span>
-    <button class="btn sm" onclick="syncNow()">⟳ Sync</button>
-    <button class="btn sm p" onclick="toggleForm(null)">+ Nueva cirugía</button>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="btn btnsm btnp" onclick="abrirForm(null)">+ Nueva intervenci√≥n</button>
   </div>
 </header>
 
-<div class="nav">
+<nav>
   <button class="nb on" onclick="showPg('panel',this)">Panel</button>
+  <button class="nb" onclick="showPg('alertas',this)">Alertas</button>
   <button class="nb" onclick="showPg('calendario',this)">Calendario</button>
-  <button class="nb" onclick="showPg('cirugias',this)">Cirugías</button>
-  <button class="nb" onclick="showPg('aparatologia',this)">Aparatología</button>
+  <button class="nb" onclick="showPg('intervenciones',this)">Intervenciones</button>
+  <button class="nb" onclick="showPg('pacientes',this)">Pacientes</button>
   <button class="nb" onclick="showPg('honorarios',this)">Honorarios</button>
-  <button class="nb" onclick="showPg('quirofano',this)">Quirófano</button>
+  <button class="nb" onclick="showPg('aparatologia',this)">Aparatolog√≠a</button>
+  <button class="nb" onclick="showPg('quirofano',this)">Quir√≥fano</button>
   <button class="nb" onclick="showPg('consolidado',this)">Consolidado</button>
-</div>
+</nav>
 
-<!-- FORM INLINE -->
-<div class="form-panel" id="form-panel" style="margin:12px 1.5rem 0;">
-  <div class="form-hdr">
-    <div class="form-tit" id="form-tit">Nueva cirugía</div>
-    <button class="btn sm" onclick="cerrarForm()">✕ Cerrar</button>
+<!-- ‚ïê‚ïê‚ïê FORMULARIO NUEVA/EDITAR INTERVENCI√ìN ‚ïê‚ïê‚ïê -->
+<div class="fwrap" id="fwrap" style="margin:10px 1.25rem 0;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <div style="font-size:14px;font-weight:600;" id="ftit">Nueva intervenci√≥n</div>
+    <button class="btn btnsm" onclick="cerrarForm()">‚úï Cerrar</button>
+  </div>
+
+  <div class="row" style="margin-bottom:6px;">
+    <div class="col" style="max-width:260px;">
+      <div class="lbl">Tipo</div>
+      <select id="f-tipo" onchange="onTipo()">
+        <option value="cirugia">Cirug√≠a</option>
+        <option value="retoque">Retoque quir√∫rgico</option>
+      </select>
+    </div>
+    <div class="col" id="col-retipo" style="display:none;max-width:260px;">
+      <div class="lbl">Tipo de retoque</div>
+      <select id="f-retipo">
+        <option value="r1h">Retoque cicatriz &lt;1h ‚Äî ‚Ç¨441.00</option>
+        <option value="r2h">Retoque 1-2h ambulante ‚Äî ‚Ç¨551.25</option>
+        <option value="rmas2h">Retoque +2h ‚Äî ‚Ç¨937.12</option>
+      </select>
+    </div>
+  </div>
+  <div id="ret-alert" class="alert ablue" style="display:none;">Retoque: profesionales y aparatolog√≠a a ‚Ç¨0. Solo cobra quir√≥fano.</div>
+
+  <div class="div"></div>
+  <div class="ctit">Paciente</div>
+  <div class="row">
+    <div class="col"><div class="lbl">Nombre completo *</div><input type="text" id="f-nom" placeholder="Nombre y apellidos"></div>
+    <div class="col"><div class="lbl">DNI / Pasaporte</div><input type="text" id="f-dni" placeholder="12345678A"></div>
+    <div class="col"><div class="lbl">Fecha intervenci√≥n *</div><input type="date" id="f-fecha"></div>
   </div>
   <div class="row">
-    <div class="col"><div class="lbl">Nombre paciente *</div><input type="text" id="f-nom" placeholder="Nombre completo"></div>
-    <div class="col"><div class="lbl">DNI</div><input type="text" id="f-dni" placeholder="12345678A"></div>
-    <div class="col"><div class="lbl">Fecha cirugía *</div><input type="date" id="f-fecha"></div>
+    <div class="col"><div class="lbl">Tel√©fono</div><input type="tel" id="f-tel" placeholder="+34 600 000 000"></div>
+    <div class="col"><div class="lbl">Email</div><input type="email" id="f-email"></div>
   </div>
+
   <div class="div"></div>
-  <div class="lbl" style="margin-bottom:6px;">Procedimientos — pulsa para añadir (1º=100%, 2º=70%)</div>
-  <div id="chips-sel" style="min-height:26px;margin-bottom:6px;"></div>
-  <div id="proc-btns" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;"></div>
+  <div class="ctit">Procedimientos ‚Äî 1¬™ al 100%, 2¬™ al 50% (VITHAS)</div>
+  <div id="chips-area" style="min-height:28px;margin-bottom:8px;"></div>
+  <div id="proc-btns" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;"></div>
+  <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+    <div style="flex:1;min-width:160px;"><div class="lbl">Otro procedimiento</div><input type="text" id="f-potro" placeholder="Nombre del procedimiento"></div>
+    <div style="width:130px;"><div class="lbl">Costo VITHAS (‚Ç¨)</div><input type="number" id="f-potro-p" placeholder="0.00" step="0.01" min="0"></div>
+    <button class="btn btnsm btnb" onclick="addProcOtro()">+ A√±adir</button>
+  </div>
+  <div id="quir-est-prev" class="alert awk" style="display:none;margin-top:8px;"></div>
+
   <div class="div"></div>
+  <div class="ctit">Equipo m√©dico ‚Äî honorarios a tu criterio</div>
   <div class="row">
-    <div class="col"><div class="lbl">Cirujano *</div>
-      <select id="f-cir" onchange="recalc()">
-        <option value="">— Seleccionar —</option>
-        <option>Dr. Deivys Higuerey</option>
-        <option>Dr. Juan Caicedo</option>
-        <option>Dr. Oswaldo Artieda</option>
-        <option>Dr. Oscar Blanco</option>
-        <option>Dr. Eduardo Salas</option>
+    <div class="col">
+      <div class="lbl">Cirujano principal *</div>
+      <select id="f-cir" onchange="onCirSel()">
+        <option value="">‚Äî Seleccionar ‚Äî</option>
+        <option value="Dr. Deivys Higuerey">Dr. Deivys Higuerey</option>
+        <option value="Dr. Oscar Blanco">Dr. Oscar Blanco</option>
+        <option value="__otro">Otro...</option>
       </select>
     </div>
-    <div class="col"><div class="lbl">Ayudante</div>
-      <select id="f-ay" onchange="recalc()">
-        <option value="">— Sin ayudante —</option>
-        <option>Dr. Deivys Higuerey</option>
-        <option>Dr. Juan Caicedo</option>
-        <option>Dr. Oswaldo Artieda</option>
-        <option>Dr. Oscar Blanco</option>
-        <option>Dr. Eduardo Salas</option>
-      </select>
-    </div>
-    <div class="col"><div class="lbl">Anestesiólogo</div>
-      <select id="f-an" onchange="recalc()">
-        <option value="">— Seleccionar —</option>
-        <option>Dr. Oswaldo Artieda</option>
-        <option>Anestesiólogo externo</option>
-      </select>
-    </div>
-    <div class="col"><div class="lbl">Instrumentista</div>
-      <select id="f-ins" onchange="recalc()">
-        <option value="">— Seleccionar —</option>
-        <option>Eva Guerrero</option>
-        <option>Instrumentista 2</option>
-      </select>
-    </div>
+    <div class="col" id="cir-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-cir-n" placeholder="Nombre completo"></div>
+    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-hcir" placeholder="0.00" step="0.01" min="0"></div>
   </div>
-  <div id="preview" style="display:none;" class="hbox"></div>
+  <div class="row">
+    <div class="col">
+      <div class="lbl">Ayudante quir√∫rgico</div>
+      <select id="f-ay" onchange="onAySel()">
+        <option value="">‚Äî Sin ayudante ‚Äî</option>
+        <option value="Dr. Deivys Higuerey">Dr. Deivys Higuerey</option>
+        <option value="Dr. Oscar Blanco">Dr. Oscar Blanco</option>
+        <option value="__otro">Otro...</option>
+      </select>
+    </div>
+    <div class="col" id="ay-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-ay-n" placeholder="Nombre completo"></div>
+    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-hay" placeholder="0.00" step="0.01" min="0"></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="lbl">Anestesi√≥logo</div>
+      <select id="f-an" onchange="onAnSel()">
+        <option value="">‚Äî Seleccionar ‚Äî</option>
+        <option value="Dr. Oswaldo Artieda">Dr. Oswaldo Artieda</option>
+        <option value="__otro">Otro...</option>
+      </select>
+    </div>
+    <div class="col" id="an-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-an-n" placeholder="Nombre completo"></div>
+    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-han" placeholder="0.00" step="0.01" min="0"></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="lbl">Enfermera instrumentista</div>
+      <select id="f-ins" onchange="onInsSel()">
+        <option value="">‚Äî Seleccionar ‚Äî</option>
+        <option value="Eva Guerrero">Eva Guerrero</option>
+        <option value="__otro">Otro...</option>
+      </select>
+    </div>
+    <div class="col" id="ins-otro-c" style="display:none;"><div class="lbl">Nombre</div><input type="text" id="f-ins-n" placeholder="Nombre completo"></div>
+    <div class="col"><div class="lbl">Honorario (‚Ç¨)</div><input type="number" id="f-hins" placeholder="0.00" step="0.01" min="0"></div>
+  </div>
+
   <div class="div"></div>
-  <div class="lbl" style="margin-bottom:6px;">Implantes mamarios (si aplica)</div>
+  <div class="ctit">Implantes mamarios (si aplica)</div>
   <div class="row">
     <div class="col"><div class="lbl">Marca</div>
-      <select id="f-imp-marca">
-        <option value="">— No aplica —</option>
-        <option value="Polytech">Polytech</option>
-        <option value="Motiva">Motiva</option>
+      <select id="f-impm"><option value="">‚Äî No aplica ‚Äî</option><option value="Polytech">Polytech</option><option value="Motiva">Motiva</option></select>
+    </div>
+    <div class="col"><div class="lbl">Talla / modelo</div><input type="text" id="f-impt" placeholder="Ej: 300cc Round"></div>
+    <div class="col"><div class="lbl">Costo (‚Ç¨)</div><input type="number" id="f-impc" placeholder="0.00" step="0.01" min="0"></div>
+  </div>
+
+  <div class="div"></div>
+  <div class="ctit">Aparatolog√≠a</div>
+  <div class="row" style="flex-wrap:wrap;">
+    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:200px;"><input type="checkbox" id="f-micro" style="width:14px;height:14px;accent-color:var(--gold);"> Microaire (3√ó‚Ç¨100)</label>
+    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:200px;"><input type="checkbox" id="f-vaser" style="width:14px;height:14px;accent-color:var(--gold);"> VASER (3√ó‚Ç¨250)</label>
+    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);min-width:260px;"><input type="checkbox" id="f-renuvion" style="width:14px;height:14px;accent-color:var(--gold);"> Renuvion (4√ó‚Ç¨250 + Corpor Clinic ‚Ç¨927.83)</label>
+  </div>
+
+  <div class="div"></div>
+  <div class="ctit">Quir√≥fano</div>
+  <div class="row">
+    <div class="col">
+      <div class="lbl">Hospital</div>
+      <select id="f-hosp" onchange="onHospSel()">
+        <option value="VITHAS ‚Äì Virgen del Consuelo">VITHAS ‚Äì Virgen del Consuelo</option>
+        <option value="__otro">Otro hospital...</option>
       </select>
     </div>
-    <div class="col"><div class="lbl">Talla / modelo</div><input type="text" id="f-imp-talla" placeholder="Ej: 300cc Round"></div>
-    <div class="col"><div class="lbl">Costo implantes (€)</div><input type="number" id="f-imp-costo" placeholder="0.00" step="0.01" min="0" oninput="recalc()"></div>
+    <div class="col" id="hosp-otro-c" style="display:none;"><div class="lbl">Nombre del hospital</div><input type="text" id="f-hosp-n" placeholder="Nombre"></div>
+    <div class="col"><div class="lbl">Anticipo pagado (‚Ç¨)</div><input type="number" id="f-ant" placeholder="0.00" step="0.01" min="0" oninput="calcDif()"></div>
+    <div class="col"><div class="lbl">Factura real (‚Ç¨)</div><input type="number" id="f-fac" placeholder="Cuando llegue" step="0.01" min="0" oninput="calcDif()"></div>
   </div>
+  <div id="dif-prev"></div>
+
   <div class="div"></div>
-  <div class="lbl" style="margin-bottom:6px;">Aparatología</div>
+  <div class="ctit">Cobro al paciente</div>
   <div class="row">
-    <div class="col"><label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);"><input type="checkbox" id="f-micro" style="width:14px;height:14px;accent-color:var(--gold);"> Microaire (5×€100)</label></div>
-    <div class="col"><label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);"><input type="checkbox" id="f-vaser" style="width:14px;height:14px;accent-color:var(--gold);"> VASER (3×€250)</label></div>
-    <div class="col"><label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--tx2);"><input type="checkbox" id="f-renuvion" style="width:14px;height:14px;accent-color:var(--gold);"> Renuvion (4×€250+€927.83)</label></div>
+    <div class="col" style="flex:2;"><div class="lbl">Precio total cobrado al paciente (‚Ç¨)</div><input type="number" id="f-precio" placeholder="Total acordado con el paciente" step="0.01" min="0" oninput="calcResumen()"></div>
+    <div class="col"><div class="lbl">Pagado hasta ahora (‚Ç¨)</div><input type="number" id="f-pagado" placeholder="0.00" step="0.01" min="0" oninput="calcResumen()"></div>
   </div>
-  <div class="div"></div>
-  <div class="lbl" style="margin-bottom:6px;">Quirófano</div>
-  <div class="row">
-    <div class="col"><div class="lbl">Hospital</div>
-      <select id="f-hosp">
-        <option value="">— Seleccionar —</option>
-        <option>VITHAS – Virgen del Consuelo</option>
-        <option>Hospital Quirónsalud</option>
-        <option>Otro</option>
-      </select>
-    </div>
-    <div class="col"><div class="lbl">Anticipo quirófano (€)</div><input type="number" id="f-ant" placeholder="0.00" step="0.01" min="0" oninput="recalcDif()"></div>
-    <div class="col"><div class="lbl">Factura real (€)</div><input type="number" id="f-fac" placeholder="Cuando llegue" step="0.01" min="0" oninput="recalcDif()"></div>
-  </div>
-  <div id="dif-box"></div>
-  <div class="div"></div>
-  <div class="lbl" style="margin-bottom:6px;">Cobro al paciente</div>
-  <div class="row">
-    <div class="col" style="flex:2;"><div class="lbl">Precio total al paciente (€) *</div><input type="number" id="f-precio-pac" placeholder="Total cobrado al paciente" step="0.01" min="0" oninput="recalc()"></div>
-    <div class="col"><div class="lbl">Pagado por el paciente (€)</div><input type="number" id="f-pagado-pac" placeholder="0.00" step="0.01" min="0" oninput="recalc()"></div>
-  </div>
-  <div id="saldo-preview"></div>
+  <div id="resumen-prev"></div>
+
   <div class="div"></div>
   <div class="row">
-    <div class="col"><div class="lbl">Tipo de intervención</div>
-      <select id="f-tipo" onchange="onTipoChange()">
-        <option value="cirugia">Cirugía</option>
-        <option value="retoque">Retoque (honorarios y aparatología a €0)</option>
-      </select>
-    </div>
     <div class="col"><div class="lbl">Estado</div>
-      <select id="f-est">
-        <option value="creada">Creada</option>
-        <option value="reservada">Reservada</option>
-        <option value="anticipo_pagado">Anticipo pagado</option>
-        <option value="quirofano_confirmado">Quirófano confirmado</option>
-        <option value="realizada">Realizada</option>
-        <option value="factura_recibida">Factura recibida</option>
-        <option value="conciliada">Conciliada</option>
-        <option value="cerrada">Cerrada</option>
+      <select id="f-estado">
+        <option value="creada">Creada</option><option value="reservada">Reservada</option>
+        <option value="anticipo_pagado">Anticipo pagado</option><option value="quirofano_confirmado">Quir√≥fano confirmado</option>
+        <option value="realizada">Realizada</option><option value="factura_recibida">Factura recibida</option>
+        <option value="conciliada">Conciliada</option><option value="cerrada">Cerrada</option>
       </select>
     </div>
-    <div class="col"><div class="lbl">Notas</div><input type="text" id="f-notas" placeholder="Observaciones internas..."></div>
+    <div class="col" style="flex:2;"><div class="lbl">Notas internas</div><input type="text" id="f-notas" placeholder="Observaciones..."></div>
   </div>
-  <div id="retoque-alert" style="display:none;" class="alrt awk">⚠ Retoque: honorarios profesionales y aparatología a €0. Solo se paga quirófano si aplica.</div>
-  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px;">
-    <button class="btn" onclick="cerrarForm()">Cancelar</button>
-    <button class="btn p" onclick="guardar()">💾 Guardar cirugía</button>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
+    <button class="btn btnsm" onclick="cerrarForm()">Cancelar</button>
+    <button class="btn btnp" onclick="guardar()">üíæ Guardar intervenci√≥n</button>
   </div>
 </div>
 
+<!-- P√ÅGINAS -->
 <div class="pg on" id="pg-panel"></div>
+<div class="pg" id="pg-alertas"></div>
 <div class="pg" id="pg-calendario">
   <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center;flex-wrap:wrap;">
-    <button class="btn sm" onclick="calNav(-1)">←</button>
-    <div id="cal-lbl" style="font-size:14px;font-weight:600;flex:1;text-align:center;"></div>
-    <button class="btn sm" onclick="calNav(1)">→</button>
-    <button class="btn sm" onclick="calHoy()">Hoy</button>
-    <div style="display:flex;gap:3px;background:var(--bg3);border-radius:var(--r);padding:3px;">
+    <button class="btn btnsm" onclick="calNav(-1)">‚Üê</button>
+    <div id="cal-lbl" style="font-size:14px;font-weight:600;flex:1;text-align:center;min-width:160px;"></div>
+    <button class="btn btnsm" onclick="calNav(1)">‚Üí</button>
+    <button class="btn btnsm" onclick="calHoy()">Hoy</button>
+    <div style="display:flex;gap:2px;background:var(--s3);border-radius:var(--r);padding:3px;">
       <button class="nb on" id="cv-mes" onclick="setCV('mes',this)" style="padding:4px 10px;border-bottom:none;font-size:11px;">Mes</button>
-      <button class="nb" id="cv-sem" onclick="setCV('semana',this)" style="padding:4px 10px;border-bottom:none;font-size:11px;">Semana</button>
+      <button class="nb" id="cv-sem" onclick="setCV('sem',this)" style="padding:4px 10px;border-bottom:none;font-size:11px;">Semana</button>
     </div>
   </div>
   <div id="cal-content"></div>
 </div>
-<div class="pg" id="pg-cirugias"><div id="cir-list"></div></div>
-<div class="pg" id="pg-aparatologia"></div>
+<div class="pg" id="pg-intervenciones">
+  <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;">
+    <input type="text" id="cq" placeholder="üîç Buscar paciente..." oninput="rCirs()" style="max-width:220px;">
+    <select id="cfest" onchange="rCirs()" style="width:150px;">
+      <option value="">Todos los estados</option>
+      <option value="creada">Creada</option><option value="reservada">Reservada</option>
+      <option value="anticipo_pagado">Anticipo pagado</option><option value="quirofano_confirmado">Quir√≥fano conf.</option>
+      <option value="realizada">Realizada</option><option value="factura_recibida">Factura recibida</option>
+      <option value="conciliada">Conciliada</option><option value="cerrada">Cerrada</option>
+    </select>
+    <select id="cftipo" onchange="rCirs()" style="width:130px;">
+      <option value="">Todos los tipos</option>
+      <option value="cirugia">Cirug√≠as</option>
+      <option value="retoque">Retoques</option>
+    </select>
+  </div>
+  <div id="cir-lista"></div>
+</div>
+<div class="pg" id="pg-pacientes">
+  <div style="display:flex;gap:8px;margin-bottom:12px;">
+    <input type="text" id="pq" placeholder="üîç Buscar paciente..." oninput="rPacs()" style="max-width:280px;">
+  </div>
+  <div id="pac-lista"></div>
+</div>
 <div class="pg" id="pg-honorarios"></div>
+<div class="pg" id="pg-aparatologia"></div>
 <div class="pg" id="pg-quirofano"></div>
 <div class="pg" id="pg-consolidado"></div>
 
+<!-- MODAL PAGO -->
+<div class="mo" id="mo-pago">
+  <div class="mbox">
+    <div class="mtit" id="mo-pago-tit">Registrar pago</div>
+    <div style="margin-bottom:12px;">
+      <div class="lbl">Fecha de pago</div>
+      <input type="date" id="mp-fecha" style="width:100%;">
+    </div>
+    <div style="margin-bottom:16px;">
+      <div class="lbl">Forma de pago</div>
+      <select id="mp-forma" style="width:100%;">
+        <option value="Transferencia">Transferencia bancaria</option>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Tarjeta">Tarjeta</option>
+        <option value="Bizum">Bizum</option>
+        <option value="Cheque">Cheque</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button class="btn btnsm" onclick="mpCancelar()">Cancelar</button>
+      <button class="btn btnp btnsm" onclick="mpConfirmar()">‚úì Confirmar pago</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PRESUPUESTO -->
+<div class="mo" id="mo-presup" style="align-items:flex-start;padding:2rem 1rem;overflow-y:auto;">
+  <div style="background:var(--s1);border:1px solid var(--bd2);border-radius:var(--rx);width:100%;max-width:680px;padding:0;box-shadow:0 8px 40px rgba(0,0,0,.6);">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid var(--bd);">
+      <div style="font-size:14px;font-weight:600;">Presupuesto para paciente</div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btnsm btng" onclick="window.print()">üñ® Imprimir</button>
+        <button class="btn btnsm" onclick="cerrarPresup()">‚úï</button>
+      </div>
+    </div>
+    <div id="presup-content" style="padding:1.25rem;"></div>
+  </div>
+</div>
+
+<!-- MODAL AGREGAR PAGO PACIENTE -->
+<div class="mo" id="mo-pagopac">
+  <div class="mbox">
+    <div class="mtit">Registrar pago del paciente</div>
+    <input type="hidden" id="pp-cid">
+    <div style="margin-bottom:12px;"><div class="lbl">Importe (‚Ç¨)</div><input type="number" id="pp-monto" placeholder="0.00" step="0.01" min="0"></div>
+    <div style="margin-bottom:12px;"><div class="lbl">Fecha</div><input type="date" id="pp-fecha"></div>
+    <div style="margin-bottom:12px;"><div class="lbl">Concepto</div><input type="text" id="pp-concepto" placeholder="Reserva, anticipo, pago final..."></div>
+    <div style="margin-bottom:16px;"><div class="lbl">Forma de pago</div>
+      <select id="pp-forma">
+        <option value="Transferencia">Transferencia bancaria</option>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Tarjeta">Tarjeta</option>
+        <option value="Bizum">Bizum</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button class="btn btnsm" onclick="$('mo-pagopac').classList.remove('on')">Cancelar</button>
+      <button class="btn btnp btnsm" onclick="confirmarPagoPac()">‚úì Registrar</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script>
-const API_URL='https://script.google.com/macros/s/AKfycbzBMUjQLniOFNd-5kKr3daCVRFLwA2gCFrvWtTDBZJgnFlZkyPQ8y6i0iI_kW5IwKtU/exec';
-const HONOR={
-  'Aumento de Pecho':[1000,700,600,420],
-  'Mastopexia':[1500,1050,800,560],
-  'Mastopexia periareolar':[1200,840,650,455],
-  'Lipoescultura':[1400,980,700,490],
-  'Abdominoplastia':[1500,1050,1000,700],
-  'Lipo + Abdominoplastia':[2000,1400,1400,980],
-  'Miniabdomino + lipo':[1500,1050,1100,770],
-  'Miniabdominoplastia':[1000,700,700,490],
-  'Cruroplastia':[1200,840,750,525],
-  'Blefaroplastia':[800,560,500,350],
-  'Labioplastia':[800,560,0,360],
-  'Miniliposucción':[700,490,350,245],
-  'Rinoplastia':[1400,980,350,245],
-  'Gluteoplastia':[1400,980,700,490],
-  'Ginecomastia':[1000,700,500,350],
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, getDocs, setDoc, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+const firebaseConfig = {
+  apiKey: "AIzaSyBUivqhIOIwpKnipl1yT9YLnB08u8SuoVs",
+  authDomain: "art-control-cirugias.firebaseapp.com",
+  projectId: "art-control-cirugias",
+  storageBucket: "art-control-cirugias.firebasestorage.app",
+  messagingSenderId: "958590517313",
+  appId: "1:958590517313:web:f0fdcaa72c3d7e6bbd46c0"
 };
-const AN={1:450,2:585,3:700};
-const IN={1:250,2:325,3:400};
+const _app = initializeApp(firebaseConfig);
+const _db = getFirestore(_app);
+window._fbdb = _db;
+window._fbSet = (id,data) => setDoc(doc(_db,'cirugias',String(id)), data);
+window._fbDel = (id) => deleteDoc(doc(_db,'cirugias',String(id)));
+window._fbGet = () => getDocs(collection(_db,'cirugias'));
+</script>
+<script>
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// DATOS VITHAS (+10.25% sobre tarifas 2024)
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+const VITHAS={
+  'Abdominoplastia':             {p:1212.75},
+  'Blefaroplastia completa':     {p:937.12},
+  'Blefaroplastia simple':       {p:441.00},
+  'Lifting facial':              {p:1323.00},
+  'Lifting cervical':            {p:1323.00},
+  'Lifting cervicofacial':       {p:1764.00},
+  'Liposucci√≥n 1 zona':          {p:606.38},
+  'Liposucci√≥n 2 zonas':         {p:799.31},
+  'Liposucci√≥n 3 zonas':         {p:937.12},
+  'Liposucci√≥n papada':          {p:606.38},
+  'Liposucci√≥n VASER (2-5h)':    {p:1378.12},
+  'Liposucci√≥n VASER (+5h)':     {p:1543.50},
+  'Aumento mamario':             {p:882.00},
+  'Mastopexia':                  {p:1378.12},
+  'Mastectom√≠a':                 {p:1047.38},
+  'Reducci√≥n de pecho':          {p:1267.88},
+  'Rinoplastia':                 {p:1102.50},
+  'Braquioplastia + lipo brazos':{p:1367.10},
+  'Cruroplastia':                {p:1367.10},
+  'Bichectom√≠a':                 {p:551.25},
+  'Otoplastia':                  {p:496.12},
+};
+const RETOQUES={r1h:{lbl:'Retoque cicatriz <1h',p:441.00},r2h:{lbl:'Retoque 1-2h ambulante',p:551.25},rmas2h:{lbl:'Retoque +2h',p:937.12}};
 const AP_CFG={
-  microaire:{nom:'Microaire',socios:['Dr. Deivys Higuerey','Dr. Juan Caicedo','Dr. Oswaldo Artieda','Lic. Rosario Naranjo'],m:100},
-  vaser:{nom:'VASER',socios:['Dr. Juan Caicedo','Dr. Oswaldo Artieda','Dr. Oscar Blanco'],m:250},
-  renuvion:{nom:'Renuvion',socios:['Eva Guerrero','Dr. Eduardo Salas','Dr. Juan Caicedo','Dr. Oswaldo Artieda'],m:250,extra:{nom:'Corpor Clinic S.L.',m:927.83}},
+  microaire:{nom:'Microaire',socios:[{nom:'Dr. Juan Caicedo',m:100},{nom:'Dr. Oswaldo Artieda',m:100},{nom:'Lic. Rosario Naranjo',m:100}]},
+  vaser:    {nom:'VASER',   socios:[{nom:'Dr. Juan Caicedo',m:250},{nom:'Dr. Oswaldo Artieda',m:250},{nom:'Dr. Oscar Blanco',m:250}]},
+  renuvion: {nom:'Renuvion',socios:[{nom:'Dr. Juan Caicedo',m:250},{nom:'Dr. Oswaldo Artieda',m:250},{nom:'Lic. Rosario Naranjo',m:250},{nom:'Dr. Eduardo Salas',m:250},{nom:'Corpor Clinic S.L.',m:927.83}]},
 };
 const ESTADOS=['creada','reservada','anticipo_pagado','quirofano_confirmado','realizada','factura_recibida','conciliada','cerrada'];
-const EL={creada:'Creada',reservada:'Reservada',anticipo_pagado:'Anticipo pagado',quirofano_confirmado:'Quirófano conf.',realizada:'Realizada',factura_recibida:'Factura recibida',conciliada:'Conciliada',cerrada:'Cerrada'};
+const ELBL={creada:'Creada',reservada:'Reservada',anticipo_pagado:'Anticipo pagado',quirofano_confirmado:'Quir√≥fano conf.',realizada:'Realizada',factura_recibida:'Factura recibida',conciliada:'Conciliada',cerrada:'Cerrada'};
 const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-const DS=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+const DS=['Lun','Mar','Mi√©','Jue','Vie','S√°b','Dom'];
 
 let DATA=[];let EID=null;let PS=[];
 let calF=new Date();let calV='mes';
+let mpCB=null;
 
-try{DATA=JSON.parse(localStorage.getItem('ae_v4')||'[]');}catch(e){}
+try{DATA=JSON.parse(localStorage.getItem('ae_v7')||'[]');}catch(e){}
 
 const $=id=>document.getElementById(id);
-const fmt=n=>n!=null&&n!==''?'€'+parseFloat(n).toFixed(2):'—';
+const fmt=n=>n!=null&&n!==''?'‚Ç¨'+parseFloat(n).toFixed(2):'‚Äî';
 const fF=s=>{if(!s)return'';const p=String(s).split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:s;};
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,4);
-const sal=()=>localStorage.setItem('ae_v4',JSON.stringify(DATA));
-
-function calcH(ps,ay,an,ins){
-  let hC=0,hA=0;const det=[];
-  ps.forEach((p,i)=>{const r=HONOR[p];if(!r)return;
-    const c=i===0?r[0]:r[1];const a=i===0?r[2]:r[3];
-    hC+=c;hA+=a;det.push({p,pct:i===0?'100%':'70%',c,a});
-  });
-  const n=Math.min(ps.length,3);
-  return{cir:hC,ay:ay?hA:0,an:an?AN[n]||700:0,ins:ins?IN[n]||400:0,
-    total:hC+(ay?hA:0)+(an?AN[n]||700:0)+(ins?IN[n]||400:0),det};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const sal=()=>localStorage.setItem('ae_v7',JSON.stringify(DATA));
+async function fbSave(c){
+  if(!window._fbSet)return;
+  try{await window._fbSet(c.id,JSON.parse(JSON.stringify(c)));}
+  catch(e){console.warn('fbSave:',e);}
 }
-
-function calcCT(c){
-  const h=c.h||{};const q=c.q||{};
-  const costoAp=Object.values(c.ap||{}).reduce((s,a)=>s+a.socios.reduce((ss,so)=>ss+so.m,0),0);
-  return(h.cir||0)+(h.ay||0)+(h.an||0)+(h.ins||0)+(q.fac||q.ant||0)+costoAp+(c.implante?.costo||0);
+async function fbDelete(id){
+  if(!window._fbDel)return;
+  try{await window._fbDel(id);}
+  catch(e){console.warn('fbDel:',e);}
 }
-
-function bC(e){return{creada:'bg2',reservada:'bb',anticipo_pagado:'bb',quirofano_confirmado:'bb',realizada:'bok',factura_recibida:'bok',conciliada:'bok',cerrada:'bok'}[e]||'bw';}
-
-function setSt(s,m){
-  const el=$('sync-st');
-  el.textContent=m||(s==='ok'?'● sincronizado':s==='err'?'● sin conexión':s==='busy'?'○ sincronizando...':'○ local');
-  el.style.color=s==='ok'?'var(--green)':s==='err'?'var(--red)':s==='busy'?'var(--amber)':'var(--tx3)';
-}
-
-async function apiCall(action,body={}){
-  try{
-    const url=API_URL+'?action='+action+'&data='+encodeURIComponent(JSON.stringify(body));
-    return new Promise((resolve)=>{
-      const cbName='cb_'+Date.now()+'_'+Math.random().toString(36).slice(2,5);
-      const script=document.createElement('script');
-      const fullUrl=url+'&callback='+cbName;
-      let done=false;
-      window[cbName]=function(d){
-        done=true;
-        delete window[cbName];
-        script.remove();
-        if(d&&d.success)resolve(d.data);
-        else resolve(null);
-      };
-      script.onerror=()=>{if(!done){delete window[cbName];resolve(null);}};
-      script.src=fullUrl;
-      document.head.appendChild(script);
-      setTimeout(()=>{if(!done){delete window[cbName];script.remove();resolve(null);}},10000);
-    });
-  }catch(e){console.warn('API:',e.message);return null;}
-}
-
-function apiS(action,body={}){apiCall(action,body);}
-
 async function syncNow(){
-  setSt('busy');
-  const data=await apiCall('getAll');
-  if(!data){setSt('err');return;}
-  if(Array.isArray(data.cirugias)&&data.cirugias.length){
-    DATA=data.cirugias;sal();
-  }
-  setSt('ok');
-  const on=document.querySelector('.nb.on');
-  if(on){
-    const t=on.textContent;
-    if(t==='Panel')rPanel();else if(t==='Calendario')rCal();
-    else if(t==='Cirugías')rCirs();else if(t==='Aparatología')rAp();
-    else if(t==='Honorarios')rHon();else if(t==='Quirófano')rQuir();
-    else if(t==='Consolidado')rCon();
-    else rPanel();
+  const lbl=document.getElementById('sync-lbl');
+  if(!window._fbGet){if(lbl){lbl.textContent='‚óè sin Firebase';lbl.style.color='var(--red)';}return;}
+  if(lbl){lbl.textContent='‚óã sincronizando...';lbl.style.color='var(--amber)';}
+  try{
+    const snap=await window._fbGet();
+    if(!snap.empty){
+      DATA=snap.docs.map(d=>d.data());
+      localStorage.setItem('ae_v7',JSON.stringify(DATA));
+    }
+    if(lbl){lbl.textContent='‚óè sincronizado';lbl.style.color='var(--green)';}
+    rAll();
+  }catch(e){
+    if(lbl){lbl.textContent='‚óè error';lbl.style.color='var(--red)';}
+    console.error('sync:',e);
   }
 }
+const hoy=()=>new Date().toISOString().slice(0,10);
+const diffDias=(a,b)=>Math.round((new Date(a)-new Date(b))/86400000);
 
+function bEst(e){return{creada:'bgray',reservada:'bblue',anticipo_pagado:'bblue',quirofano_confirmado:'bblue',realizada:'bok',factura_recibida:'bok',conciliada:'bok',cerrada:'bok'}[e]||'bpend';}
+
+function getCirNom(){const v=$('f-cir').value;return v==='__otro'?$('f-cir-n').value.trim():v;}
+function getAyNom(){const v=$('f-ay').value;return v==='__otro'?$('f-ay-n').value.trim():v;}
+function getAnNom(){const v=$('f-an').value;return v==='__otro'?$('f-an-n').value.trim():v;}
+function getInsNom(){const v=$('f-ins').value;return v==='__otro'?$('f-ins-n').value.trim():v;}
+function getHosp(){const v=$('f-hosp').value;return v==='__otro'?$('f-hosp-n').value.trim():'VITHAS ‚Äì Virgen del Consuelo';}
+
+function calcCostoTotal(c){
+  const h=c.h||{};const q=c.q||{};
+  const ap=Object.values(c.ap||{}).reduce((s,a)=>s+a.socios.reduce((ss,so)=>ss+so.m,0),0);
+  return(h.cir||0)+(h.ay||0)+(h.an||0)+(h.ins||0)+(q.fac||q.ant||0)+ap+(c.implante?.costo||0);
+}
+
+function totalPagadoPac(c){
+  return(c.pagos||[]).reduce((s,p)=>s+p.monto,0);
+}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// MODAL PAGO
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function abrirMP(titulo,cb){
+  mpCB=cb;
+  $('mo-pago-tit').textContent=titulo||'Registrar pago';
+  $('mp-fecha').value=hoy();
+  $('mp-forma').selectedIndex=0;
+  $('mo-pago').classList.add('on');
+}
+function mpCancelar(){$('mo-pago').classList.remove('on');mpCB=null;}
+function mpConfirmar(){
+  const f=$('mp-fecha').value;
+  const forma=$('mp-forma').value;
+  $('mo-pago').classList.remove('on');
+  if(mpCB)mpCB(f,forma);
+  mpCB=null;
+}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// NAV
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
 function showPg(pg,btn){
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   $('pg-'+pg).classList.add('on');
   if(pg==='panel')rPanel();
+  if(pg==='alertas')rAlertas();
   if(pg==='calendario')rCal();
-  if(pg==='cirugias')rCirs();
-  if(pg==='aparatologia')rAp();
+  if(pg==='intervenciones')rCirs();
+  if(pg==='pacientes')rPacs();
   if(pg==='honorarios')rHon();
+  if(pg==='aparatologia')rAp();
   if(pg==='quirofano')rQuir();
   if(pg==='consolidado')rCon();
 }
 
-function toggleForm(id){
-  const fp=$('form-panel');
-  if(fp.classList.contains('on')&&!id){cerrarForm();return;}
-  EID=id;PS=[];limpiar();buildBtns();
-  if(id){
-    const c=DATA.find(x=>x.id===id);if(!c)return;
-    $('form-tit').textContent='Editar cirugía';
-    $('f-nom').value=c.pac?.nom||'';$('f-dni').value=c.pac?.dni||'';
-    $('f-fecha').value=c.fecha||'';$('f-cir').value=c.eq?.cir||'';
-    $('f-ay').value=c.eq?.ay||'';$('f-an').value=c.eq?.an||'';
-    $('f-ins').value=c.eq?.ins||'';$('f-hosp').value=c.q?.hosp||'';
-    $('f-ant').value=c.q?.ant||'';$('f-fac').value=c.q?.fac||'';
-    $('f-est').value=c.estado||'creada';$('f-notas').value=c.notas||'';
-    document.getElementById('f-tipo').value=c.tipo||'cirugia';
-    onTipoChange();
-    $('f-micro').checked=!!c.ap?.microaire;$('f-vaser').checked=!!c.ap?.vaser;$('f-renuvion').checked=!!c.ap?.renuvion;
-    $('f-imp-marca').value=c.implante?.marca||'';$('f-imp-talla').value=c.implante?.talla||'';$('f-imp-costo').value=c.implante?.costo||'';
-    $('f-precio-pac').value=c.pago?.precio||'';$('f-pagado-pac').value=c.pago?.pagado||'';
-    PS=[...(c.procs||[])];rChips();recalc();recalcDif();
-  }else{
-    $('form-tit').textContent='Nueva cirugía';
-    $('f-fecha').value=new Date().toISOString().slice(0,10);
-  }
-  fp.classList.add('on');
-  fp.scrollIntoView({behavior:'smooth',block:'start'});
+function rAll(){
+  rPanel();rAlertas();
+  const on=document.querySelector('.nb.on');
+  if(!on)return;const t=on.textContent.trim();
+  if(t==='Calendario')rCal();
+  else if(t==='Intervenciones')rCirs();
+  else if(t==='Pacientes')rPacs();
+  else if(t==='Honorarios')rHon();
+  else if(t==='Aparatolog√≠a')rAp();
+  else if(t==='Quir√≥fano')rQuir();
+  else if(t==='Consolidado')rCon();
 }
 
-function cerrarForm(){$('form-panel').classList.remove('on');}
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// FORMULARIO
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function abrirForm(id){
+  EID=id;PS=[];
+  limpF();buildProcBtns();
+  if(id){
+    const c=DATA.find(x=>x.id===id);if(!c)return;
+    $('ftit').textContent='Editar intervenci√≥n';
+    $('f-tipo').value=c.tipo||'cirugia';onTipo();
+    if(c.tipo==='retoque'&&c.retipo)$('f-retipo').value=c.retipo;
+    $('f-nom').value=c.pac?.nom||'';$('f-dni').value=c.pac?.dni||'';
+    $('f-fecha').value=c.fecha||'';$('f-tel').value=c.pac?.tel||'';$('f-email').value=c.pac?.email||'';
+    setSelOtro('f-cir','cir-otro-c','f-cir-n',c.eq?.cir,['Dr. Deivys Higuerey','Dr. Oscar Blanco']);
+    setSelOtro('f-ay','ay-otro-c','f-ay-n',c.eq?.ay,['Dr. Deivys Higuerey','Dr. Oscar Blanco','']);
+    setSelOtro('f-an','an-otro-c','f-an-n',c.eq?.an,['Dr. Oswaldo Artieda','']);
+    setSelOtro('f-ins','ins-otro-c','f-ins-n',c.eq?.ins,['Eva Guerrero','']);
+    $('f-hcir').value=c.h?.cir||'';$('f-hay').value=c.h?.ay||'';
+    $('f-han').value=c.h?.an||'';$('f-hins').value=c.h?.ins||'';
+    $('f-impm').value=c.implante?.marca||'';$('f-impt').value=c.implante?.talla||'';$('f-impc').value=c.implante?.costo||'';
+    $('f-micro').checked=!!c.ap?.microaire;$('f-vaser').checked=!!c.ap?.vaser;$('f-renuvion').checked=!!c.ap?.renuvion;
+    const hospV=c.q?.hosp||'VITHAS ‚Äì Virgen del Consuelo';
+    if(hospV!=='VITHAS ‚Äì Virgen del Consuelo'){$('f-hosp').value='__otro';$('hosp-otro-c').style.display='';$('f-hosp-n').value=hospV;}
+    $('f-ant').value=c.q?.ant||'';$('f-fac').value=c.q?.fac||'';
+    $('f-precio').value=c.pago?.precio||'';
+    $('f-pagado').value=totalPagadoPac(c)||'';
+    $('f-estado').value=c.estado||'creada';$('f-notas').value=c.notas||'';
+    PS=[...(c.procs||[])];rChips();calcResumen();calcDif();actualizarQuirEst();
+  }else{
+    $('ftit').textContent='Nueva intervenci√≥n';$('f-fecha').value=hoy();
+  }
+  $('fwrap').classList.add('on');
+  $('fwrap').scrollIntoView({behavior:'smooth',block:'start'});
+}
 
-function limpiar(){
-  ['f-nom','f-dni','f-fecha','f-ant','f-fac','f-notas','f-imp-talla','f-imp-costo','f-precio-pac','f-pagado-pac'].forEach(id=>{const e=$(id);if(e)e.value='';});
-  ['f-cir','f-ay','f-an','f-ins','f-hosp','f-est','f-imp-marca'].forEach(id=>{const e=$(id);if(e)e.selectedIndex=0;});
+function setSelOtro(selId,colId,inpId,val,knownVals){
+  if(!val){$(selId).value='';return;}
+  if(knownVals.includes(val)){$(selId).value=val;}
+  else{$(selId).value='__otro';$(colId).style.display='';$(inpId).value=val;}
+}
+
+function cerrarForm(){$('fwrap').classList.remove('on');}
+
+function limpF(){
+  ['f-nom','f-dni','f-fecha','f-tel','f-email','f-cir-n','f-ay-n','f-an-n','f-ins-n','f-hosp-n',
+   'f-impt','f-impc','f-ant','f-fac','f-precio','f-pagado','f-notas',
+   'f-hcir','f-hay','f-han','f-hins','f-potro','f-potro-p'].forEach(id=>{const e=$(id);if(e)e.value='';});
+  ['f-tipo','f-cir','f-ay','f-an','f-ins','f-hosp','f-impm','f-estado','f-retipo'].forEach(id=>{const e=$(id);if(e)e.selectedIndex=0;});
   ['f-micro','f-vaser','f-renuvion'].forEach(id=>{const e=$(id);if(e)e.checked=false;});
-  $('dif-box').innerHTML='';$('preview').style.display='none';$('saldo-preview').innerHTML='';
+  ['cir-otro-c','ay-otro-c','an-otro-c','ins-otro-c','hosp-otro-c','col-retipo'].forEach(id=>{const e=$(id);if(e)e.style.display='none';});
+  $('dif-prev').innerHTML='';$('resumen-prev').innerHTML='';$('quir-est-prev').style.display='none';
+  $('ret-alert').style.display='none';
   PS=[];rChips();
 }
 
-function buildBtns(){
-  $('proc-btns').innerHTML=Object.keys(HONOR).map(p=>`<button class="btn sm" style="font-size:11px;margin-bottom:3px;" onclick="addP('${p}')">${p}</button>`).join('');
+function buildProcBtns(){
+  $('proc-btns').innerHTML=Object.entries(VITHAS).map(([nom,v])=>
+    `<button class="btn btnsm" style="font-size:11px;margin-bottom:3px;" onclick="addP('${nom.replace(/'/g,"\\'")}',${v.p})">${nom}<span style="color:var(--tx3);font-size:10px;margin-left:4px;">${fmt(v.p)}</span></button>`
+  ).join('');
 }
 
-function addP(p){if(PS.includes(p))return;if(PS.length>=3){alert('Máximo 3 procedimientos.');return;}PS.push(p);rChips();recalc();}
-function remP(i){PS.splice(i,1);rChips();recalc();}
+function addP(nom,precio){
+  if(PS.find(p=>p.nom===nom))return;
+  if(PS.length>=3){alert('M√°ximo 3 procedimientos.');return;}
+  PS.push({nom,precio});rChips();actualizarQuirEst();calcResumen();
+}
+function addProcOtro(){
+  const nom=$('f-potro').value.trim();const precio=parseFloat($('f-potro-p').value)||0;
+  if(!nom){alert('Escribe el nombre del procedimiento.');return;}
+  if(PS.find(p=>p.nom===nom))return;
+  if(PS.length>=3){alert('M√°ximo 3 procedimientos.');return;}
+  PS.push({nom,precio,custom:true});rChips();actualizarQuirEst();calcResumen();
+  $('f-potro').value='';$('f-potro-p').value='';
+}
+function remP(i){PS.splice(i,1);rChips();actualizarQuirEst();calcResumen();}
 
 function rChips(){
-  const el=$('chips-sel');
-  if(!PS.length){el.innerHTML='<span style="font-size:11px;color:var(--tx3);">Ninguno seleccionado</span>';return;}
-  el.innerHTML=PS.map((p,i)=>`<span class="chip ${i===0?'ch1':i===1?'ch2':'ch3'}">${i+1}ª ${p}<span class="x" onclick="remP(${i})">×</span></span>`).join('');
+  const el=$('chips-area');
+  if(!PS.length){el.innerHTML='<span style="font-size:11px;color:var(--tx3);">Sin procedimientos</span>';return;}
+  el.innerHTML=PS.map((p,i)=>`<span class="chip ${i===0?'ch1':i===1?'ch2':'ch3'}">${i+1}¬™ ${p.nom}<span style="opacity:.5;margin-left:4px;">${fmt(p.precio)}</span><span class="rm" onclick="remP(${i})">√ó</span></span>`).join('');
 }
 
-function onTipoChange(){
-  const es=document.getElementById('f-tipo')?.value==='retoque';
-  document.getElementById('retoque-alert').style.display=es?'block':'none';
-  recalc();
-}
-
-function recalc(){
-  const prev=$('preview');
-  const ay=$('f-ay').value,an=$('f-an').value,ins=$('f-ins').value;
-  const imp=parseFloat($('f-imp-costo').value)||0;
-  if(!PS.length){prev.style.display='none';}else{
-    const esRetoque=document.getElementById('f-tipo')?.value==='retoque';
-  const h=esRetoque?{cir:0,ay:0,an:0,ins:0,total:0,det:[]}:calcH(PS,ay,an,ins);
-    prev.style.display='block';
-    prev.innerHTML=`<div class="lbl" style="margin-bottom:6px;">Honorarios calculados automáticamente</div>
-      ${h.det.map(d=>`<div class="hr"><span style="color:var(--tx2);">${d.p} <span style="opacity:.5;">(${d.pct})</span></span><span>Cirujano: <b class="hm">${fmt(d.c)}</b> · Ayudante: ${fmt(d.a)}</span></div>`).join('')}
-      <div class="hr"><span style="color:var(--tx2);">Anestesia (${PS.length} proc.)</span><span class="hm">${an?fmt(AN[Math.min(PS.length,3)]):'—'}</span></div>
-      <div class="hr"><span style="color:var(--tx2);">Instrumentista</span><span class="hm">${ins?fmt(IN[Math.min(PS.length,3)]):'—'}</span></div>
-      ${imp?`<div class="hr"><span style="color:var(--tx2);">Implantes mamarios</span><span class="hm">${fmt(imp)}</span></div>`:''}
-      <div class="hr" style="border-top:1px solid var(--bd2);margin-top:4px;padding-top:7px;"><span style="font-weight:600;">Total honorarios + implantes</span><span style="font-size:14px;font-weight:600;color:var(--gold);font-family:'DM Mono',monospace;">${fmt(h.total+imp)}</span></div>`;
+function actualizarQuirEst(){
+  const el=$('quir-est-prev');
+  const esR=$('f-tipo').value==='retoque';
+  if(esR){
+    const rt=RETOQUES[$('f-retipo').value||'r2h'];
+    el.style.display='block';el.innerHTML=`üí° ${rt.lbl} ‚Äî estimado VITHAS: <b>${fmt(rt.p)}</b>`;
+    return;
   }
-  recalcSaldo();
+  if(!PS.length){el.style.display='none';return;}
+  const tot=PS.reduce((s,p,i)=>s+(i===0?p.precio:p.precio*0.5),0);
+  el.style.display='block';
+  el.innerHTML='üí° Estimado VITHAS: '+PS.map((p,i)=>`${p.nom} ${i===0?'(100%)':'(50%)'} = ${fmt(i===0?p.precio:p.precio*0.5)}`).join(' + ')+` = <b>${fmt(tot)}</b>`;
 }
 
-function recalcDif(){
-  const a=parseFloat($('f-ant').value)||0;const f=parseFloat($('f-fac').value)||0;
-  const el=$('dif-box');
-  if(!f){el.innerHTML='';return;}
+function onTipo(){
+  const esR=$('f-tipo').value==='retoque';
+  $('ret-alert').style.display=esR?'block':'none';
+  $('col-retipo').style.display=esR?'':'none';
+  actualizarQuirEst();
+}
+function onCirSel(){$('cir-otro-c').style.display=$('f-cir').value==='__otro'?'':'none';}
+function onAySel(){$('ay-otro-c').style.display=$('f-ay').value==='__otro'?'':'none';}
+function onAnSel(){$('an-otro-c').style.display=$('f-an').value==='__otro'?'':'none';}
+function onInsSel(){$('ins-otro-c').style.display=$('f-ins').value==='__otro'?'':'none';}
+function onHospSel(){$('hosp-otro-c').style.display=$('f-hosp').value==='__otro'?'':'none';}
+
+function calcDif(){
+  const a=parseFloat($('f-ant').value)||0,f=parseFloat($('f-fac').value)||0;
+  const el=$('dif-prev');if(!f){el.innerHTML='';return;}
   const d=a-f;
-  el.innerHTML=`<div class="alrt ${Math.abs(d)<0.01?'aok':d>0?'aok':'ard'}">${Math.abs(d)<0.01?'✓ Cuadrado':d>0?`Saldo a favor de ART: ${fmt(d)}`:`Pendiente a hospital: ${fmt(Math.abs(d))}`}</div>`;
-  recalcSaldo();
+  el.innerHTML=`<div class="alert ${Math.abs(d)<0.01?'aok':d>0?'aok':'ard'}">${Math.abs(d)<0.01?'‚úì Cuadrado':d>0?`Saldo a favor de ART: ${fmt(d)}`:`Pendiente a hospital: ${fmt(Math.abs(d))}`}</div>`;
 }
 
-function recalcSaldo(){
-  const precio=parseFloat($('f-precio-pac').value)||0;
-  const pagado=parseFloat($('f-pagado-pac').value)||0;
-  const el=$('saldo-preview');
-  if(!precio){el.innerHTML='';return;}
+function calcResumen(){
+  const precio=parseFloat($('f-precio').value)||0;
+  const pagado=parseFloat($('f-pagado').value)||0;
+  const el=$('resumen-prev');if(!precio){el.innerHTML='';return;}
   const saldo=precio-pagado;
-  el.innerHTML=`<div class="saldo-box">
-    <div class="saldo-row"><span style="color:var(--tx2);">Precio total al paciente</span><span class="hm">${fmt(precio)}</span></div>
-    <div class="saldo-row"><span style="color:var(--tx2);">Pagado por el paciente</span><span style="color:var(--green);">${fmt(pagado)}</span></div>
-    <div class="saldo-row"><span>Saldo pendiente paciente</span><span style="color:${saldo<=0?'var(--green)':'var(--red)'};">${fmt(Math.max(saldo,0))}</span></div>
+  el.innerHTML=`<div class="sbox">
+    <div class="srow"><span style="color:var(--tx2);">Precio total</span><span class="hm">${fmt(precio)}</span></div>
+    <div class="srow"><span style="color:var(--tx2);">Pagado</span><span class="green">${fmt(pagado)}</span></div>
+    <div class="srow"><span>Saldo pendiente</span><span class="${saldo<=0?'green':'red'}">${fmt(Math.max(saldo,0))}</span></div>
   </div>`;
 }
 
 function guardar(){
   const nom=$('f-nom').value.trim();
   if(!nom){alert('El nombre del paciente es obligatorio.');return;}
-  if(!PS.length){alert('Selecciona al menos un procedimiento.');return;}
-  const cir=$('f-cir').value;
-  if(!cir){alert('Selecciona el cirujano principal.');return;}
-  const ay=$('f-ay').value,an=$('f-an').value,ins=$('f-ins').value;
-  const h=calcH(PS,ay,an,ins);
+  const cirNom=getCirNom();
+  if(!cirNom){alert('Selecciona o escribe el cirujano principal.');return;}
+  const esR=$('f-tipo').value==='retoque';
+  if(!esR&&!PS.length){alert('A√±ade al menos un procedimiento.');return;}
+
+  const ayN=getAyNom();const anN=getAnNom();const insN=getInsNom();
+  const hCir=esR?0:parseFloat($('f-hcir').value)||0;
+  const hAy=esR?0:parseFloat($('f-hay').value)||0;
+  const hAn=esR?0:parseFloat($('f-han').value)||0;
+  const hIns=esR?0:parseFloat($('f-hins').value)||0;
+
   const apObj={};
-  [['microaire','f-micro'],['vaser','f-vaser'],['renuvion','f-renuvion']].forEach(([k,id])=>{
-    if(!$(id).checked)return;
+  [['microaire','f-micro'],['vaser','f-vaser'],['renuvion','f-renuvion']].forEach(([k,fid])=>{
+    if(!$(fid).checked)return;
     const cfg=AP_CFG[k];
-    const socios=cfg.socios.map(s=>({nom:s,m:cfg.m,pag:false}));
-    if(cfg.extra)socios.push({nom:cfg.extra.nom,m:cfg.extra.m,pag:false});
-    apObj[k]={nom:cfg.nom,socios};
+    apObj[k]={nom:cfg.nom,socios:cfg.socios.map(s=>({...s,m:esR?0:s.m,pag:false,fechaPago:'',formaPago:''}))};
   });
-    const esRetoque=$('f-tipo').value==='retoque';
-  if(esRetoque) Object.keys(apObj).forEach(k=>{ apObj[k].socios=apObj[k].socios.map(s=>({...s,m:0})); });
+
   const ex=EID?DATA.find(x=>x.id===EID):null;
+  const retipo=$('f-retipo').value||'r2h';
+  const precioQuirSug=esR?RETOQUES[retipo].p:PS.reduce((s,p,i)=>s+(i===0?p.precio:p.precio*0.5),0);
+
   const c={
     id:EID||uid(),
-    tipo:document.getElementById('f-tipo')?.value||'cirugia',
-    pac:{nom,dni:$('f-dni').value.trim()},
-    fecha:$('f-fecha').value,procs:[...PS],eq:{cir,ay,an,ins},h,
-    hp:ex?.hp||{cir:{pagado:false},ay:{pagado:false},an:{pagado:false},ins:{pagado:false}},
-    implante:{marca:$('f-imp-marca').value,talla:$('f-imp-talla').value,costo:parseFloat($('f-imp-costo').value)||0},
-    q:{hosp:$('f-hosp').value,ant:parseFloat($('f-ant').value)||0,antPag:ex?.q?.antPag||false,fac:parseFloat($('f-fac').value)||0,ffact:parseFloat($('f-fac').value)?new Date().toISOString().slice(0,10):''},
+    tipo:$('f-tipo').value,
+    retipo:esR?retipo:null,
+    pac:{nom,dni:$('f-dni').value.trim(),tel:$('f-tel').value.trim(),email:$('f-email').value.trim()},
+    fecha:$('f-fecha').value,
+    procs:[...PS],
+    precioQuirSug,
+    eq:{cir:cirNom,ay:ayN,an:anN,ins:insN},
+    h:{cir:hCir,ay:hAy,an:hAn,ins:hIns,total:hCir+hAy+hAn+hIns},
+    hp:ex?.hp||{cir:{pagado:false,fecha:'',forma:''},ay:{pagado:false,fecha:'',forma:''},an:{pagado:false,fecha:'',forma:''},ins:{pagado:false,fecha:'',forma:''}},
+    implante:{marca:$('f-impm').value,talla:$('f-impt').value,costo:parseFloat($('f-impc').value)||0},
+    q:(()=>{
+      const facNueva=parseFloat($('f-fac').value)||0;
+      const facAnterior=ex?.q?.fac||0;
+      const fechaFact=facNueva&&facNueva!==facAnterior?hoy():(ex?.q?.fechaFact||'');
+      return{hosp:getHosp(),ant:parseFloat($('f-ant').value)||0,antPag:ex?.q?.antPag||false,fechaAnticipo:ex?.q?.fechaAnticipo||'',formaAnticipo:ex?.q?.formaAnticipo||'',fac:facNueva,fechaFact};
+    })(),
     ap:Object.keys(apObj).length?apObj:(ex?.ap||{}),
-    pago:{precio:parseFloat($('f-precio-pac').value)||0,pagado:parseFloat($('f-pagado-pac').value)||0},
-    estado:$('f-est').value,notas:$('f-notas').value.trim(),
+    pago:{precio:parseFloat($('f-precio').value)||0},
+    pagos:ex?.pagos||[],
+    estado:$('f-estado').value,
+    notas:$('f-notas').value.trim(),
+    creadaEn:ex?.creadaEn||new Date().toISOString(),
   };
-  if(EID){const i=DATA.findIndex(x=>x.id===EID);if(i!==-1)DATA[i]=c;}else DATA.unshift(c);
-  sal();cerrarForm();apiS('save',c);
-  const on=document.querySelector('.nb.on');
-  const t=on?.textContent||'Panel';
-  if(t==='Panel')rPanel();else if(t==='Calendario')rCal();
-  else if(t==='Cirugías')rCirs();else if(t==='Aparatología')rAp();
-  else if(t==='Honorarios')rHon();else if(t==='Quirófano')rQuir();
-  else if(t==='Consolidado')rCon();else rPanel();
+
+  if(EID){const i=DATA.findIndex(x=>x.id===EID);if(i!==-1)DATA[i]=c;}
+  else DATA.unshift(c);
+  sal();fbSave(c);cerrarForm();rAll();
 }
 
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// PANEL
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
 function rPanel(){
+  const mesActual=hoy().slice(0,7);
+  const delMes=DATA.filter(c=>c.fecha?.startsWith(mesActual));
   const tH=DATA.reduce((s,c)=>s+(c.h?.total||0),0);
   const tPac=DATA.reduce((s,c)=>s+(c.pago?.precio||0),0);
-  const tPend=DATA.reduce((s,c)=>s+Math.max((c.pago?.precio||0)-(c.pago?.pagado||0),0),0);
-  const prox=DATA.filter(c=>c.fecha&&c.fecha>=new Date().toISOString().slice(0,10)&&c.estado!=='cerrada').sort((a,b)=>a.fecha.localeCompare(b.fecha)).slice(0,5);
+  const tPend=DATA.reduce((s,c)=>s+Math.max((c.pago?.precio||0)-totalPagadoPac(c),0),0);
+  const tHMes=delMes.reduce((s,c)=>s+(c.h?.total||0),0);
+  const tQuirMes=delMes.reduce((s,c)=>s+(c.q?.ant||0),0);
+  const tApMes=delMes.reduce((s,c)=>s+Object.values(c.ap||{}).reduce((ss,a)=>ss+a.socios.reduce((sss,so)=>sss+so.m,0),0),0);
+  const ingresosMes=delMes.reduce((s,c)=>s+(c.pago?.precio||0),0);
+  const costosMes=tHMes+tQuirMes+tApMes;
+  const margenMes=ingresosMes-costosMes;
+  const prox=DATA.filter(c=>c.fecha&&c.fecha>=hoy()&&c.estado!=='cerrada').sort((a,b)=>a.fecha.localeCompare(b.fecha)).slice(0,5);
+  const alertas=getAlertas();
+
   $('pg-panel').innerHTML=`
     <div class="sg s4">
-      <div class="st"><div class="sl">Total cirugías</div><div class="sv sv-g">${DATA.length}</div></div>
-      <div class="st"><div class="sl">Total honorarios</div><div class="sv sv-g">${fmt(tH)}</div></div>
-      <div class="st"><div class="sl">Facturado pacientes</div><div class="sv">${fmt(tPac)}</div></div>
-      <div class="st"><div class="sl">Saldo pendiente</div><div class="sv ${tPend>0?'sv-r':''}">${fmt(tPend)}</div></div>
+      <div class="st stg"><div class="sl">Total intervenciones</div><div class="sv gold">${DATA.length}</div><div class="ssb">${DATA.filter(c=>c.tipo==='retoque').length} retoques</div></div>
+      <div class="st stok"><div class="sl">Facturado total</div><div class="sv gold">${fmt(tPac)}</div></div>
+      <div class="st ster"><div class="sl">Saldo pendiente</div><div class="sv ${tPend>0?'red':''}">${fmt(tPend)}</div></div>
+      <div class="st stb"><div class="sl">Alertas activas</div><div class="sv ${alertas.length>0?'amber':''}">${alertas.length}</div></div>
     </div>
-    <div class="lbl" style="margin-bottom:8px;">Próximas cirugías</div>
-    ${prox.length?prox.map(c=>`<div class="ci">
-      <div class="cih" onclick="document.querySelectorAll('.nb')[2].click();setTimeout(()=>tog('c-${c.id}'),80)">
-        <div class="av">${(c.pac?.nom||'?').split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase()}</div>
-        <div style="flex:1;min-width:0;"><div style="font-weight:600;">${c.pac?.nom}</div>
-        <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} · ${(c.procs||[]).join(' + ')}</div></div>
-        <span class="bx ${bC(c.estado)}">${EL[c.estado]||c.estado}</span>
-      </div></div>`).join(''):`<div class="empty">Sin cirugías próximas<br><br><button class="btn p sm" onclick="toggleForm(null)">+ Registrar primera cirugía</button></div>`}`;
+    <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rl);padding:1rem;margin-bottom:14px;">
+      <div class="ctit" style="margin-bottom:12px;">Dashboard mes en curso ‚Äî ${MESES[new Date().getMonth()]}</div>
+      <div class="sg s4" style="margin-bottom:0;">
+        <div class="st stg"><div class="sl">Ingresos</div><div class="sv gold">${fmt(ingresosMes)}</div><div class="ssb">${delMes.length} cirug√≠as</div></div>
+        <div class="st ster"><div class="sl">Honorarios</div><div class="sv red">${fmt(tHMes)}</div></div>
+        <div class="st sta"><div class="sl">Quir√≥fano</div><div class="sv amber">${fmt(tQuirMes)}</div></div>
+        <div class="st ${margenMes>=0?'stok':'ster'}"><div class="sl">Margen neto</div><div class="sv ${margenMes>=0?'green':'red'}">${fmt(margenMes)}</div></div>
+      </div>
+    </div>
+    ${alertas.length?`<div class="ctit">‚ö† Alertas</div>${alertas.slice(0,3).map(a=>`<div class="alert-item ai-${a.tipo}"><div class="ai-icon">${a.icon}</div><div class="ai-text">${a.msg}</div></div>`).join('')}<br>`:''}
+    <div class="ctit">Pr√≥ximas intervenciones</div>
+    ${prox.length?prox.map(c=>`<div class="cc">
+      <div class="cch" onclick="document.querySelectorAll('.nb')[3].click();setTimeout(()=>togC('${c.id}'),60)">
+        <div class="cav">${(c.pac?.nom||'?').split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase()}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:600;">${c.pac?.nom}</div>
+          <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} ¬∑ ${c.procs?.map(p=>p.nom).join(' + ')||'‚Äî'} ¬∑ ${c.eq?.cir||'‚Äî'}</div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;">
+          ${c.tipo==='retoque'?'<span class="bx bblue">Retoque</span>':''}
+          <span class="bx ${bEst(c.estado)}">${ELBL[c.estado]}</span>
+        </div>
+      </div></div>`).join(''):`<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üìÖ</div><div>Sin intervenciones pr√≥ximas</div><br><button class="btn btnp btnsm" onclick="abrirForm(null)">+ Registrar primera intervenci√≥n</button></div>`}`;
 }
 
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ALERTAS
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function getAlertas(){
+  const alertas=[];
+  const h=hoy();
+  DATA.forEach(c=>{
+    if(c.estado==='cerrada'||c.estado==='conciliada')return;
+    const diasFecha=c.fecha?diffDias(c.fecha,h):null;
+    // Quir√≥fano sin confirmar con cirug√≠a pr√≥xima
+    if(diasFecha!==null&&diasFecha<=7&&diasFecha>=0&&c.estado!=='quirofano_confirmado'&&c.estado!=='realizada'&&c.estado!=='factura_recibida'){
+      alertas.push({tipo:'red',icon:'üî¥',msg:`<b>${c.pac?.nom}</b> ‚Äî Cirug√≠a en ${diasFecha===0?'hoy':diasFecha+' d√≠as'} sin quir√≥fano confirmado`});
+    }
+    // Honorarios pendientes >30 d√≠as post-cirug√≠a
+    if(c.fecha&&c.estado==='realizada'||c.estado==='factura_recibida'){
+      const d=diffDias(h,c.fecha);
+      if(d>30){
+        const honPend=['cir','ay','an','ins'].filter(r=>c.h?.[r]>0&&!c.hp?.[r]?.pagado);
+        if(honPend.length>0)alertas.push({tipo:'warn',icon:'‚ö†Ô∏è',msg:`<b>${c.pac?.nom}</b> ‚Äî Honorarios pendientes hace ${d} d√≠as (${honPend.map(r=>({cir:'Cirujano',ay:'Ayudante',an:'Anestesia',ins:'Instrumentista'}[r])).join(', ')})`});
+      }
+    }
+    // Factura quir√≥fano sin recibir post-cirug√≠a
+    if((c.estado==='realizada'||c.estado==='factura_recibida')&&c.q?.ant>0&&!c.q?.fac){
+      const d=c.fecha?diffDias(h,c.fecha):0;
+      if(d>14)alertas.push({tipo:'warn',icon:'üè•',msg:`<b>${c.pac?.nom}</b> ‚Äî Factura de ${c.q?.hosp||'quir√≥fano'} pendiente de recibir (${d} d√≠as post-cirug√≠a)`});
+    }
+    // Saldo pendiente de paciente >0
+    const sp=Math.max((c.pago?.precio||0)-totalPagadoPac(c),0);
+    if(sp>0&&(c.estado==='realizada'||c.estado==='cerrada')){
+      alertas.push({tipo:'warn',icon:'üí∂',msg:`<b>${c.pac?.nom}</b> ‚Äî Saldo pendiente del paciente: ${fmt(sp)}`});
+    }
+  });
+  return alertas;
+}
+
+function rAlertas(){
+  const alertas=getAlertas();
+  $('pg-alertas').innerHTML=alertas.length?`
+    <div style="margin-bottom:1rem;font-size:13px;color:var(--tx3);">${alertas.length} alerta${alertas.length!==1?'s':''} activa${alertas.length!==1?'s':''}</div>
+    ${alertas.map(a=>`<div class="alert-item ai-${a.tipo}"><div class="ai-icon">${a.icon}</div><div class="ai-text">${a.msg}</div></div>`).join('')}`
+  :`<div class="empty"><div style="font-size:36px;opacity:.4;margin-bottom:8px;">‚úÖ</div><div>Sin alertas activas</div></div>`;
+}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// INTERVENCIONES
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
 function rCirs(){
-  $('cir-list').innerHTML=DATA.length?DATA.map(c=>{
-    const h=c.h||{};const hp=c.hp||{};const q=c.q||{};const pago=c.pago||{};
-    const ini=(c.pac?.nom||'?').split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase();
-    const saldoPac=Math.max((pago.precio||0)-(pago.pagado||0),0);
-    const margen=(pago.precio||0)-calcCT(c);
-    const dif=(q.ant||0)-(q.fac||0);
-    return`<div class="ci" id="c-${c.id}">
-      <div class="cih" onclick="tog('c-${c.id}')">
-        <div class="av">${ini}</div>
-        <div style="flex:1;min-width:0;"><div style="font-weight:600;">${c.pac?.nom}</div>
-        <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} · ${(c.procs||[]).join(' + ')} · ${c.eq?.cir||'—'}</div></div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span class="mono" style="font-weight:600;color:var(--gold);">${fmt(pago.precio)}</span>
-          ${c.tipo==='retoque'?'<span class="bx" style="background:rgba(91,138,240,.15);color:var(--blue);">Retoque</span>':''}  <span class="bx ${bC(c.estado)}">${EL[c.estado]||c.estado}</span>
-          <span style="color:var(--tx3);font-size:11px;">▶</span>
-        </div>
-      </div>
-      <div class="cib">
-        <div class="sec">
-          <div class="sect">Estado del proceso</div>
-          <div class="flow">${ESTADOS.map((e,i)=>{const idx=ESTADOS.indexOf(c.estado);return`<span class="fe ${i<idx?'done':i===idx?'cur':''}" onclick="sEst('${c.id}','${e}')">${EL[e]}</span>`;}).join('')}</div>
-        </div>
-        <div class="sec">
-          <div class="sect">Pago del paciente</div>
-          <div class="cbox">
-            <div><div class="cl">Precio total</div><div class="cv" style="color:var(--gold);">${fmt(pago.precio)}</div></div>
-            <div><div class="cl">Pagado</div><div class="cv" style="color:var(--green);">${fmt(pago.pagado)}</div></div>
-            <div><div class="cl">Saldo pendiente</div><div class="cv" style="color:${saldoPac>0?'var(--red)':'var(--green)'};">${fmt(saldoPac)}</div></div>
-          </div>
-          <div class="saldo-box" style="font-size:12px;">
-            <div class="saldo-row"><span style="color:var(--tx2);">Total costos clínica</span><span class="hm">${fmt(calcCT(c))}</span></div>
-            <div class="saldo-row"><span style="color:var(--tx2);">Precio cobrado paciente</span><span>${fmt(pago.precio)}</span></div>
-            <div class="saldo-row"><span>Margen clínica</span><span style="color:${margen>=0?'var(--green)':'var(--red)'};">${fmt(margen)}</span></div>
-          </div>
-        </div>
-        <div class="sec">
-          <div class="sect">Honorarios médicos</div>
-          ${[['cir','Cirujano',c.eq?.cir,h.cir],['ay','Ayudante',c.eq?.ay,h.ay],['an','Anestesiólogo',c.eq?.an,h.an],['ins','Instrumentista',c.eq?.ins,h.ins]].filter(r=>r[2]&&r[3]>0).map(([k,rol,nom,m])=>{const p=hp[k]||{};return`<div class="hr">
-            <div><span style="font-weight:500;">${nom}</span> <span style="font-size:10px;color:var(--tx3);">${rol}</span></div>
-            <div style="display:flex;align-items:center;gap:6px;"><span class="hm">${fmt(m)}</span>
-              ${p.pagado?`<span class="bx bok">Pagado</span><button class="btn xs" onclick="sPP('${c.id}','${k}',false)">Revertir</button>`:`<span class="bx bw">Pendiente</span><button class="btn xs g" onclick="sPP('${c.id}','${k}',true)">✓ Pagado</button>`}
-            </div></div>`;}).join('')}
-          ${c.implante?.costo?`<div class="hr"><span>Implantes ${c.implante.marca||''} ${c.implante.talla||''}</span><span class="hm">${fmt(c.implante.costo)}</span></div>`:''}
-          <div style="text-align:right;padding-top:6px;border-top:1px solid var(--bd);margin-top:4px;font-weight:600;color:var(--gold);font-family:'DM Mono',monospace;">Total: ${fmt((h.cir||0)+(h.ay||0)+(h.an||0)+(h.ins||0))}</div>
-        </div>
-        <div class="sec">
-          <div class="sect">Quirófano — Conciliación</div>
-          <div class="cbox">
-            <div><div class="cl">Hospital</div><div style="font-size:12px;font-weight:500;">${q.hosp||'—'}</div></div>
-            <div><div class="cl">Anticipo</div><div class="cv" style="color:var(--amber);">${fmt(q.ant)}</div>
-              ${q.antPag?`<div style="font-size:10px;color:var(--green);">✓ Enviado${q.fechaAnticipo?' · '+q.fechaAnticipo:''}${q.formaAnticipo?' · '+q.formaAnticipo:''}</div>`:`<button class="btn xs a" style="margin-top:3px;" onclick="sAP('${c.id}')">Marcar enviado</button>`}
-            </div>
-            <div><div class="cl">Factura real</div><div class="cv" style="color:${q.fac?'var(--tx)':'var(--tx3)'};">${q.fac?fmt(q.fac):'Pendiente'}</div>
-              ${q.ffact?`<div style="font-size:10px;color:var(--tx3);">${q.ffact}</div>`:''}
-            </div>
-          </div>
-          ${q.fac?`<div class="alrt ${Math.abs(dif)<0.01?'aok':dif>0?'aok':'ard'}">${Math.abs(dif)<0.01?'✓ Conciliado':dif>0?`Saldo a favor de ART: ${fmt(dif)}`:`Pendiente a hospital: ${fmt(Math.abs(dif))}`}</div>`:''}
-        </div>
-        ${c.ap&&Object.keys(c.ap).length?`<div class="sec"><div class="sect">Aparatología</div>${Object.entries(c.ap).map(([k,a])=>`<div style="margin-bottom:8px;"><div style="font-size:11px;font-weight:600;color:var(--tx2);margin-bottom:4px;">${a.nom}</div>${a.socios.map((s,si)=>`<div class="hr"><span>${s.nom}</span><div style="display:flex;align-items:center;gap:6px;"><span class="hm">€${s.m.toFixed(2)}</span>${s.pag?`<span class="bx bok">Pagado</span><button class="btn xs" onclick="sAp('${c.id}','${k}',${si},false)">Revertir</button>`:`<span class="bx bw">Pendiente</span><button class="btn xs g" onclick="sAp('${c.id}','${k}',${si},true)">✓ Pagado</button>`}</div></div>`).join('')}</div>`).join('')}</div>`:''}
-        <div class="sec" style="display:flex;gap:6px;">
-          <button class="btn sm b" onclick="toggleForm('${c.id}')">✏️ Editar</button>
-          <button class="btn sm r" onclick="elimC('${c.id}')">🗑 Eliminar</button>
-        </div>
-      </div>
-    </div>`;}).join(''):`<div class="empty">Sin cirugías registradas<br><br><button class="btn p sm" onclick="toggleForm(null)">+ Nueva cirugía</button></div>`;
+  const q=(($('cq')?.value)||'').toLowerCase();
+  const fe=$('cfest')?.value||'';
+  const ft=$('cftipo')?.value||'';
+  let lista=[...DATA];
+  if(q)lista=lista.filter(c=>(c.pac?.nom||'').toLowerCase().includes(q));
+  if(fe)lista=lista.filter(c=>c.estado===fe);
+  if(ft)lista=lista.filter(c=>(c.tipo||'cirugia')===ft);
+  const el=$('cir-lista');
+  if(!lista.length){el.innerHTML='<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üè•</div><div>Sin intervenciones</div></div>';return;}
+  el.innerHTML=lista.map(c=>buildCirCard(c)).join('');
 }
 
-function tog(id){document.getElementById(id)?.classList.toggle('op');}
-
-function rAp(){
-  const pp={};
-  DATA.forEach(c=>{Object.entries(c.ap||{}).forEach(([k,a])=>{
-    if(!pp[k])pp[k]={nom:a.nom,socios:{},total:0,pend:0};
-    a.socios.forEach(s=>{
-      if(!pp[k].socios[s.nom])pp[k].socios[s.nom]={nom:s.nom,total:0,pend:0,rows:[]};
-      pp[k].socios[s.nom].total+=s.m;
-      if(!s.pag)pp[k].socios[s.nom].pend+=s.m;
-      pp[k].total+=s.m;if(!s.pag)pp[k].pend+=s.m;
-      pp[k].socios[s.nom].rows.push({pac:c.pac?.nom,fecha:c.fecha,m:s.m,pag:s.pag,fechaPago:s.fechaPago||'',formaPago:s.formaPago||'',cid:c.id,k,si:a.socios.indexOf(s)});
-    });
-  });});
-  const tA=Object.values(pp).reduce((s,a)=>s+a.total,0);
-  const pA=Object.values(pp).reduce((s,a)=>s+a.pend,0);
-  $('pg-aparatologia').innerHTML=`
-    <div class="sg s2">
-      <div class="st"><div class="sl">Total aparatología</div><div class="sv sv-g">${fmt(tA)}</div></div>
-      <div class="st"><div class="sl">Pendiente de pago</div><div class="sv ${pA>0?'sv-r':''}">${fmt(pA)}</div></div>
+function buildCirCard(c){
+  const h=c.h||{};const hp=c.hp||{};const q2=c.q||{};const pago=c.pago||{};
+  const pagadoPac=totalPagadoPac(c);
+  const saldoPac=Math.max((pago.precio||0)-pagadoPac,0);
+  const margen=(pago.precio||0)-calcCostoTotal(c);
+  const dif=(q2.ant||0)-(q2.fac||0);
+  const ini=(c.pac?.nom||'?').split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase();
+  const esR=c.tipo==='retoque';
+  const procNoms=c.procs?.map(p=>p.nom).join(' + ')||'‚Äî';
+  return`<div class="cc" id="ci-${c.id}">
+    <div class="cch" onclick="togC('${c.id}')">
+      <div class="cav">${ini}</div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:13px;font-weight:600;">${c.pac?.nom}</div>
+        <div style="font-size:11px;color:var(--tx3);">${fF(c.fecha)} ¬∑ ${procNoms} ¬∑ ${c.eq?.cir||'‚Äî'}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="mono" style="font-weight:600;color:var(--gold);">${fmt(pago.precio)}</span>
+        ${esR?'<span class="bx bblue">Retoque</span>':''}
+        <span class="bx ${bEst(c.estado)}">${ELBL[c.estado]}</span>
+        <span style="color:var(--tx3);font-size:11px;">‚ñ∂</span>
+      </div>
     </div>
-    ${Object.values(pp).length?Object.values(pp).map(ap=>`<div class="card">
-      <div style="display:flex;justify-content:space-between;margin-bottom:10px;align-items:center;">
-        <div style="font-size:14px;font-weight:600;">${ap.nom}</div>
-        <div><span class="mono" style="color:var(--gold);font-weight:600;">${fmt(ap.total)}</span> <span style="font-size:11px;color:var(--tx3);">pendiente: ${fmt(ap.pend)}</span></div>
+    <div class="ccb">
+      <div class="sec">
+        <div class="sect">Estado</div>
+        <div class="flow">${ESTADOS.map((e,i)=>{const idx=ESTADOS.indexOf(c.estado);return`<span class="fs ${i<idx?'done':i===idx?'cur':''}" onclick="setEst('${c.id}','${e}')">${ELBL[e]}</span>`;}).join('')}</div>
       </div>
-      ${Object.values(ap.socios).map(s=>`<div class="card" style="margin-bottom:6px;background:var(--bg3);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-          <div style="font-weight:500;">${s.nom}</div>
-          <span class="mono" style="color:var(--gold);">${fmt(s.pend)} pend. / ${fmt(s.total)} total</span>
+      <div class="sec">
+        <div class="sect">Cobro al paciente</div>
+        <div class="cgrid">
+          <div><div class="clbl">Precio total</div><div class="cval gold">${fmt(pago.precio)}</div></div>
+          <div><div class="clbl">Cobrado</div><div class="cval green">${fmt(pagadoPac)}</div></div>
+          <div><div class="clbl">Saldo pendiente</div><div class="cval ${saldoPac>0?'red':''}">${fmt(saldoPac)}</div></div>
         </div>
-        <table><thead><tr><th>Paciente</th><th>Fecha</th><th>Monto</th><th>Estado</th></tr></thead>
-        <tbody>${s.rows.map(r=>`<tr>
-          <td style="font-weight:500;">${r.pac}</td>
-          <td style="color:var(--tx3);">${fF(r.fecha)}</td>
-          <td class="mono" style="color:var(--gold);">${fmt(r.m)}</td>
-          <td>${r.pag?`<span class="bx bok">Pagado</span>${r.fechaPago?'<br><span style="font-size:10px;color:var(--tx3);">'+r.fechaPago+(r.formaPago?' · '+r.formaPago:'')+'</span>':''}`:
-            `<span class="bx bw">Pendiente</span><button class="btn xs g" style="margin-left:6px;" onclick="sApSoc('${r.cid}','${r.k}',${r.si},true)">✓ Pagado</button>`}</td>
-        </tr>`).join('')}</tbody></table>
-      </div>`).join('')}
-    </div>`).join(''):`<div class="empty">Sin aparatología registrada en cirugías</div>`}`;
+        <!-- HISTORIAL PAGOS -->
+        ${(c.pagos||[]).length?`<div style="margin-bottom:8px;">${c.pagos.map((p,pi)=>`
+          <div class="pago-item">
+            <div><span class="green" style="font-weight:600;">${fmt(p.monto)}</span> <span style="color:var(--tx3);font-size:11px;">${fF(p.fecha)} ¬∑ ${p.concepto||''} ¬∑ ${p.forma||''}</span></div>
+            <button class="btn btnxs btnr" onclick="elimPagoPac('${c.id}',${pi})">‚úï</button>
+          </div>`).join('')}</div>`:''}
+        <button class="btn btnsm btng" onclick="abrirPagoPac('${c.id}')">+ Registrar pago del paciente</button>
+        <div class="sbox" style="margin-top:8px;font-size:12px;">
+          <div class="srow"><span style="color:var(--tx2);">Costo total cl√≠nica</span><span class="hm">${fmt(calcCostoTotal(c))}</span></div>
+          <div class="srow"><span style="color:var(--tx2);">Precio cobrado</span><span>${fmt(pago.precio)}</span></div>
+          <div class="srow"><span>Margen cl√≠nica</span><span class="${margen>=0?'green':'red'}">${fmt(margen)}</span></div>
+        </div>
+        <button class="btn btnsm btnb" onclick="abrirPresupuesto('${c.id}')">üñ® Presupuesto imprimible</button>
+      </div>
+      <div class="sec">
+        <div class="sect">Honorarios${esR?' ‚Äî Retoque (‚Ç¨0)':''}</div>
+        ${[['cir','Cirujano principal',c.eq?.cir,h.cir],['ay','Ayudante',c.eq?.ay,h.ay],['an','Anestesi√≥logo',c.eq?.an,h.an],['ins','Instrumentista',c.eq?.ins,h.ins]].filter(r=>r[2]).map(([k,rol,nom,m])=>{
+          const p=hp[k]||{};
+          return`<div class="hrow">
+            <div><span style="font-weight:500;">${nom}</span> <span style="font-size:10px;color:var(--tx3);">${rol}</span></div>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span class="hm">${fmt(m||0)}</span>
+              ${(m||0)>0?(p.pagado
+                ?`<span class="bx bok">‚úì ${fF(p.fecha)}${p.forma?' ¬∑ '+p.forma:''}</span><button class="btn btnxs" onclick="sPP('${c.id}','${k}',false)">Revertir</button>`
+                :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" onclick="sPP('${c.id}','${k}',true)">‚úì Pagado</button>`)
+              :'<span class="bx bgray">N/A</span>'}
+            </div>
+          </div>`;}).join('')}
+        ${c.implante?.costo?`<div class="hrow"><span>Implantes ${c.implante.marca||''} ${c.implante.talla||''}</span><span class="hm">${fmt(c.implante.costo)}</span></div>`:''}
+        <div style="text-align:right;padding-top:6px;border-top:1px solid var(--bd2);margin-top:4px;font-weight:600;color:var(--gold);font-family:'DM Mono',monospace;">Total honorarios: ${fmt(h.total||0)}</div>
+      </div>
+      <div class="sec">
+        <div class="sect">Quir√≥fano ‚Äî Conciliaci√≥n</div>
+        ${c.precioQuirSug?`<div class="alert awk" style="margin-bottom:8px;">üí° Estimado VITHAS: ${fmt(c.precioQuirSug)}</div>`:''}
+        <div class="cgrid">
+          <div><div class="clbl">Hospital</div><div style="font-size:12px;font-weight:500;">${q2.hosp||'‚Äî'}</div></div>
+          <div><div class="clbl">Anticipo</div><div class="cval amber">${fmt(q2.ant)}</div>
+            ${q2.antPag
+              ?`<div style="font-size:10px;color:var(--green);">‚úì ${fF(q2.fechaAnticipo)||'Enviado'}${q2.formaAnticipo?' ¬∑ '+q2.formaAnticipo:''}</div>`
+              :`<button class="btn btnxs btna" style="margin-top:3px;" onclick="sAntPag('${c.id}')">Marcar enviado</button>`}
+          </div>
+          <div><div class="clbl">Factura real</div>
+            <div class="cval" style="color:${q2.fac?'var(--tx)':'var(--tx3)'};">${q2.fac?fmt(q2.fac):'Pendiente'}</div>
+            ${q2.fechaFact?`<div style="font-size:10px;color:var(--tx3);">${fF(q2.fechaFact)}</div>`:''}
+          </div>
+        </div>
+        ${q2.fac?`<div class="alert ${Math.abs(dif)<0.01?'aok':dif>0?'aok':'ard'}">${Math.abs(dif)<0.01?'‚úì Conciliado':dif>0?`Saldo a favor de ART: ${fmt(dif)}`:`Pendiente a hospital: ${fmt(Math.abs(dif))}`}</div>`:''}
+      </div>
+      ${c.ap&&Object.keys(c.ap).length?`<div class="sec">
+        <div class="sect">Aparatolog√≠a${esR?' ‚Äî Retoque (‚Ç¨0)':''}</div>
+        ${Object.entries(c.ap).map(([k,a])=>`<div style="margin-bottom:8px;">
+          <div style="font-size:11px;font-weight:600;color:var(--tx2);margin-bottom:5px;">${a.nom}</div>
+          ${a.socios.map((s,si)=>`<div class="hrow">
+            <span>${s.nom}</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span class="hm">‚Ç¨${s.m.toFixed(2)}</span>
+              ${s.m>0?(s.pag
+                ?`<span class="bx bok">‚úì ${fF(s.fechaPago)||''}${s.formaPago?' ¬∑ '+s.formaPago:''}</span><button class="btn btnxs" onclick="sAp('${c.id}','${k}',${si},false)">Revertir</button>`
+                :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" onclick="sAp('${c.id}','${k}',${si},true)">‚úì Pagado</button>`)
+              :'<span class="bx bgray">N/A</span>'}
+            </div>
+          </div>`).join('')}
+        </div>`).join('')}
+      </div>`:''}
+      <div class="sec" style="display:flex;gap:6px;flex-wrap:wrap;">
+        <button class="btn btnsm btnb" onclick="abrirForm('${c.id}')">‚úèÔ∏è Editar</button>
+        <button class="btn btnsm btnr" onclick="elimC('${c.id}')">üóë Eliminar</button>
+      </div>
+    </div>
+  </div>`;
 }
 
+function togC(id){document.getElementById('ci-'+id)?.classList.toggle('op');}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// PACIENTES (ficha con historial)
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function rPacs(){
+  const q=(($('pq')?.value)||'').toLowerCase();
+  // Agrupar por nombre del paciente
+  const pacs={};
+  DATA.forEach(c=>{
+    const nom=c.pac?.nom||'';
+    if(!nom)return;
+    const key=nom.toLowerCase();
+    if(q&&!key.includes(q))return;
+    if(!pacs[key])pacs[key]={nom,dni:c.pac?.dni||'',tel:c.pac?.tel||'',email:c.pac?.email||'',cirugias:[]};
+    pacs[key].cirugias.push(c);
+  });
+  const lista=Object.values(pacs).sort((a,b)=>a.nom.localeCompare(b.nom));
+  const el=$('pac-lista');
+  if(!lista.length){el.innerHTML='<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üë§</div><div>Sin pacientes registrados</div></div>';return;}
+  el.innerHTML=lista.map(p=>{
+    const ini=p.nom.split(' ').slice(0,2).map(n=>n[0]||'').join('').toUpperCase();
+    const totalCobrado=p.cirugias.reduce((s,c)=>s+(c.pago?.precio||0),0);
+    const totalPagado=p.cirugias.reduce((s,c)=>s+totalPagadoPac(c),0);
+    const ultima=p.cirugias.sort((a,b)=>b.fecha?.localeCompare(a.fecha||''))[0];
+    return`<div class="cc" id="pac-${ini}${p.nom.length}">
+      <div class="cch" onclick="this.parentElement.classList.toggle('op')">
+        <div class="cav">${ini}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:600;">${p.nom}</div>
+          <div style="font-size:11px;color:var(--tx3);">${p.tel||''}${p.dni?' ¬∑ '+p.dni:''} ¬∑ ${p.cirugias.length} intervenci√≥n${p.cirugias.length!==1?'es':''}</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="mono gold" style="font-weight:600;">${fmt(totalCobrado)}</div>
+          ${Math.max(totalCobrado-totalPagado,0)>0?`<div class="red" style="font-size:11px;">Saldo: ${fmt(Math.max(totalCobrado-totalPagado,0))}</div>`:''}
+        </div>
+      </div>
+      <div class="ccb">
+        <div class="sec">
+          <div style="display:flex;gap:8px;margin-bottom:10px;font-size:12px;flex-wrap:wrap;">
+            ${p.tel?`<span>üì± ${p.tel}</span>`:''}${p.email?`<span>‚úâ ${p.email}</span>`:''}${p.dni?`<span>ü™™ ${p.dni}</span>`:''}
+          </div>
+          <div class="ctit" style="margin-bottom:8px;">Historial de intervenciones</div>
+          ${p.cirugias.sort((a,b)=>b.fecha?.localeCompare(a.fecha||'')).map(c=>`
+            <div style="background:var(--s3);border-radius:var(--r);padding:10px;margin-bottom:6px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                <div>
+                  <span style="font-weight:500;font-size:13px;">${fF(c.fecha)}</span>
+                  ${c.tipo==='retoque'?'<span class="bx bblue" style="margin-left:6px;">Retoque</span>':''}
+                  <span class="bx ${bEst(c.estado)}" style="margin-left:6px;">${ELBL[c.estado]}</span>
+                </div>
+                <span class="mono gold" style="font-weight:600;">${fmt(c.pago?.precio)}</span>
+              </div>
+              <div style="font-size:12px;color:var(--tx3);">${c.procs?.map(p=>p.nom).join(' + ')||'‚Äî'} ¬∑ ${c.eq?.cir||'‚Äî'}</div>
+              ${c.h?.total?`<div style="font-size:11px;color:var(--tx2);margin-top:3px;">Honorarios: ${fmt(c.h.total)} ¬∑ Cobrado paciente: ${fmt(totalPagadoPac(c))}</div>`:''}
+            </div>`).join('')}
+          <div class="sbox" style="margin-top:8px;">
+            <div class="srow"><span style="color:var(--tx2);">Total facturado</span><span class="hm">${fmt(totalCobrado)}</span></div>
+            <div class="srow"><span style="color:var(--tx2);">Total cobrado</span><span class="green">${fmt(totalPagado)}</span></div>
+            <div class="srow"><span>Saldo total</span><span class="${totalCobrado-totalPagado>0?'red':'green'}">${fmt(Math.max(totalCobrado-totalPagado,0))}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// HONORARIOS
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
 function rHon(){
-  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesiólogo',ins:'Instrumentista'};
+  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesi√≥logo',ins:'Instrumentista'};
   DATA.forEach(c=>{['cir','ay','an','ins'].forEach(r=>{
     const n=c.eq?.[r];if(!n)return;const m=c.h?.[r]||0;if(!m)return;
     if(!pp[n])pp[n]={n,pend:0,cob:0,rows:[]};
-    const pag=c.hp?.[r]?.pagado||false;
+    const p=c.hp?.[r]||{};const pag=p.pagado||false;
     if(pag)pp[n].cob+=m;else pp[n].pend+=m;
-    pp[n].rows.push({pac:c.pac?.nom,fecha:c.fecha,procs:c.procs,rol:rl[r],m,pag,cid:c.id,r,fechaPago:c.hp?.[r]?.fecha||'',forma:c.hp?.[r]?.forma||''});
+    pp[n].rows.push({pac:c.pac?.nom,fecha:c.fecha,procs:c.procs,rol:rl[r],m,pag,fp:p.fecha||'',forma:p.forma||'',cid:c.id,r});
   });});
   const vals=Object.values(pp);
   const tP=vals.reduce((s,x)=>s+x.pend,0);
   const tC=vals.reduce((s,x)=>s+x.cob,0);
   $('pg-honorarios').innerHTML=`
     <div class="sg s2">
-      <div class="st"><div class="sl">Pendiente de cobro</div><div class="sv sv-r">${fmt(tP)}</div></div>
-      <div class="st"><div class="sl">Total cobrado</div><div class="sv sv-ok">${fmt(tC)}</div></div>
+      <div class="st ster"><div class="sl">Pendiente de cobro</div><div class="sv red">${fmt(tP)}</div></div>
+      <div class="st stok"><div class="sl">Total cobrado</div><div class="sv green">${fmt(tC)}</div></div>
     </div>
     ${vals.map(pr=>`<div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <div style="font-size:14px;font-weight:600;">${pr.n}</div>
-        <div><span class="mono" style="color:var(--gold);font-weight:600;">${fmt(pr.pend)}</span> <span style="font-size:11px;color:var(--tx3);">cobrado: ${fmt(pr.cob)}</span></div>
+        <div><span class="mono gold" style="font-weight:600;">${fmt(pr.pend)}</span> <span style="font-size:11px;color:var(--tx3);">cobrado: ${fmt(pr.cob)}</span></div>
       </div>
       <table><thead><tr><th>Paciente</th><th>Fecha</th><th>Procedimiento</th><th>Rol</th><th>Honorario</th><th>Estado</th></tr></thead>
       <tbody>${pr.rows.map(x=>`<tr>
         <td style="font-weight:500;">${x.pac}</td>
         <td style="color:var(--tx3);">${fF(x.fecha)}</td>
-        <td style="font-size:11px;color:var(--tx3);">${(x.procs||[]).join(' + ')}</td>
+        <td style="font-size:11px;color:var(--tx3);">${x.procs?.map(p=>p.nom).join(' + ')||'‚Äî'}</td>
         <td style="font-size:11px;">${x.rol}</td>
-        <td class="mono" style="color:var(--gold);">${fmt(x.m)}</td>
-        <td>${x.pag?`<span class="bx bok">Pagado</span>${x.fecha?'<br><span style="font-size:10px;color:var(--tx3);">'+x.fecha+(x.forma?' · '+x.forma:'')+'</span>':''}`:
-          `<span class="bx bw">Pendiente</span><button class="btn xs g" style="margin-left:6px;" onclick="sPP('${x.cid}','${x.r}',true)">✓ Pagado</button>`}</td>
-      </tr>`).join('')}</tbody></table></div>`).join('')||'<div class="empty">Sin honorarios registrados</div>'}`;
+        <td class="mono gold">${fmt(x.m)}</td>
+        <td>${x.pag
+          ?`<span class="bx bok">‚úì ${fF(x.fp)}${x.forma?' ¬∑ '+x.forma:''}</span><button class="btn btnxs" style="margin-left:4px;" onclick="sPP('${x.cid}','${x.r}',false)">Revertir</button>`
+          :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" style="margin-left:6px;" onclick="sPP('${x.cid}','${x.r}',true)">‚úì Pagado</button>`}
+        </td>
+      </tr>`).join('')}</tbody></table></div>`).join('')||'<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">üí∂</div><div>Sin honorarios registrados</div></div>'}`;
 }
 
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// APARATOLOG√çA
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function rAp(){
+  const pp={};
+  DATA.forEach(c=>{Object.entries(c.ap||{}).forEach(([k,a])=>{
+    if(!pp[k])pp[k]={nom:a.nom,socios:{},total:0,pend:0};
+    a.socios.forEach(s=>{
+      if(!pp[k].socios[s.nom])pp[k].socios[s.nom]={nom:s.nom,total:0,pend:0,rows:[]};
+      pp[k].socios[s.nom].total+=s.m;if(!s.pag)pp[k].socios[s.nom].pend+=s.m;
+      pp[k].total+=s.m;if(!s.pag)pp[k].pend+=s.m;
+      pp[k].socios[s.nom].rows.push({pac:c.pac?.nom,fecha:c.fecha,m:s.m,pag:s.pag,fp:s.fechaPago||'',forma:s.formaPago||'',cid:c.id,k,si:a.socios.indexOf(s)});
+    });
+  });});
+  const tA=Object.values(pp).reduce((s,a)=>s+a.total,0);
+  const pA=Object.values(pp).reduce((s,a)=>s+a.pend,0);
+  $('pg-aparatologia').innerHTML=`
+    <div class="sg s2">
+      <div class="st stg"><div class="sl">Total aparatolog√≠a</div><div class="sv gold">${fmt(tA)}</div></div>
+      <div class="st ster"><div class="sl">Pendiente de pago</div><div class="sv ${pA>0?'red':''}">${fmt(pA)}</div></div>
+    </div>
+    ${Object.values(pp).map(ap=>`<div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="font-size:14px;font-weight:600;">${ap.nom}</div>
+        <div><span class="mono gold" style="font-weight:600;">${fmt(ap.total)}</span> <span style="font-size:11px;color:var(--tx3);">pendiente: ${fmt(ap.pend)}</span></div>
+      </div>
+      ${Object.values(ap.socios).map(s=>`<div class="card" style="margin-bottom:6px;background:var(--s2);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="font-weight:500;">${s.nom}</div>
+          <span class="mono gold">${fmt(s.pend)} pend. / ${fmt(s.total)} total</span>
+        </div>
+        <table><thead><tr><th>Paciente</th><th>Fecha</th><th>Monto</th><th>Estado</th></tr></thead>
+        <tbody>${s.rows.map(r=>`<tr>
+          <td style="font-weight:500;">${r.pac}</td>
+          <td style="color:var(--tx3);">${fF(r.fecha)}</td>
+          <td class="mono gold">${fmt(r.m)}</td>
+          <td>${r.m>0?(r.pag
+            ?`<span class="bx bok">‚úì ${fF(r.fp)}${r.forma?' ¬∑ '+r.forma:''}</span><button class="btn btnxs" onclick="sApSoc('${r.cid}','${r.k}',${r.si},false)">Revertir</button>`
+            :`<span class="bx bpend">Pendiente</span><button class="btn btnxs btng" style="margin-left:6px;" onclick="sApSoc('${r.cid}','${r.k}',${r.si},true)">‚úì Pagado</button>`)
+          :'<span class="bx bgray">N/A</span>'}</td>
+        </tr>`).join('')}</tbody></table>
+      </div>`).join('')}
+    </div>`).join('')||'<div class="empty"><div style="font-size:32px;opacity:.4;margin-bottom:8px;">‚öôÔ∏è</div><div>Sin aparatolog√≠a registrada</div></div>'}`;
+}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// QUIR√ìFANO
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
 function rQuir(){
   const tA=DATA.reduce((s,c)=>s+(c.q?.ant||0),0);
   const tF=DATA.reduce((s,c)=>s+(c.q?.fac||0),0);
   const d=tA-tF;
   $('pg-quirofano').innerHTML=`
     <div class="sg s3">
-      <div class="st"><div class="sl">Total anticipos</div><div class="sv sv-g">${fmt(tA)}</div></div>
-      <div class="st"><div class="sl">Total facturas</div><div class="sv">${fmt(tF)}</div></div>
-      <div class="st"><div class="sl">${d>=0?'Saldo a favor':'Saldo pendiente'}</div><div class="sv ${d>=0?'sv-ok':'sv-r'}">${d>=0?'+':''}${fmt(Math.abs(d))}</div></div>
+      <div class="st sta"><div class="sl">Total anticipos</div><div class="sv gold">${fmt(tA)}</div></div>
+      <div class="st stb"><div class="sl">Facturas recibidas</div><div class="sv">${fmt(tF)}</div></div>
+      <div class="st ${d>=0?'stok':'ster'}"><div class="sl">${d>=0?'Saldo a favor':'Saldo pendiente'}</div><div class="sv ${d>=0?'green':'red'}">${d>=0?'+':''}${fmt(Math.abs(d))}</div></div>
     </div>
     <div class="card">
       ${DATA.filter(c=>c.q?.ant||c.q?.hosp).length?`<table>
-        <thead><tr><th>Paciente</th><th>Fecha</th><th>Hospital</th><th>Anticipo</th><th>Factura</th><th>Diferencia</th><th>Estado</th></tr></thead>
-        <tbody>${DATA.filter(c=>c.q?.ant||c.q?.hosp).map(c=>{const q=c.q||{};const df=(q.ant||0)-(q.fac||0);return`<tr>
-          <td style="font-weight:500;">${c.pac?.nom}</td>
-          <td style="color:var(--tx3);">${fF(c.fecha)}</td>
-          <td>${q.hosp||'—'}</td>
-          <td class="mono" style="color:var(--amber);">${fmt(q.ant)}</td>
-          <td class="mono">${q.fac?fmt(q.fac):'<span style="color:var(--tx3)">Pendiente</span>'}</td>
-          <td class="mono" style="color:${!q.fac?'var(--tx3)':df>=0?'var(--green)':'var(--red)'};">${!q.fac?'—':df>=0?'+'+fmt(df):'-'+fmt(Math.abs(df))}</td>
-          <td><span class="bx ${bC(c.estado)}">${EL[c.estado]}</span></td>
-        </tr>`;}).join('')}</tbody></table>`:'<div class="empty">Sin datos de quirófano</div>'}
+        <thead><tr><th>Paciente</th><th>Fecha</th><th>Hospital</th><th>Estimado</th><th>Anticipo</th><th>F.Anticipo</th><th>Factura</th><th>F.Factura</th><th>Diferencia</th></tr></thead>
+        <tbody>${DATA.filter(c=>c.q?.ant||c.q?.hosp).map(c=>{
+          const q=c.q||{};const df=(q.ant||0)-(q.fac||0);
+          return`<tr>
+            <td style="font-weight:500;">${c.pac?.nom}</td>
+            <td style="color:var(--tx3);white-space:nowrap;">${fF(c.fecha)}</td>
+            <td style="font-size:11px;">${q.hosp||'‚Äî'}</td>
+            <td class="mono" style="color:var(--tx3);">${c.precioQuirSug?fmt(c.precioQuirSug):'‚Äî'}</td>
+            <td class="mono amber">${fmt(q.ant)}</td>
+            <td style="font-size:11px;color:var(--tx3);">${fF(q.fechaAnticipo)||'‚Äî'}</td>
+            <td class="mono">${q.fac?fmt(q.fac):'<span style="color:var(--tx3)">Pendiente</span>'}</td>
+            <td style="font-size:11px;color:var(--tx3);">${q.fechaFact?fF(q.fechaFact):'‚Äî'}</td>
+            <td class="mono" style="color:${!q.fac?'var(--tx3)':df>=0?'var(--green)':'var(--red)'};">${!q.fac?'‚Äî':df>=0?'+'+fmt(df):'-'+fmt(Math.abs(df))}</td>
+          </tr>`;}).join('')}
+        </tbody></table>`
+      :'<div class="empty">Sin datos de quir√≥fano</div>'}
     </div>`;
 }
 
-function getMeses(){
-  return [...new Set(DATA.map(c=>c.fecha?.slice(0,7)).filter(Boolean))].sort().reverse();
-}
-function mesLabel(m){
-  if(!m)return'';
-  const[y,mo]=m.split('-');
-  const names=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  return names[parseInt(mo)-1]+' '+y;
-}
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// CONSOLIDADO
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function getMeses(){return[...new Set(DATA.map(c=>c.fecha?.slice(0,7)).filter(Boolean))].sort().reverse();}
+function mesLbl(m){if(!m)return'';const[y,mo]=m.split('-');return MESES[parseInt(mo)-1]+' '+y;}
+
 function rCon(){
   const meses=getMeses();
-  const selMes=($('con-mes-sel')?.value)||'';
-  const lista=selMes?DATA.filter(c=>c.fecha?.startsWith(selMes)):DATA;
+  const sel=($('con-mes')?.value)||'';
+  const lista=sel?DATA.filter(c=>c.fecha?.startsWith(sel)):DATA;
   const tH=lista.reduce((s,c)=>s+(c.h?.total||0),0);
   const tPac=lista.reduce((s,c)=>s+(c.pago?.precio||0),0);
-  const tPag=lista.reduce((s,c)=>s+(c.pago?.pagado||0),0);
+  const tPag=lista.reduce((s,c)=>s+totalPagadoPac(c),0);
   const tA=lista.reduce((s,c)=>s+(c.q?.ant||0),0);
   const tF=lista.reduce((s,c)=>s+(c.q?.fac||0),0);
+  const tAp=lista.reduce((s,c)=>s+Object.values(c.ap||{}).reduce((ss,a)=>ss+a.socios.reduce((sss,so)=>sss+so.m,0),0),0);
+  const margenNet=(tPac)-tH-tA-tAp;
   $('pg-consolidado').innerHTML=`
     <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
-      <div class="lbl" style="margin-bottom:0;">Período:</div>
-      <select id="con-mes-sel" onchange="rCon()" style="width:180px;padding:6px 10px;">
+      <select id="con-mes" onchange="rCon()" style="width:180px;">
         <option value="">Todos los meses</option>
-        ${meses.map(m=>`<option value="${m}" ${selMes===m?'selected':''}>${mesLabel(m)}</option>`).join('')}
+        ${meses.map(m=>`<option value="${m}" ${sel===m?'selected':''}>${mesLbl(m)}</option>`).join('')}
       </select>
-      <button class="btn sm" onclick="exportConsolidado()">↓ Excel</button>
+      <button class="btn btnsm" onclick="exportCon()">‚Üì Excel</button>
     </div>
-    <div class="sg s4">
-      <div class="st"><div class="sl">Facturado pacientes</div><div class="sv sv-g">${fmt(tPac)}</div></div>
-      <div class="st"><div class="sl">Cobrado</div><div class="sv sv-ok">${fmt(tPag)}</div></div>
-      <div class="st"><div class="sl">Pendiente pacientes</div><div class="sv ${tPac-tPag>0?'sv-r':''}">${fmt(tPac-tPag)}</div></div>
-      <div class="st"><div class="sl">Total honorarios</div><div class="sv">${fmt(tH)}</div></div>
+    <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rl);padding:1rem;margin-bottom:14px;">
+      <div class="ctit" style="margin-bottom:12px;">Resumen financiero${sel?' ‚Äî '+mesLbl(sel):''}</div>
+      <div class="sg s4" style="margin-bottom:0;">
+        <div class="st stg"><div class="sl">Ingresos totales</div><div class="sv gold">${fmt(tPac)}</div><div class="ssb">${lista.length} cirug√≠as</div></div>
+        <div class="st ster"><div class="sl">Honorarios</div><div class="sv red">${fmt(tH)}</div></div>
+        <div class="st sta"><div class="sl">Quir√≥fano</div><div class="sv amber">${fmt(tA)}</div></div>
+        <div class="st ${margenNet>=0?'stok':'ster'}"><div class="sl">Margen neto</div><div class="sv ${margenNet>=0?'green':'red'}">${fmt(margenNet)}</div></div>
+      </div>
     </div>
-    <div class="lbl" style="margin-bottom:8px;">Por profesional</div>${buildConPP(lista)}
-    <div class="lbl" style="margin:12px 0 8px;">Aparatología</div>${buildConAp(lista)}
-    <div class="lbl" style="margin:12px 0 8px;">Quirófano</div>${buildConQ(lista)}`;
+    <div class="ctit">Por profesional</div>${buildConPP(lista)}
+    <div class="ctit" style="margin-top:14px;">Aparatolog√≠a</div>${buildConAp(lista)}
+    <div class="ctit" style="margin-top:14px;">Quir√≥fano</div>${buildConQ(lista)}`;
 }
 
 function buildConPP(lista){
-  lista=lista||DATA;
-  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesiólogo',ins:'Instrumentista'};
+  const pp={};const rl={cir:'Cirujano',ay:'Ayudante',an:'Anestesi√≥logo',ins:'Instrumentista'};
   lista.forEach(c=>{['cir','ay','an','ins'].forEach(r=>{
     const n=c.eq?.[r];if(!n)return;const m=c.h?.[r]||0;if(!m)return;
-    if(!pp[n])pp[n]={n,total:0,rows:[]};
+    if(!pp[n])pp[n]={n,total:0,pend:0,rows:[]};
+    const pag=c.hp?.[r]?.pagado||false;
+    if(pag){}else pp[n].pend+=m;
     pp[n].total+=m;
-    pp[n].rows.push({pac:c.pac?.nom,fecha:c.fecha,procs:c.procs,rol:rl[r],m,pag:c.hp?.[r]?.pagado||false});
+    pp[n].rows.push({pac:c.pac?.nom,fecha:c.fecha,procs:c.procs,rol:rl[r],m,pag});
   });});
-  return Object.values(pp).map(pr=>`<div class="card" style="margin-bottom:6px;">
-    <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+  return Object.values(pp).map(pr=>`<div class="card" style="margin-bottom:8px;">
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px;align-items:center;">
       <div style="font-weight:600;">${pr.n}</div>
-      <span class="mono" style="color:var(--gold);font-weight:600;">${fmt(pr.total)}</span>
+      <div><span class="mono gold" style="font-weight:600;">${fmt(pr.total)}</span> <span style="font-size:11px;color:var(--tx3);">pendiente: ${fmt(pr.pend)}</span></div>
     </div>
-    <table><thead><tr><th>Paciente</th><th>Fecha</th><th>Rol</th><th>Honorario</th><th>Pago</th></tr></thead>
+    <table><thead><tr><th>Paciente</th><th>Fecha</th><th>Procedimiento</th><th>Rol</th><th>Honorario</th><th>Pago</th></tr></thead>
     <tbody>${pr.rows.map(x=>`<tr>
-      <td style="font-weight:500;">${x.pac}</td><td style="color:var(--tx3);">${fF(x.fecha)}</td>
+      <td style="font-weight:500;">${x.pac}</td>
+      <td style="color:var(--tx3);">${fF(x.fecha)}</td>
+      <td style="font-size:11px;color:var(--tx3);">${x.procs?.map(p=>p.nom).join(' + ')||'‚Äî'}</td>
       <td style="font-size:11px;">${x.rol}</td>
-      <td class="mono" style="color:var(--gold);">${fmt(x.m)}</td>
-      <td>${x.pag?'<span class="bx bok">Pagado</span>':'<span class="bx bw">Pendiente</span>'}</td>
+      <td class="mono gold">${fmt(x.m)}</td>
+      <td>${x.pag?'<span class="bx bok">Pagado</span>':'<span class="bx bpend">Pendiente</span>'}</td>
     </tr>`).join('')}</tbody></table></div>`).join('')||'<div class="empty">Sin datos</div>';
 }
 
 function buildConAp(lista){
-  lista=lista||DATA;
   const rows=[];
   lista.forEach(c=>Object.entries(c.ap||{}).forEach(([k,a])=>a.socios.forEach(s=>rows.push({pac:c.pac?.nom,fecha:c.fecha,tech:a.nom,nom:s.nom,m:s.m,pag:s.pag}))));
-  if(!rows.length)return'<div class="empty">Sin aparatología</div>';
+  if(!rows.length)return'<div class="empty">Sin aparatolog√≠a</div>';
   return`<div class="card"><table>
-    <thead><tr><th>Paciente</th><th>Fecha</th><th>Tecnología</th><th>Profesional</th><th>Monto</th><th>Estado</th></tr></thead>
+    <thead><tr><th>Paciente</th><th>Fecha</th><th>Tecnolog√≠a</th><th>Profesional</th><th>Monto</th><th>Estado</th></tr></thead>
     <tbody>${rows.map(r=>`<tr>
       <td style="font-weight:500;">${r.pac}</td><td style="color:var(--tx3);">${fF(r.fecha)}</td>
       <td>${r.tech}</td><td>${r.nom}</td>
-      <td class="mono" style="color:var(--gold);">${fmt(r.m)}</td>
-      <td>${r.pag?'<span class="bx bok">Pagado</span>':'<span class="bx bw">Pendiente</span>'}</td>
+      <td class="mono gold">${fmt(r.m)}</td>
+      <td>${r.pag?'<span class="bx bok">Pagado</span>':'<span class="bx bpend">Pendiente</span>'}</td>
     </tr>`).join('')}</tbody></table></div>`;
 }
 
 function buildConQ(lista){
-  lista=(lista||DATA).filter(c=>c.q?.ant||c.q?.hosp);
-  if(!lista.length)return'<div class="empty">Sin datos de quirófano</div>';
+  const l=lista.filter(c=>c.q?.ant||c.q?.hosp);
+  if(!l.length)return'<div class="empty">Sin datos de quir√≥fano</div>';
   return`<div class="card"><table>
     <thead><tr><th>Paciente</th><th>Fecha</th><th>Hospital</th><th>Anticipo</th><th>Factura</th><th>Diferencia</th></tr></thead>
-    <tbody>${lista.map(c=>{const q=c.q||{};const d=(q.ant||0)-(q.fac||0);return`<tr>
+    <tbody>${l.map(c=>{const q=c.q||{};const d=(q.ant||0)-(q.fac||0);return`<tr>
       <td style="font-weight:500;">${c.pac?.nom}</td><td style="color:var(--tx3);">${fF(c.fecha)}</td>
-      <td>${q.hosp||'—'}</td>
-      <td class="mono" style="color:var(--amber);">${fmt(q.ant)}</td>
+      <td style="font-size:11px;">${q.hosp||'‚Äî'}</td>
+      <td class="mono amber">${fmt(q.ant)}</td>
       <td class="mono">${q.fac?fmt(q.fac):'Pendiente'}</td>
-      <td class="mono" style="color:${!q.fac?'var(--tx3)':d>=0?'var(--green)':'var(--red)'};">${!q.fac?'—':d>=0?'+'+fmt(d):'-'+fmt(Math.abs(d))}</td>
+      <td class="mono" style="color:${!q.fac?'var(--tx3)':d>=0?'var(--green)':'var(--red)'};">${!q.fac?'‚Äî':d>=0?'+'+fmt(d):'-'+fmt(Math.abs(d))}</td>
     </tr>`;}).join('')}</tbody></table></div>`;
 }
 
-function rCal(){
-  if(calV==='mes')rCalMes();else rCalSem();
-}
-function setCV(v,btn){
-  calV=v;
-  document.querySelectorAll('#cv-mes,#cv-sem').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');rCal();
-}
-function calNav(d){
-  if(calV==='mes')calF=new Date(calF.getFullYear(),calF.getMonth()+d,1);
-  else calF=new Date(calF.getTime()+d*7*86400000);
-  rCal();
-}
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// CALENDARIO
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function rCal(){if(calV==='mes')rCalMes();else rCalSem();}
+function setCV(v,btn){calV=v;['cv-mes','cv-sem'].forEach(id=>$(id)?.classList.remove('on'));btn.classList.add('on');rCal();}
+function calNav(d){if(calV==='mes')calF=new Date(calF.getFullYear(),calF.getMonth()+d,1);else calF=new Date(calF.getTime()+d*7*86400000);rCal();}
 function calHoy(){calF=new Date();rCal();}
 
 function rCalMes(){
   const y=calF.getFullYear(),m=calF.getMonth();
   $('cal-lbl').textContent=MESES[m]+' '+y;
-  const hoy=new Date().toISOString().slice(0,10);
-  const off=(new Date(y,m,1).getDay()+6)%7;
-  const dias=new Date(y,m+1,0).getDate();
-  const prev=new Date(y,m,0).getDate();
-  let celdas=DS.map(d=>`<div class="cal-day-hdr">${d}</div>`).join('');
-  for(let i=0;i<off;i++)celdas+=`<div class="cal-cell other-month"><div class="cal-num">${prev-off+1+i}</div></div>`;
+  const h=hoy();const off=(new Date(y,m,1).getDay()+6)%7;
+  const dias=new Date(y,m+1,0).getDate();const prev=new Date(y,m,0).getDate();
+  let html=DS.map(d=>`<div class="caldh">${d}</div>`).join('');
+  for(let i=0;i<off;i++)html+=`<div class="calc oth"><div class="caln">${prev-off+1+i}</div></div>`;
   for(let d=1;d<=dias;d++){
     const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const evs=DATA.filter(c=>c.fecha===iso);
-    celdas+=`<div class="cal-cell${iso===hoy?' today':''}"><div class="cal-num">${d}</div>${evs.map(c=>`<div class="cal-event">${(c.pac?.nom||'').split(' ')[0]}</div>`).join('')}</div>`;
+    html+=`<div class="calc${iso===h?' tod':''}"><div class="caln">${d}</div>${evs.map(c=>`<div class="calev${c.tipo==='retoque'?' ret':''}">${(c.pac?.nom||'').split(' ')[0]}</div>`).join('')}</div>`;
   }
-  const resto=(off+dias)%7;if(resto)for(let i=1;i<=7-resto;i++)celdas+=`<div class="cal-cell other-month"><div class="cal-num">${i}</div></div>`;
-  $('cal-content').innerHTML=`<div class="cal"><div class="cal-grid">${celdas}</div></div>`;
+  const resto=(off+dias)%7;if(resto)for(let i=1;i<=7-resto;i++)html+=`<div class="calc oth"><div class="caln">${i}</div></div>`;
+  $('cal-content').innerHTML=`<div class="cal"><div class="calg7">${html}</div></div>`;
 }
 
 function rCalSem(){
   const d=new Date(calF);const dow=(d.getDay()+6)%7;d.setDate(d.getDate()-dow);
-  const lun=new Date(d);const hoy=new Date().toISOString().slice(0,10);
+  const lun=new Date(d);const h=hoy();
   const dias=Array.from({length:7},(_,i)=>{const dd=new Date(lun);dd.setDate(lun.getDate()+i);return dd;});
-  $('cal-lbl').textContent=`Semana del ${dias[0].getDate()} al ${dias[6].getDate()} de ${MESES[dias[0].getMonth()]}`;
+  $('cal-lbl').textContent=`${dias[0].getDate()} ‚Äî ${dias[6].getDate()} ${MESES[dias[0].getMonth()]}`;
   const horas=['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'];
-  let html=`<div class="cal" style="overflow-x:auto;"><div class="week-grid">
-    <div class="week-hdr" style="background:var(--bg3);"></div>
-    ${dias.map(d=>{const iso=d.toISOString().slice(0,10);return`<div class="week-hdr${iso===hoy?' today':''}">${DS[(d.getDay()+6)%7]} ${d.getDate()}</div>`;}).join('')}`;
-  horas.forEach(h=>{
-    html+=`<div class="week-lbl">${h}</div>`;
-    dias.forEach(d=>{
-      const iso=d.toISOString().slice(0,10);
-      const evs=DATA.filter(c=>c.fecha===iso);
-      html+=`<div class="week-slot">${evs.map(c=>`<div class="week-event">${(c.pac?.nom||'').split(' ')[0]}: ${(c.procs||[]).join('+')}</div>`).join('')}</div>`;
+  let html=`<div class="cal" style="overflow-x:auto;"><div style="display:grid;grid-template-columns:46px repeat(7,1fr);">
+    <div class="caldh" style="background:var(--s3);border-right:1px solid var(--bd);"></div>
+    ${dias.map(d=>{const iso=d.toISOString().slice(0,10);return`<div class="caldh${iso===h?' tod':''}' style="border-left:1px solid var(--bd);">${DS[(d.getDay()+6)%7]} ${d.getDate()}</div>`;}).join('')}`;
+  horas.forEach(hr=>{
+    html+=`<div style="font-size:10px;color:var(--tx3);padding:4px;text-align:right;border-bottom:1px solid var(--bd);border-right:1px solid var(--bd);">${hr}</div>`;
+    dias.forEach(d=>{const iso=d.toISOString().slice(0,10);const evs=DATA.filter(c=>c.fecha===iso);
+      html+=`<div style="min-height:40px;border-left:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:2px 3px;">${evs.map(c=>`<div class="calev${c.tipo==='retoque'?' ret':''}">${(c.pac?.nom||'').split(' ')[0]}: ${c.procs?.map(p=>p.nom).join('+')||'‚Äî'}</div>`).join('')}</div>`;
     });
   });
   html+='</div></div>';
   $('cal-content').innerHTML=html;
 }
 
-function sEst(id,e){const c=DATA.find(x=>x.id===id);if(!c)return;c.estado=e;sal();apiS('save',c);rCirs();}
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// PRESUPUESTO IMPRIMIBLE
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function abrirPresupuesto(id){
+  const c=DATA.find(x=>x.id===id);if(!c)return;
+  const costoQuir=c.precioQuirSug||0;
+  $('presup-content').innerHTML=`
+    <div style="font-family:'DM Sans',sans-serif;color:#1a1a1a;max-width:620px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #c9a86c;">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#8a6e3e;letter-spacing:.04em;">ART ESTHETIC CLINIC</div>
+          <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.08em;">Valencia, Espa√±a</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:18px;font-weight:700;">PRESUPUESTO</div>
+          <div style="font-size:11px;color:#888;">${new Date().toLocaleDateString('es-ES',{day:'2-digit',month:'long',year:'numeric'})}</div>
+        </div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Paciente</div>
+        <div style="font-size:16px;font-weight:600;">${c.pac?.nom||'‚Äî'}</div>
+        ${c.pac?.dni?`<div style="font-size:12px;color:#666;">DNI/Pasaporte: ${c.pac.dni}</div>`:''}
+        ${c.pac?.tel?`<div style="font-size:12px;color:#666;">Tel: ${c.pac.tel}</div>`:''}
+      </div>
+      <div style="margin-bottom:20px;padding:14px;background:#f9f7f4;border-radius:8px;border-left:3px solid #c9a86c;">
+        <div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Procedimientos</div>
+        ${(c.procs||[]).map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #e8e2d9;font-size:13px;">
+          <span>${i+1}¬™ ${p.nom}</span>
+          <span style="font-weight:600;color:#8a6e3e;">${fmt(i===0?p.precio:p.precio*0.5)}</span>
+        </div>`).join('')}
+        <div style="display:flex;justify-content:space-between;padding-top:8px;font-size:13px;">
+          <span>Honorarios m√©dicos</span>
+          <span style="font-weight:600;color:#8a6e3e;">${fmt(c.h?.total||0)}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;font-size:13px;">
+          <span>Gastos de quir√≥fano ‚Äî base sin IVA (est.)</span>
+          <span style="font-weight:600;">${fmt(costoQuir)}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px;color:#999;">
+          <span>IVA 21% quir√≥fano (factura directa VITHAS)</span>
+          <span>${fmt(costoQuir*0.21)}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:12px;color:#666;border-bottom:1px solid #e8e2d9;">
+          <span>Total quir√≥fano con IVA</span>
+          <span style="font-weight:600;">${fmt(costoQuir*1.21)}</span>
+        </div>
+        ${c.implante?.costo?`<div style="display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px solid #e8e2d9;">
+          <span>Implantes ${c.implante.marca||''} ${c.implante.talla||''}</span>
+          <span style="font-weight:600;">${fmt(c.implante.costo)}</span>
+        </div>`:''}
+      </div>
+      <div style="background:#2d2a25;color:#fff;border-radius:8px;padding:16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;">
+        <div><div style="font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Total presupuesto</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);">Precios sin IVA ¬∑ Quir√≥fano estimado</div></div>
+        <div style="font-size:24px;font-weight:700;color:#c9a86c;">${fmt(c.pago?.precio||0)}</div>
+      </div>
+      <div style="font-size:11px;color:#999;line-height:1.6;padding:12px;background:#f5f5f5;border-radius:6px;">
+        <b>Condiciones:</b> Este presupuesto tiene una validez de 3 meses desde la fecha de emisi√≥n.<br>
+        <b>Honorarios m√©dicos:</b> Exentos de IVA seg√∫n Art. 20.Uno.3¬∫ LIVA (prestaci√≥n de servicios m√©dicos).<br>
+        <b>Gastos de quir√≥fano:</b> Estimativo seg√∫n tarifas VITHAS vigentes. La factura del hospital se emite directamente por VITHAS Virgen del Consuelo e incluye IVA al 21% sobre el importe base indicado.<br>
+        Pr√≥tesis, implantes, sangre y hemoderivados, estancias UCI y urgencias quedan excluidos de este presupuesto y se facturan aparte por el hospital.<br>
+        Los precios pueden variar en funci√≥n del procedimiento definitivo realizado en quir√≥fano.
+      </div>
+      <div style="margin-top:20px;font-size:11px;color:#999;text-align:center;">
+        ART ESTHETIC CLINIC S.L. ¬∑ Calle Salamanca 35, Bajo Derecha ¬∑ 46005 Valencia
+      </div>
+    </div>`;
+  $('mo-presup').classList.add('on');
+}
+function cerrarPresup(){$('mo-presup').classList.remove('on');}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// PAGOS DEL PACIENTE
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function abrirPagoPac(id){
+  $('pp-cid').value=id;
+  $('pp-monto').value='';$('pp-fecha').value=hoy();
+  $('pp-concepto').value='';$('pp-forma').selectedIndex=0;
+  $('mo-pagopac').classList.add('on');
+}
+function confirmarPagoPac(){
+  const id=$('pp-cid').value;
+  const c=DATA.find(x=>x.id===id);if(!c)return;
+  const monto=parseFloat($('pp-monto').value)||0;
+  if(!monto){alert('Introduce el importe.');return;}
+  if(!c.pagos)c.pagos=[];
+  c.pagos.push({monto,fecha:$('pp-fecha').value,concepto:$('pp-concepto').value.trim(),forma:$('pp-forma').value});
+  sal();$('mo-pagopac').classList.remove('on');rCirs();rAll();
+}
+function elimPagoPac(id,idx){
+  const c=DATA.find(x=>x.id===id);if(!c||!c.pagos)return;
+  if(!confirm('¬øEliminar este pago?'))return;
+  c.pagos.splice(idx,1);sal();rCirs();
+}
+
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// ACCIONES
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+function setEst(id,e){const c=DATA.find(x=>x.id===id);if(!c)return;c.estado=e;sal();rCirs();}
+
 function sPP(id,r,pag){
   const c=DATA.find(x=>x.id===id);if(!c)return;
   if(!c.hp)c.hp={};
   if(pag){
-    const fecha=prompt('Fecha de pago (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
-    const forma=prompt('Forma de pago:','Transferencia');
-    if(fecha===null)return;
-    c.hp[r]={pagado:true,fecha:fecha||'',forma:forma||''};
-  }else{
-    c.hp[r]={pagado:false,fecha:'',forma:''};
-  }
-  sal();apiS('save',c);rCirs();if($('pg-honorarios').classList.contains('on'))rHon();
+    abrirMP('Pago ‚Äî '+({cir:'Cirujano',ay:'Ayudante',an:'Anestesi√≥logo',ins:'Instrumentista'}[r]||r),(f,forma)=>{
+      c.hp[r]={pagado:true,fecha:f,forma};sal();rCirs();if($('pg-honorarios').classList.contains('on'))rHon();
+    });
+  }else{c.hp[r]={pagado:false,fecha:'',forma:''};sal();rCirs();if($('pg-honorarios').classList.contains('on'))rHon();}
 }
-function sAP(id){
+
+function sAntPag(id){
   const c=DATA.find(x=>x.id===id);if(!c)return;
-  const fecha=prompt('Fecha del anticipo (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
-  const forma=prompt('Forma de pago:','Transferencia');
-  if(fecha===null)return;
-  c.q.antPag=true;c.q.fechaAnticipo=fecha||'';c.q.formaAnticipo=forma||'';
-  sal();apiS('save',c);rCirs();
+  abrirMP('Anticipo quir√≥fano ‚Äî '+(c.q?.hosp||'VITHAS'),(f,forma)=>{
+    c.q.antPag=true;c.q.fechaAnticipo=f;c.q.formaAnticipo=forma;sal();rCirs();
+  });
 }
+
 function sAp(id,k,si,pag){
   const c=DATA.find(x=>x.id===id);if(!c)return;
   if(pag){
-    const fecha=prompt('Fecha de pago (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
-    const forma=prompt('Forma de pago:','Transferencia');
-    if(fecha===null)return;
-    c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=fecha||'';c.ap[k].socios[si].formaPago=forma||'';
-  }else{
-    c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';
-  }
-  sal();apiS('save',c);rCirs();
+    abrirMP('Pago aparatolog√≠a ‚Äî '+(c.ap[k]?.socios[si]?.nom||''),(f,forma)=>{
+      c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=f;c.ap[k].socios[si].formaPago=forma;sal();rCirs();
+    });
+  }else{c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';sal();rCirs();}
 }
+
 function sApSoc(id,k,si,pag){
   const c=DATA.find(x=>x.id===id);if(!c)return;
   if(pag){
-    const fecha=prompt('Fecha de pago (DD/MM/AAAA):',new Date().toLocaleDateString('es-ES'));
-    const forma=prompt('Forma de pago:','Transferencia');
-    if(fecha===null)return;
-    c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=fecha||'';c.ap[k].socios[si].formaPago=forma||'';
-  }else{
-    c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';
-  }
-  sal();apiS('save',c);rAp();
-}
-function exportConsolidado(){
-  const selMes=($('con-mes-sel')?.value)||'';
-  const lista=selMes?DATA.filter(c=>c.fecha?.startsWith(selMes)):DATA;
-  const rows=[];
-  lista.forEach(c=>{
-    const h=c.h||{};const q=c.q||{};
-    rows.push({
-      'Paciente':c.pac?.nom,'Fecha':c.fecha,'Procedimientos':(c.procs||[]).join(' + '),
-      'Estado':EL[c.estado]||c.estado,'Cirujano':c.eq?.cir,
-      'Honor.Cirujano':h.cir||0,'Pagado Cir':c.hp?.cir?.pagado?'Sí':'No',
-      'Fecha Pago Cir':c.hp?.cir?.fecha||'','Forma Pago Cir':c.hp?.cir?.forma||'',
-      'Ayudante':c.eq?.ay,'Honor.Ayudante':h.ay||0,
-      'Anestesiólogo':c.eq?.an,'Honor.Anestesia':h.an||0,
-      'Instrumentista':c.eq?.ins,'Honor.Instrumentista':h.ins||0,
-      'Total Honorarios':h.total||0,
-      'Hospital':q.hosp,'Anticipo Quirófano':q.ant||0,
-      'Fecha Anticipo':q.fechaAnticipo||'','Forma Anticipo':q.formaAnticipo||'',
-      'Factura Quirófano':q.fac||0,'Fecha Factura':q.ffact||'',
-      'Dif.Quirófano':(q.ant||0)-(q.fac||0),
-      'Precio Paciente':c.pago?.precio||0,'Pagado Paciente':c.pago?.pagado||0,
-      'Saldo Paciente':Math.max((c.pago?.precio||0)-(c.pago?.pagado||0),0),
+    abrirMP('Pago aparatolog√≠a ‚Äî '+(c.ap[k]?.socios[si]?.nom||''),(f,forma)=>{
+      c.ap[k].socios[si].pag=true;c.ap[k].socios[si].fechaPago=f;c.ap[k].socios[si].formaPago=forma;sal();rAp();
     });
-  });
-  if(!rows.length){alert('Sin datos para exportar.');return;}
+  }else{c.ap[k].socios[si].pag=false;c.ap[k].socios[si].fechaPago='';c.ap[k].socios[si].formaPago='';sal();rAp();}
+}
+
+function elimC(id){
+  const c=DATA.find(x=>x.id===id);
+  if(!c||!confirm('¬øEliminar la intervenci√≥n de '+c.pac?.nom+'?'))return;
+  DATA=DATA.filter(x=>x.id!==id);sal();fbDelete(id);rCirs();rPanel();rAlertas();
+}
+
+function exportCon(){
+  const sel=($('con-mes')?.value)||'';
+  const lista=sel?DATA.filter(c=>c.fecha?.startsWith(sel)):DATA;
+  if(!lista.length){alert('Sin datos para exportar.');return;}
+  const rows=lista.map(c=>{const h=c.h||{};const q=c.q||{};return{
+    'Paciente':c.pac?.nom,'Fecha':fF(c.fecha),'Tipo':c.tipo||'cirugia',
+    'Procedimientos':c.procs?.map(p=>p.nom).join(' + ')||'‚Äî',
+    'Estado':ELBL[c.estado]||c.estado,
+    'Cirujano':c.eq?.cir,'Honor.Cir':h.cir||0,'Pagado Cir':c.hp?.cir?.pagado?'S√≠':'No','Fecha Pago Cir':c.hp?.cir?.fecha||'',
+    'Ayudante':c.eq?.ay,'Honor.Ay':h.ay||0,'Pagado Ay':c.hp?.ay?.pagado?'S√≠':'No',
+    'Anestesi√≥logo':c.eq?.an,'Honor.An':h.an||0,'Pagado An':c.hp?.an?.pagado?'S√≠':'No',
+    'Instrumentista':c.eq?.ins,'Honor.Ins':h.ins||0,'Pagado Ins':c.hp?.ins?.pagado?'S√≠':'No',
+    'Total Honorarios':h.total||0,
+    'Hospital':q.hosp,'Estimado VITHAS':c.precioQuirSug||0,
+    'Anticipo':q.ant||0,'Fecha Anticipo':fF(q.fechaAnticipo),'Forma Anticipo':q.formaAnticipo||'',
+    'Factura':q.fac||0,'Fecha Factura':fF(q.fechaFact),'Diferencia Quir√≥fano':(q.ant||0)-(q.fac||0),
+    'Precio Paciente':c.pago?.precio||0,'Cobrado Paciente':totalPagadoPac(c),
+    'Saldo Paciente':Math.max((c.pago?.precio||0)-totalPagadoPac(c),0),
+  };});
   const ws=XLSX.utils.json_to_sheet(rows);
   const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Consolidado');
-  XLSX.writeFile(wb,'ART_Consolidado_'+(selMes||'total')+'.xlsx');
+  XLSX.writeFile(wb,'ART_'+(sel||'total')+'.xlsx');
 }
 
-function elimC(id){if(!confirm('¿Eliminar esta cirugía?'))return;DATA=DATA.filter(x=>x.id!==id);sal();apiS('delete',{id});rCirs();rPanel();}
-
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
+// INIT
+// ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê
 rPanel();
-// Siempre sincronizar desde Sheets al abrir
-apiCall('init').then(()=>syncNow());
+setTimeout(()=>{ if(window._fbGet) syncNow(); },2000);
 </script>
 </body>
 </html>
